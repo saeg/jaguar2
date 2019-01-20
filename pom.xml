@@ -35,6 +35,10 @@
 		<tag>HEAD</tag>
 	</scm>
 
+	<modules>
+		<module>jaguar-core</module>
+	</modules>
+
 	<developers>
 		<developer>
 			<email>roberto.andrioli@gmail.com</email>
