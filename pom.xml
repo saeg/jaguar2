@@ -1,0 +1,73 @@
+<!--
+
+    Contributors:
+        Henrique Ribeiro - initial API and implementation and/or initial documentation
+        Roberto Araujo - initial API and implementation and/or initial documentation
+
+-->
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+
+	<groupId>br.usp.each.saeg</groupId>
+	<artifactId>jaguar</artifactId>
+	<version>0.0.1-SNAPSHOT</version>
+	<packaging>pom</packaging>
+	<name>jaguar</name>
+	<url>https://github.com/saeg/jaguar2</url>
+	<description>
+		Java coverage fault localization rank
+		Control-flow and data-flow testing coverage for Java.
+	</description>
+	<inceptionYear>2019</inceptionYear>
+
+	<licenses>
+		<license>
+			<name>Eclipse Public License v2.0</name>
+			<url>http://www.eclipse.org/legal/epl-v20.html</url>
+			<distribution>repo</distribution>
+		</license>
+	</licenses>
+
+	<scm>
+		<url>https://github.com/saeg/jaguar2</url>
+		<connection>scm:git:https://github.com/saeg/jaguar2.git</connection>
+		<developerConnection>scm:git:git@github.com:saeg/jaguar2.git</developerConnection>
+		<tag>HEAD</tag>
+	</scm>
+
+	<developers>
+		<developer>
+			<email>roberto.andrioli@gmail.com</email>
+			<name>Roberto Araujo</name>
+			<url>https://github.com/andrioli</url>
+			<id>andrioli</id>
+		</developer>
+		<developer>
+			<email>henriquelemos0@gmail.com</email>
+			<name>Henrique Ribeiro</name>
+			<url>https://github.com/henriquelemos0</url>
+			<id>henriquelemos0</id>
+		</developer>
+	</developers>
+
+	<properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+	</properties>
+
+	<build>
+		<pluginManagement>
+			<plugins>
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-compiler-plugin</artifactId>
+					<version>3.5.1</version>
+					<configuration>
+						<source>1.6</source>
+						<target>1.6</target>
+					</configuration>
+				</plugin>
+			</plugins>
+		</pluginManagement>
+	</build>
+
+</project>
