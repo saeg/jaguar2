@@ -6,7 +6,9 @@ environment:
     - JAVA_HOME: C:\Program Files\Java\jdk1.8.0
     - JAVA_HOME: C:\Program Files (x86)\Java\jdk1.8.0
     - JAVA_HOME: C:\Program Files\Java\jdk1.7.0
+      MAVEN_OPTS: -Dhttps.protocols=TLSv1.2
     - JAVA_HOME: C:\Program Files (x86)\Java\jdk1.7.0
+      MAVEN_OPTS: -Dhttps.protocols=TLSv1.2
     - JAVA_HOME: C:\Program Files\Java\jdk1.6.0
     - JAVA_HOME: C:\Program Files (x86)\Java\jdk1.6.0
 
@@ -18,4 +20,4 @@ before_build:
   - javac -J-Xmx32m -version
 
 build_script:
-  - .\mvnw verify
+  - .\mvnw verify -s .mvn\settings.xml
