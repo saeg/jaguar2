@@ -26,7 +26,7 @@ public class MinusHeuristic implements Heuristic {
 			minusPassed = (((double) cep / (cep + cnp)));
 		}
 
-		if (minusFailed != 1) {
+		if (Math.abs(minusFailed - 1.0d) >= 0.001) {
 			suspiciousnessMinus = (double) (1 - minusFailed)
 					/ ((1 - minusFailed) + (1 - minusPassed));
 		}
