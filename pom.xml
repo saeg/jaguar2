@@ -59,4 +59,8 @@
 		</developer>
 	</developers>
 
+	<modules>
+		<module>jaguar2-core</module>
+	</modules>
+
 </project>
