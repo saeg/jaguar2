@@ -10,10 +10,14 @@
  */
 package br.usp.each.saeg.jaguar2;
 
+import org.junit.Assert;
+import org.junit.Test;
+
 public class HelloTest {
 
+    @Test
     public void testGreetings() {
-        assert new Hello("World").greetings().equals("Hello, World");
+        Assert.assertEquals("Hello, World", new Hello("World").greetings());
     }
 
 }
