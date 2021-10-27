@@ -1,0 +1,210 @@
+<!--
+
+    Copyright (c) 2021, 2021 University of Sao Paulo and Contributors.
+    All rights reserved. This program and the accompanying materials
+    are made available under the terms of the Eclipse Public License v1.0
+    which accompanies this distribution, and is available at
+    http://www.eclipse.org/legal/epl-v10.html
+
+    Contributors:
+        Roberto Araujo - initial API and implementation and/or initial documentation
+
+-->
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+
+	<groupId>br.usp.each.saeg</groupId>
+	<artifactId>jaguar2-parent</artifactId>
+	<version>0.0.1-SNAPSHOT</version>
+	<packaging>pom</packaging>
+	<name>jaguar2-parent</name>
+	<url>https://github.com/saeg/jaguar2</url>
+	<description>Jaguar - JAva coveraGe faUlt locAlization Rank</description>
+	<inceptionYear>2021</inceptionYear>
+
+	<organization>
+		<name>University of Sao Paulo</name>
+	</organization>
+
+	<licenses>
+		<license>
+			<name>Eclipse Public License v1.0</name>
+			<url>http://www.eclipse.org/legal/epl-v10.html</url>
+			<distribution>repo</distribution>
+		</license>
+	</licenses>
+
+	<scm>
+		<url>https://github.com/saeg/jaguar2</url>
+		<connection>scm:git:https://github.com/saeg/jaguar2.git</connection>
+		<developerConnection>scm:git:git@github.com:saeg/jaguar2.git</developerConnection>
+		<tag>HEAD</tag>
+	</scm>
+
+	<distributionManagement>
+		<snapshotRepository>
+			<id>ossrh</id>
+			<url>https://oss.sonatype.org/content/repositories/snapshots/</url>
+		</snapshotRepository>
+		<repository>
+			<id>ossrh</id>
+			<url>https://oss.sonatype.org/service/local/staging/deploy/maven2/</url>
+		</repository>
+	</distributionManagement>
+
+	<issueManagement>
+		<system>GitHub Issues</system>
+		<url>https://github.com/saeg/jaguar2/issues</url>
+	</issueManagement>
+
+	<ciManagement>
+		<system>GitHub Actions</system>
+		<url>https://github.com/saeg/jaguar2/actions</url>
+	</ciManagement>
+
+	<developers>
+		<developer>
+			<email>roberto.andrioli@gmail.com</email>
+			<name>Roberto Araujo</name>
+			<url>https://github.com/andrioli</url>
+			<id>andrioli</id>
+		</developer>
+	</developers>
+
+	<properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<maven.compiler.source>1.6</maven.compiler.source>
+		<maven.compiler.target>1.6</maven.compiler.target>
+		<license.header.fileLocation>LICENSE-TEMPLATE.txt</license.header.fileLocation>
+	</properties>
+
+	<modules>
+		<module>jaguar2-core</module>
+	</modules>
+
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>com.mycila</groupId>
+				<artifactId>license-maven-plugin</artifactId>
+				<version>2.11</version>
+				<configuration>
+					<header>${license.header.fileLocation}</header>
+					<headerSections>
+						<headerSection>
+							<key>CONTRIBUTORS_SECTION</key>
+						</headerSection>
+					</headerSections>
+					<properties>
+						<owner>${project.organization.name}</owner>
+					</properties>
+					<excludes>
+						<exclude>LICENSE</exclude>
+						<exclude>.github/**</exclude>
+						<exclude>.mvn/**</exclude>
+						<exclude>mvnw</exclude>
+						<exclude>mvnw.cmd</exclude>
+					</excludes>
+				</configuration>
+				<executions>
+					<execution>
+						<goals>
+							<goal>check</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+			<plugin>
+				<groupId>org.codehaus.mojo</groupId>
+				<artifactId>animal-sniffer-maven-plugin</artifactId>
+				<version>1.16</version>
+				<configuration>
+					<signature>
+						<groupId>org.codehaus.mojo.signature</groupId>
+						<artifactId>java16</artifactId>
+						<version>1.0</version>
+					</signature>
+				</configuration>
+				<executions>
+					<execution>
+						<goals>
+							<goal>check</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+			<plugin>
+				<groupId>org.jacoco</groupId>
+				<artifactId>jacoco-maven-plugin</artifactId>
+				<version>0.8.7</version>
+				<executions>
+					<execution>
+						<id>prepare-agent</id>
+						<goals>
+							<goal>prepare-agent</goal>
+						</goals>
+					</execution>
+					<execution>
+						<id>report</id>
+						<phase>prepare-package</phase>
+						<goals>
+							<goal>report</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-jxr-plugin</artifactId>
+				<version>2.5</version>
+				<executions>
+					<execution>
+						<phase>verify</phase>
+						<goals>
+							<goal>jxr</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-pmd-plugin</artifactId>
+				<version>3.6</version>
+				<configuration>
+					<verbose>true</verbose>
+				</configuration>
+				<executions>
+					<execution>
+						<goals>
+							<goal>check</goal>
+							<goal>cpd-check</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+		</plugins>
+	</build>
+
+	<dependencies>
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<version>4.13.2</version>
+			<scope>test</scope>
+		</dependency>
+	</dependencies>
+
+	<profiles>
+		<profile>
+			<id>jdk12</id>
+			<activation>
+				<jdk>[12,)</jdk>
+			</activation>
+			<properties>
+				<maven.compiler.source>1.7</maven.compiler.source>
+				<maven.compiler.target>1.7</maven.compiler.target>
+			</properties>
+		</profile>
+	</profiles>
+
+</project>
