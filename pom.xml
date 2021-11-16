@@ -79,6 +79,7 @@
 	</properties>
 
 	<modules>
+		<module>jaguar2-api</module>
 		<module>jaguar2-core</module>
 	</modules>
 
