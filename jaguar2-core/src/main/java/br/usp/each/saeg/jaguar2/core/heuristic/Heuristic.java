@@ -6,18 +6,15 @@
  * http://www.eclipse.org/legal/epl-v10.html
  *
  * Contributors:
- *     Roberto Araujo - initial API and implementation and/or initial documentation
+ *     Henrique Lemos - initial API and implementation and/or initial documentation
  */
-package br.usp.each.saeg.jaguar2;
+package br.usp.each.saeg.jaguar2.core.heuristic;
 
-import org.junit.Assert;
-import org.junit.Test;
+/**
+ * Interface representing a spectrum-base fault localization heuristic
+ */
+public interface Heuristic {
 
-public class HelloTest {
-
-    @Test
-    public void testGreetings() {
-        Assert.assertEquals("Hello, World", new Hello("World").greetings());
-    }
+    double eval(int cef, int cnf, int cep, int cnp);
 
 }
