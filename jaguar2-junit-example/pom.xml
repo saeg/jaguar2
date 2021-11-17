@@ -32,9 +32,24 @@
 				<artifactId>maven-surefire-plugin</artifactId>
 				<configuration>
 					<testFailureIgnore>true</testFailureIgnore>
+					<properties>
+						<property>
+							<name>listener</name>
+							<value>br.usp.each.saeg.jaguar2.junit.JaguarJUnitRunListener</value>
+						</property>
+					</properties>
 				</configuration>
 			</plugin>
 		</plugins>
 	</build>
+
+	<dependencies>
+		<dependency>
+			<groupId>${project.groupId}</groupId>
+			<artifactId>jaguar2-junit</artifactId>
+			<version>${project.version}</version>
+			<scope>test</scope>
+		</dependency>
+	</dependencies>
 
 </project>

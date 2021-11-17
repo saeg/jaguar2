@@ -28,6 +28,10 @@ public class JaguarJUnitRunListener extends RunListener {
         this.jaguar = jaguar;
     }
 
+    public JaguarJUnitRunListener() {
+        this(new Jaguar());
+    }
+
     @Override
     public void testStarted(final Description description) {
         fail = false;
