@@ -76,13 +76,15 @@
 		<maven.compiler.source>1.6</maven.compiler.source>
 		<maven.compiler.target>1.6</maven.compiler.target>
 		<license.header.fileLocation>LICENSE-TEMPLATE.txt</license.header.fileLocation>
+		<jacoco.version>0.8.7</jacoco.version>
 	</properties>
 
 	<modules>
 		<module>jaguar2-api</module>
 		<module>jaguar2-core</module>
 		<module>jaguar2-junit</module>
-		<module>jaguar2-junit-example</module>
+		<module>jaguar2-jacoco-provider</module>
+		<module>jaguar2-example-junit-jacoco</module>
 	</modules>
 
 	<build>
@@ -148,7 +150,7 @@
 			<plugin>
 				<groupId>org.jacoco</groupId>
 				<artifactId>jacoco-maven-plugin</artifactId>
-				<version>0.8.7</version>
+				<version>${jacoco.version}</version>
 				<executions>
 					<execution>
 						<id>prepare-agent</id>
