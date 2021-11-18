@@ -19,7 +19,7 @@
 		<version>0.0.1-SNAPSHOT</version>
 	</parent>
 
-	<artifactId>jaguar2-junit-example</artifactId>
+	<artifactId>jaguar2-example-junit-jacoco</artifactId>
 
 	<properties>
 		<license.header.fileLocation>../LICENSE-TEMPLATE.txt</license.header.fileLocation>
@@ -47,6 +47,12 @@
 		<dependency>
 			<groupId>${project.groupId}</groupId>
 			<artifactId>jaguar2-junit</artifactId>
+			<version>${project.version}</version>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>${project.groupId}</groupId>
+			<artifactId>jaguar2-jacoco-provider</artifactId>
 			<version>${project.version}</version>
 			<scope>test</scope>
 		</dependency>
