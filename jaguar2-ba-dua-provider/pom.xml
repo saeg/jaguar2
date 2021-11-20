@@ -23,7 +23,6 @@
 
 	<properties>
 		<license.header.fileLocation>../LICENSE-TEMPLATE.txt</license.header.fileLocation>
-		<ba-dua.version>0.6.0</ba-dua.version>
 	</properties>
 
 	<dependencies>
