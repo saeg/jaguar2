@@ -76,6 +76,7 @@
 		<maven.compiler.source>1.6</maven.compiler.source>
 		<maven.compiler.target>1.6</maven.compiler.target>
 		<license.header.fileLocation>LICENSE-TEMPLATE.txt</license.header.fileLocation>
+		<ba-dua.version>0.6.0</ba-dua.version>
 		<jacoco.version>0.8.7</jacoco.version>
 	</properties>
 
@@ -83,7 +84,9 @@
 		<module>jaguar2-api</module>
 		<module>jaguar2-core</module>
 		<module>jaguar2-junit</module>
+		<module>jaguar2-ba-dua-provider</module>
 		<module>jaguar2-jacoco-provider</module>
+		<module>jaguar2-example-junit-ba-dua</module>
 		<module>jaguar2-example-junit-jacoco</module>
 	</modules>
 
