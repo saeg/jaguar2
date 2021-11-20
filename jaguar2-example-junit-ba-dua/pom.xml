@@ -43,6 +43,10 @@
 									<artifactId>ba-dua-agent</artifactId>
 									<classifier>runtime</classifier>
 									<version>${ba-dua.version}</version>
+									<!--
+										TODO: Remove destFileName when BA-DUA do not require this specific file name
+									-->
+									<destFileName>ba-dua-agent-rt-${ba-dua.version}-all.jar</destFileName>
 								</artifactItem>
 							</artifactItems>
 						</configuration>
