@@ -15,11 +15,19 @@ import br.usp.each.saeg.jaguar2.spi.CoverageController;
 public class DummyCoverageController implements CoverageController {
 
     @Override
+    public void init() {
+    }
+
+    @Override
     public void reset() {
     }
 
     @Override
     public void save(final boolean testFailed) {
+    }
+
+    @Override
+    public void analyze() {
     }
 
 }

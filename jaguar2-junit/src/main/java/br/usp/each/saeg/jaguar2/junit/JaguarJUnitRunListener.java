@@ -11,6 +11,7 @@
 package br.usp.each.saeg.jaguar2.junit;
 
 import org.junit.runner.Description;
+import org.junit.runner.Result;
 import org.junit.runner.notification.Failure;
 import org.junit.runner.notification.RunListener;
 
@@ -30,6 +31,11 @@ public class JaguarJUnitRunListener extends RunListener {
 
     public JaguarJUnitRunListener() {
         this(new Jaguar());
+    }
+
+    @Override
+    public void testRunStarted(final Description description) {
+        jaguar.testRunStarted();
     }
 
     @Override
@@ -54,6 +60,11 @@ public class JaguarJUnitRunListener extends RunListener {
     @Override
     public void testAssumptionFailure(final Failure failure) {
         skip = true;
+    }
+
+    @Override
+    public void testRunFinished(final Result result) {
+        jaguar.testRunFinished();
     }
 
 }

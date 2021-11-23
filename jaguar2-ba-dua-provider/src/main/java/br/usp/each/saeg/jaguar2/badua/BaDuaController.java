@@ -39,6 +39,10 @@ public class BaDuaController implements CoverageController {
     }
 
     @Override
+    public void init() {
+    }
+
+    @Override
     public void reset() {
         agent.reset();
     }
@@ -74,6 +78,10 @@ public class BaDuaController implements CoverageController {
         } else {
             successExecutionDataStores.add(executionDataStore);
         }
+    }
+
+    @Override
+    public void analyze() {
     }
 
 }

@@ -35,6 +35,15 @@ public class JaguarTest {
     }
 
     @Test
+    public void testRunStartedCallControllerInit() {
+        // When
+        jaguar.testRunStarted();
+
+        // Then
+        verify(controllerMock, times(1)).init();
+    }
+
+    @Test
     public void testStartedCallControllerReset() {
         // When
         jaguar.testStarted();
@@ -59,6 +68,15 @@ public class JaguarTest {
 
         // Then
         verify(controllerMock, times(1)).save(true);
+    }
+
+    @Test
+    public void testRunFinishedCallControllerAnalyze() {
+        // When
+        jaguar.testRunFinished();
+
+        // Then
+        verify(controllerMock, times(1)).analyze();
     }
 
 }

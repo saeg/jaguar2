@@ -16,6 +16,11 @@ package br.usp.each.saeg.jaguar2.spi;
 public interface CoverageController {
 
     /**
+     * Initialize the coverage controller service.
+     */
+    void init();
+
+    /**
      * Reset runtime code coverage data.
      */
     void reset();
@@ -28,5 +33,10 @@ public interface CoverageController {
      *                   executed by a failing test case.
      */
     void save(final boolean testFailed);
+
+    /**
+     * Analyze the saved runtime code coverage data.
+     */
+    void analyze();
 
 }
