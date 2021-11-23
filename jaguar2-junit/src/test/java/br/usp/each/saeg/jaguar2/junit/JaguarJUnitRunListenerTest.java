@@ -18,6 +18,7 @@ import static org.mockito.Mockito.times;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.Description;
+import org.junit.runner.Result;
 import org.junit.runner.RunWith;
 import org.junit.runner.notification.Failure;
 import org.mockito.InOrder;
@@ -47,31 +48,70 @@ public class JaguarJUnitRunListenerTest {
     @Test
     public void testSuccess() {
         // When
-        successTest();
+        runTests(new Runnable() {
+
+            @Override
+            public void run() {
+                successTest();
+            }
+
+        });
 
         // Then
-        verifySuccessTest();
-        verifyNoMoreInteractions();
+        verifyTests(new Runnable() {
+
+            @Override
+            public void run() {
+                verifySuccessTest();
+            }
+
+        });
     }
 
     @Test
     public void testFail() {
         // When
-        failTest();
+        runTests(new Runnable() {
+
+            @Override
+            public void run() {
+                failTest();
+            }
+
+        });
 
         // Then
-        verifyFailTest();
-        verifyNoMoreInteractions();
+        verifyTests(new Runnable() {
+
+            @Override
+            public void run() {
+                verifyFailTest();
+            }
+
+        });
     }
 
     @Test
     public void testAssumptionFailure() {
         // When
-        assumptionFailureTest();
+        runTests(new Runnable() {
+
+            @Override
+            public void run() {
+                assumptionFailureTest();
+            }
+
+        });
 
         // Then
-        verifyAssumptionFailure();
-        verifyNoMoreInteractions();
+        verifyTests(new Runnable() {
+
+            @Override
+            public void run() {
+                verifyAssumptionFailure();
+            }
+
+        });
     }
 
     // ---
@@ -79,37 +119,76 @@ public class JaguarJUnitRunListenerTest {
     @Test
     public void testSuccessAndSuccess() {
         // When
-        successTest();
-        successTest();
+        runTests(new Runnable() {
+
+            @Override
+            public void run() {
+                successTest();
+                successTest();
+            }
+
+        });
 
         // Then
-        verifySuccessTest();
-        verifySuccessTest();
-        verifyNoMoreInteractions();
+        verifyTests(new Runnable() {
+
+            @Override
+            public void run() {
+                verifySuccessTest();
+                verifySuccessTest();
+            }
+
+        });
     }
 
     @Test
     public void testSuccessAndFail() {
         // When
-        successTest();
-        failTest();
+        runTests(new Runnable() {
+
+            @Override
+            public void run() {
+                successTest();
+                failTest();
+            }
+
+        });
 
         // Then
-        verifySuccessTest();
-        verifyFailTest();
-        verifyNoMoreInteractions();
+        verifyTests(new Runnable() {
+
+            @Override
+            public void run() {
+                verifySuccessTest();
+                verifyFailTest();
+            }
+
+        });
     }
 
     @Test
     public void testSuccessAndAssumptionFailure() {
         // When
-        successTest();
-        assumptionFailureTest();
+        runTests(new Runnable() {
+
+            @Override
+            public void run() {
+                successTest();
+                assumptionFailureTest();
+            }
+
+        });
 
         // Then
-        verifySuccessTest();
-        verifyAssumptionFailure();
-        verifyNoMoreInteractions();
+        verifyTests(new Runnable() {
+
+            @Override
+            public void run() {
+                verifySuccessTest();
+                verifyAssumptionFailure();
+            }
+
+        });
     }
 
     // ---
@@ -117,37 +196,76 @@ public class JaguarJUnitRunListenerTest {
     @Test
     public void testFailAndSuccess() {
         // When
-        failTest();
-        successTest();
+        runTests(new Runnable() {
+
+            @Override
+            public void run() {
+                failTest();
+                successTest();
+            }
+
+        });
 
         // Then
-        verifyFailTest();
-        verifySuccessTest();
-        verifyNoMoreInteractions();
+        verifyTests(new Runnable() {
+
+            @Override
+            public void run() {
+                verifyFailTest();
+                verifySuccessTest();
+            }
+
+        });
     }
 
     @Test
     public void testFailAndFail() {
         // When
-        failTest();
-        failTest();
+        runTests(new Runnable() {
+
+            @Override
+            public void run() {
+                failTest();
+                failTest();
+            }
+
+        });
 
         // Then
-        verifyFailTest();
-        verifyFailTest();
-        verifyNoMoreInteractions();
+        verifyTests(new Runnable() {
+
+            @Override
+            public void run() {
+                verifyFailTest();
+                verifyFailTest();
+            }
+
+        });
     }
 
     @Test
     public void testFailAndAssumptionFailure() {
         // When
-        failTest();
-        assumptionFailureTest();
+        runTests(new Runnable() {
+
+            @Override
+            public void run() {
+                failTest();
+                assumptionFailureTest();
+            }
+
+        });
 
         // Then
-        verifyFailTest();
-        verifyAssumptionFailure();
-        verifyNoMoreInteractions();
+        verifyTests(new Runnable() {
+
+            @Override
+            public void run() {
+                verifyFailTest();
+                verifyAssumptionFailure();
+            }
+
+        });
     }
 
     // ---
@@ -155,39 +273,84 @@ public class JaguarJUnitRunListenerTest {
     @Test
     public void testAssumptionFailureAndSuccess() {
         // When
-        assumptionFailureTest();
-        successTest();
+        runTests(new Runnable() {
+
+            @Override
+            public void run() {
+                assumptionFailureTest();
+                successTest();
+            }
+
+        });
 
         // Then
-        inOrder.verify(jaguarMock, times(2)).testStarted();
-        inOrder.verify(jaguarMock).testFinished(eq(false));
-        inOrder.verifyNoMoreInteractions();
+        verifyTests(new Runnable() {
+
+            @Override
+            public void run() {
+                inOrder.verify(jaguarMock, times(2)).testStarted();
+                inOrder.verify(jaguarMock).testFinished(eq(false));
+            }
+
+        });
     }
 
     @Test
     public void testAssumptionFailureAndFail() {
         // When
-        assumptionFailureTest();
-        failTest();
+        runTests(new Runnable() {
+
+            @Override
+            public void run() {
+                assumptionFailureTest();
+                failTest();
+            }
+
+        });
 
         // Then
-        inOrder.verify(jaguarMock, times(2)).testStarted();
-        inOrder.verify(jaguarMock).testFinished(eq(true));
-        inOrder.verifyNoMoreInteractions();
+        verifyTests(new Runnable() {
+
+            @Override
+            public void run() {
+                inOrder.verify(jaguarMock, times(2)).testStarted();
+                inOrder.verify(jaguarMock).testFinished(eq(true));
+            }
+
+        });
     }
 
     @Test
     public void testAssumptionFailureAndAssumptionFailure() {
         // When
-        assumptionFailureTest();
-        assumptionFailureTest();
+        runTests(new Runnable() {
+
+            @Override
+            public void run() {
+                assumptionFailureTest();
+                assumptionFailureTest();
+            }
+
+        });
 
         // Then
-        inOrder.verify(jaguarMock, times(2)).testStarted();
-        inOrder.verifyNoMoreInteractions();
+        verifyTests(new Runnable() {
+
+            @Override
+            public void run() {
+                inOrder.verify(jaguarMock, times(2)).testStarted();
+            }
+
+        });
     }
 
     // ---
+
+    private void runTests(final Runnable runnable) {
+        listener.testRunStarted(mock(Description.class));
+        runnable.run();
+        listener.testRunFinished(mock(Result.class));
+    }
 
     private void successTest() {
         final Description desc = mock(Description.class);
@@ -211,6 +374,13 @@ public class JaguarJUnitRunListenerTest {
         listener.testFinished(desc);
     }
 
+    private void verifyTests(final Runnable runnable) {
+        inOrder.verify(jaguarMock).testRunStarted();
+        runnable.run();
+        inOrder.verify(jaguarMock).testRunFinished();
+        inOrder.verifyNoMoreInteractions();
+    }
+
     private void verifySuccessTest() {
         inOrder.verify(jaguarMock).testStarted();
         inOrder.verify(jaguarMock).testFinished(eq(false));
@@ -223,10 +393,6 @@ public class JaguarJUnitRunListenerTest {
 
     private void verifyAssumptionFailure() {
         inOrder.verify(jaguarMock).testStarted();
-    }
-
-    private void verifyNoMoreInteractions() {
-        inOrder.verifyNoMoreInteractions();
     }
 
 }

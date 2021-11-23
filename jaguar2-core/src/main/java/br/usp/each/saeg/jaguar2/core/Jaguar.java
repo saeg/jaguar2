@@ -26,6 +26,15 @@ public class Jaguar {
     }
 
     /**
+     * Called before any tests have been run.
+     */
+    public void testRunStarted() {
+        if (controller != null) {
+            controller.init();
+        }
+    }
+
+    /**
      * Called when an atomic test is about to be started.
      *
      * The current implementation reset runtime code coverage data as no
@@ -50,6 +59,15 @@ public class Jaguar {
     public void testFinished(final boolean testFailed) {
         if (controller != null) {
             controller.save(testFailed);
+        }
+    }
+
+    /**
+     * Called when all tests have finished.
+     */
+    public void testRunFinished() {
+        if (controller != null) {
+            controller.analyze();
         }
     }
 
