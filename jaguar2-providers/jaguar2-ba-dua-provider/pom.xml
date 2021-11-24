@@ -15,26 +15,33 @@
 
 	<parent>
 		<groupId>br.usp.each.saeg</groupId>
-		<artifactId>jaguar2-parent</artifactId>
+		<artifactId>jaguar2-providers</artifactId>
 		<version>0.0.1-SNAPSHOT</version>
 	</parent>
 
-	<artifactId>jaguar2-junit</artifactId>
+	<artifactId>jaguar2-ba-dua-provider</artifactId>
 
 	<properties>
-		<license.header.fileLocation>../LICENSE-TEMPLATE.txt</license.header.fileLocation>
+		<license.header.fileLocation>../../LICENSE-TEMPLATE.txt</license.header.fileLocation>
 	</properties>
 
 	<dependencies>
 		<dependency>
 			<groupId>${project.groupId}</groupId>
-			<artifactId>jaguar2-core</artifactId>
+			<artifactId>jaguar2-api</artifactId>
 			<version>${project.version}</version>
 		</dependency>
 		<dependency>
-			<groupId>junit</groupId>
-			<artifactId>junit</artifactId>
+			<groupId>br.usp.each.saeg</groupId>
+			<artifactId>ba-dua-agent</artifactId>
+			<version>${ba-dua.version}</version>
+			<classifier>runtime</classifier>
 			<scope>provided</scope>
+		</dependency>
+		<dependency>
+			<groupId>br.usp.each.saeg</groupId>
+			<artifactId>ba-dua-core</artifactId>
+			<version>${ba-dua.version}</version>
 		</dependency>
 	</dependencies>
 

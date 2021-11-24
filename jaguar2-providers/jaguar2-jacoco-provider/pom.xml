@@ -15,14 +15,14 @@
 
 	<parent>
 		<groupId>br.usp.each.saeg</groupId>
-		<artifactId>jaguar2-parent</artifactId>
+		<artifactId>jaguar2-providers</artifactId>
 		<version>0.0.1-SNAPSHOT</version>
 	</parent>
 
-	<artifactId>jaguar2-ba-dua-provider</artifactId>
+	<artifactId>jaguar2-jacoco-provider</artifactId>
 
 	<properties>
-		<license.header.fileLocation>../LICENSE-TEMPLATE.txt</license.header.fileLocation>
+		<license.header.fileLocation>../../LICENSE-TEMPLATE.txt</license.header.fileLocation>
 	</properties>
 
 	<dependencies>
@@ -32,16 +32,16 @@
 			<version>${project.version}</version>
 		</dependency>
 		<dependency>
-			<groupId>br.usp.each.saeg</groupId>
-			<artifactId>ba-dua-agent</artifactId>
-			<version>${ba-dua.version}</version>
+			<groupId>org.jacoco</groupId>
+			<artifactId>org.jacoco.agent</artifactId>
+			<version>${jacoco.version}</version>
 			<classifier>runtime</classifier>
 			<scope>provided</scope>
 		</dependency>
 		<dependency>
-			<groupId>br.usp.each.saeg</groupId>
-			<artifactId>ba-dua-core</artifactId>
-			<version>${ba-dua.version}</version>
+			<groupId>org.jacoco</groupId>
+			<artifactId>org.jacoco.core</artifactId>
+			<version>${jacoco.version}</version>
 		</dependency>
 	</dependencies>
 
