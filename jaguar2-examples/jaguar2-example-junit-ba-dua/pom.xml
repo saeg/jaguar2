@@ -15,14 +15,14 @@
 
 	<parent>
 		<groupId>br.usp.each.saeg</groupId>
-		<artifactId>jaguar2-parent</artifactId>
+		<artifactId>jaguar2-examples</artifactId>
 		<version>0.0.1-SNAPSHOT</version>
 	</parent>
 
 	<artifactId>jaguar2-example-junit-ba-dua</artifactId>
 
 	<properties>
-		<license.header.fileLocation>../LICENSE-TEMPLATE.txt</license.header.fileLocation>
+		<license.header.fileLocation>../../LICENSE-TEMPLATE.txt</license.header.fileLocation>
 		<argLine>-javaagent:target/dependency/ba-dua-agent-rt-${ba-dua.version}-all.jar -Doutput.file=target/badua.ser</argLine>
 	</properties>
 
