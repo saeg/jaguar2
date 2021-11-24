@@ -86,9 +86,7 @@
 		<module>jaguar2-commons</module>
 		<module>jaguar2-junit</module>
 		<module>jaguar2-providers</module>
-		<module>jaguar2-example-junit</module>
-		<module>jaguar2-example-junit-ba-dua</module>
-		<module>jaguar2-example-junit-jacoco</module>
+		<module>jaguar2-examples</module>
 	</modules>
 
 	<build>

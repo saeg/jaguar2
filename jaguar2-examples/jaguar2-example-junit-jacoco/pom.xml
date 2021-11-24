@@ -15,14 +15,14 @@
 
 	<parent>
 		<groupId>br.usp.each.saeg</groupId>
-		<artifactId>jaguar2-parent</artifactId>
+		<artifactId>jaguar2-examples</artifactId>
 		<version>0.0.1-SNAPSHOT</version>
 	</parent>
 
-	<artifactId>jaguar2-example-junit</artifactId>
+	<artifactId>jaguar2-example-junit-jacoco</artifactId>
 
 	<properties>
-		<license.header.fileLocation>../LICENSE-TEMPLATE.txt</license.header.fileLocation>
+		<license.header.fileLocation>../../LICENSE-TEMPLATE.txt</license.header.fileLocation>
 	</properties>
 
 	<build>
@@ -32,6 +32,9 @@
 				<artifactId>maven-surefire-plugin</artifactId>
 				<configuration>
 					<testFailureIgnore>true</testFailureIgnore>
+					<dependenciesToScan>
+						<dependency>${project.groupId}:jaguar2-example-junit</dependency>
+					</dependenciesToScan>
 					<properties>
 						<property>
 							<name>listener</name>
@@ -40,24 +43,31 @@
 					</properties>
 				</configuration>
 			</plugin>
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-jar-plugin</artifactId>
-				<executions>
-					<execution>
-						<goals>
-							<goal>test-jar</goal>
-						</goals>
-					</execution>
-				</executions>
-			</plugin>
 		</plugins>
 	</build>
 
 	<dependencies>
 		<dependency>
 			<groupId>${project.groupId}</groupId>
+			<artifactId>jaguar2-example-junit</artifactId>
+			<version>${project.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>${project.groupId}</groupId>
+			<artifactId>jaguar2-example-junit</artifactId>
+			<version>${project.version}</version>
+			<classifier>tests</classifier>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>${project.groupId}</groupId>
 			<artifactId>jaguar2-junit</artifactId>
+			<version>${project.version}</version>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>${project.groupId}</groupId>
+			<artifactId>jaguar2-jacoco-provider</artifactId>
 			<version>${project.version}</version>
 			<scope>test</scope>
 		</dependency>
