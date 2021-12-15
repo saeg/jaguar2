@@ -10,14 +10,25 @@
  */
 package br.usp.each.saeg.jaguar2.badua;
 
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.io.InputStream;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Properties;
 
 import br.usp.each.saeg.badua.agent.rt.internal_d2401f0.Agent;
 import br.usp.each.saeg.badua.agent.rt.internal_d2401f0.core.data.ExecutionData;
 import br.usp.each.saeg.badua.agent.rt.internal_d2401f0.core.data.IExecutionDataVisitor;
 import br.usp.each.saeg.badua.agent.rt.internal_d2401f0.core.runtime.RuntimeData;
+import br.usp.each.saeg.badua.core.analysis.Analyzer;
+import br.usp.each.saeg.badua.core.analysis.ClassCoverage;
+import br.usp.each.saeg.badua.core.analysis.ICoverageVisitor;
+import br.usp.each.saeg.badua.core.analysis.MethodCoverage;
+import br.usp.each.saeg.badua.core.analysis.SourceLineDefUseChain;
 import br.usp.each.saeg.badua.core.data.ExecutionDataStore;
+import br.usp.each.saeg.jaguar2.commons.ClassFiles;
 import br.usp.each.saeg.jaguar2.spi.CoverageController;
 
 public class BaDuaController implements CoverageController {
@@ -27,6 +38,10 @@ public class BaDuaController implements CoverageController {
     private final List<ExecutionDataStore> failExecutionDataStores;
 
     private final List<ExecutionDataStore> successExecutionDataStores;
+
+    private File classesDir;
+
+    private ClassFiles classFiles;
 
     public BaDuaController(final Agent agent) {
         this.agent = agent;
@@ -40,6 +55,9 @@ public class BaDuaController implements CoverageController {
 
     @Override
     public void init() {
+        final Properties props = System.getProperties();
+        final String jaguar2ClassesProp = props.getProperty("jaguar2.classes");
+        classesDir = new File(jaguar2ClassesProp);
     }
 
     @Override
@@ -82,6 +100,51 @@ public class BaDuaController implements CoverageController {
 
     @Override
     public void analyze() {
+        classFiles = new ClassFiles(classesDir);
+        for (final ExecutionDataStore executionDataStore : failExecutionDataStores) {
+            analyzeLinesCoveredByTest(executionDataStore, true);
+        }
+        for (final ExecutionDataStore executionDataStore : successExecutionDataStores) {
+            analyzeLinesCoveredByTest(executionDataStore, false);
+        }
+    }
+
+    private void analyzeLinesCoveredByTest(
+            final ExecutionDataStore executionDataStore, final boolean testFailed) {
+
+        final Analyzer analyzer = new Analyzer(executionDataStore, new ICoverageVisitor() {
+
+			@Override
+			public void visitCoverage(final ClassCoverage coverage) {
+		        for (final MethodCoverage methodCoverage : coverage.getMethods()) {
+		            for (final SourceLineDefUseChain defUse : methodCoverage.getDefUses()) {
+
+		            }
+		        }
+			}
+
+		});
+        for (final br.usp.each.saeg.badua.core.data.ExecutionData data : executionDataStore.getContents()) {
+            final String vmClassName = data.getName();
+            final File classFile = classFiles.get(vmClassName);
+            if (classFile != null) {
+                InputStream inputStream = null;
+                try {
+                    inputStream = new FileInputStream(classFile);
+                    analyzer.analyzeAll(inputStream, classFile.getPath());
+                } catch (final IOException e) {
+                    throw new RuntimeException(e);
+                } finally {
+                    if (inputStream != null) {
+                        try {
+                            inputStream.close();
+                        } catch (final IOException ee) {
+                            throw new RuntimeException(ee);
+                        }
+                    }
+                }
+            }
+        }
     }
 
 }
