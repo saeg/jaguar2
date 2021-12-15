@@ -80,6 +80,11 @@
 							<value>br.usp.each.saeg.jaguar2.junit.JaguarJUnitRunListener</value>
 						</property>
 					</properties>
+					<systemPropertyVariables>
+						<jaguar2.classes>../jaguar2-example-junit/target/classes</jaguar2.classes>
+						<jaguar2.projectDirectory>../jaguar2-example-junit</jaguar2.projectDirectory>
+						<jaguar2.outputFolder>jaguar-ba-dua-report</jaguar2.outputFolder>
+					</systemPropertyVariables>
 				</configuration>
 			</plugin>
 		</plugins>

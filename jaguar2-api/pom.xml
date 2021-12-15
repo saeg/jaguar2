@@ -25,4 +25,17 @@
 		<license.header.fileLocation>../LICENSE-TEMPLATE.txt</license.header.fileLocation>
 	</properties>
 
+	<dependencies>
+		<dependency>
+			<groupId>br.usp.each.saeg</groupId>
+			<artifactId>ba-dua-core</artifactId>
+			<version>${ba-dua.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.jacoco</groupId>
+			<artifactId>org.jacoco.core</artifactId>
+			<version>${jacoco.version}</version>
+		</dependency>
+	</dependencies>
+
 </project>

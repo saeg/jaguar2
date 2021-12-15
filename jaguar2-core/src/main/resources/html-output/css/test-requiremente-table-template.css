@@ -1,0 +1,124 @@
+/* **************************************
+ * TEST REQUIREMENT
+ * ***************************************/
+
+.subTitle{
+    margin: 10px;
+    font-family: 'Montserrat', sans-serif;
+}
+
+#itensPerTable {
+    height: 2rem;
+}
+
+/* **************************************
+ * TABLE
+ * ***************************************/
+
+#tableContainer{
+    overflow: auto;
+}
+
+table, th, td {
+    padding: 2px;
+    text-align: left;
+    border: 1px solid black;
+    border-collapse: collapse;
+}
+
+th {
+    background-color: #111111;
+    color: white;
+    border:1px solid #AAA;
+}
+
+td {
+    padding: 0;
+}
+
+table{
+    width: 100%;
+    margin: 15px 0;
+    line-height: 1.75rem;
+}
+
+@media only screen and (max-width: 600px) {
+    table{
+        line-height: 1rem;
+    }
+
+    th:nth-child(2){
+        min-width: 10vw;
+    }
+}
+
+td > a{
+    display:block;
+    text-decoration:none;
+    padding: 5px;
+}
+
+tr:hover:nth-child(n+2) {
+    background-color: #DDD;
+}
+
+th {
+    text-transform: uppercase;
+}
+
+abbr{
+    cursor: help;
+}
+
+/* **************************************
+ * SUSPICIOUSNESS BAR ELEMENT
+ * ***************************************/
+
+ .suspBar{
+    width: 100%;
+    min-width: 4vw;
+    height: auto;
+    min-height: 1rem;
+    display: grid;
+    grid-template-columns: repeat(10, 1fr);
+    background-color: #2ECC40;
+    border-radius: 25px;
+    border: 1px solid black;
+    padding: 0;
+}
+
+.redBar {
+    width: 100%;
+    grid-column-start: 1;
+    background-color: #FF4136;
+    border-right: 1px solid black;
+    border-radius: 25px;
+     margin: 0;
+ }
+
+/* **************************************
+ * PAGINATION
+ * ***************************************/
+
+#pagination {
+    width: 100%;
+    display: flex ;
+    text-align: center;
+    float: center;
+    justify-content: center;
+    overflow: auto;
+}
+
+
+.pagButton{
+    font-size: 1.25rem;
+    width: auto;
+    min-width: 30px;
+    height: 2rem;
+    border: 1px solid black;
+    cursor: pointer;
+}
+
+.pagButton:disabled {
+    cursor: auto;
+}

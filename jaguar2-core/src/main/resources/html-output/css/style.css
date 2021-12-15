@@ -1,0 +1,180 @@
+/* **************************************
+ * GENERAL
+ * ***************************************/
+
+* {
+    margin: 0;
+}
+
+body{
+    color: black;
+    font-family: Garamond, serif;
+    font-size: 16px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+#wrapper {
+    width: 90%;
+    padding: 1vw;
+    float: center;
+    box-shadow: 0 0 0.5rem #AAA;
+}
+
+@media only screen and (max-width: 600px) {
+    body {
+        min-width: 400px;
+    }
+
+    #wrapper {
+        width: 100%;
+    }
+}
+
+a, a:focus, a:active {
+      text-decoration: underline;
+      color: inherit;
+}
+
+a:hover{
+    color: #001f3f;
+    text-decoration: underline;
+}
+
+em {
+    text-shadow: 1px 1px 0.5px #AAAAAA;
+
+}
+
+section {
+    width: 100%;
+    margin-top: 10px;
+    margin-bottom: 20px;
+}
+
+main {
+    width: 100%;
+}
+
+main section{
+    line-height: 2rem;
+}
+
+/* **************************************
+ * BREADCRUMBS
+ * ***************************************/
+nav{
+    width: 100%;
+    height: auto;
+    border: 1px solid black;
+    display: flex;
+}
+
+ul.breadcrumbs {
+    padding: 6px 20px;
+}
+
+ul.breadcrumbs li {
+    display: inline;
+}
+
+ul.breadcrumbs li+li:before {
+    padding: 5px 2px;
+    color: black;
+    content: "> ";
+}
+
+ul.breadcrumbs li a {
+    text-decoration: underline;
+}
+
+ul.breadcrumbs li a:hover {
+    text-decoration: none;
+}
+
+/* **************************************
+ * ICON AND TITLE
+ * ***************************************/
+.icon-title{
+    width: 100%;
+    margin-top: 5vh;
+    height: 30vh;
+    max-height: 100px;
+    font-family: 'Montserrat', sans-serif;
+    position: relative;
+}
+
+.icon{
+    height: 100%;
+}
+
+.title{
+    display: inline;
+    top: 40%;
+    position: absolute;
+    transform: translate(0, -15px);
+}
+
+/* **************************************
+ * TABLE CONTROLS
+ * ***************************************/
+.tableControls {
+    width: 100%;
+    display: flex;
+    grid-template-columns: repeat(10, 1fr);
+    grid-column-gap: 20px;
+}
+
+.tableControls p:nth-child(1){
+    width: 100%;
+    grid-column-start: 3;
+    grid-column-end: 7;
+}
+
+.tableControls p:nth-child(2){
+    width: 100%;
+    grid-column-start: 7;
+    grid-column-end: 11;
+}
+
+#rangeText {
+    font-weight: bold;
+}
+
+#itensPerTable {
+    background-color: white;
+    border: 1px solid black;
+    width: 50px;
+    font-weight: bold
+}
+
+.align-right{
+    text-align: right;
+}
+
+.align-center{
+    text-align: center;
+}
+
+/* **************************************
+ * FOOTER
+ * ***************************************/
+footer {
+    width: 100%;
+    min-height: 3rem;
+    border-top: 1px solid grey;
+    text-align: right;
+    padding: 2px;
+}
+
+footer p{
+    width: 100%;
+    height: 100%;
+    padding-top: 1rem;
+}
+
+.credits-icon{
+    margin-top: 3px;
+    font-size: 10px;
+}

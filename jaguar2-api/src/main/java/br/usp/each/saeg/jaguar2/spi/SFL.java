@@ -8,27 +8,17 @@
  * Contributors:
  *     Roberto Araujo - initial API and implementation and/or initial documentation
  */
-package br.usp.each.saeg.jaguar2;
+package br.usp.each.saeg.jaguar2.spi;
 
-import br.usp.each.saeg.jaguar2.spi.CoverageController;
-import br.usp.each.saeg.jaguar2.spi.SFL;
+import org.jacoco.core.analysis.IClassCoverage;
 
-public class DummyCoverageController implements CoverageController {
+import br.usp.each.saeg.badua.core.analysis.SourceLineDefUseChain;
 
-    @Override
-    public void init() {
-    }
+public interface SFL {
 
-    @Override
-    public void reset() {
-    }
+	void updateRequirement(String className, String methodDesc, String methodName, int methodId, int duaIndex,
+			SourceLineDefUseChain dua, boolean failed);
 
-    @Override
-    public void save(final boolean testFailed) {
-    }
-
-    @Override
-    public void analyze(SFL sfl) {
-    }
+	void updateRequirement(IClassCoverage clazz, int lineNumber, boolean failed);
 
 }

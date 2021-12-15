@@ -37,6 +37,6 @@ public interface CoverageController {
     /**
      * Analyze the saved runtime code coverage data.
      */
-    void analyze();
+    void analyze(SFL sfl);
 
 }

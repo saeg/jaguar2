@@ -25,7 +25,6 @@ import org.jacoco.core.analysis.CoverageBuilder;
 import org.jacoco.core.analysis.IClassCoverage;
 import org.jacoco.core.analysis.ICounter;
 import org.jacoco.core.analysis.ILine;
-import org.jacoco.core.analysis.IMethodCoverage;
 import org.jacoco.core.analysis.ISourceNode;
 import org.jacoco.core.data.ExecutionData;
 import org.jacoco.core.data.ExecutionDataReader;
@@ -35,6 +34,7 @@ import org.jacoco.core.data.SessionInfo;
 
 import br.usp.each.saeg.jaguar2.commons.ClassFiles;
 import br.usp.each.saeg.jaguar2.spi.CoverageController;
+import br.usp.each.saeg.jaguar2.spi.SFL;
 
 public class JaCoCoController implements CoverageController {
 
@@ -125,18 +125,18 @@ public class JaCoCoController implements CoverageController {
     }
 
     @Override
-    public void analyze() {
+    public void analyze(SFL sfl) {
         classFiles = new ClassFiles(classesDir);
         for (final ExecutionDataStore executionDataStore : failExecutionDataStores) {
-            analyzeLinesCoveredByTest(executionDataStore, true);
+            analyzeLinesCoveredByTest(executionDataStore, true, sfl);
         }
         for (final ExecutionDataStore executionDataStore : successExecutionDataStores) {
-            analyzeLinesCoveredByTest(executionDataStore, false);
+            analyzeLinesCoveredByTest(executionDataStore, false, sfl);
         }
     }
 
     private void analyzeLinesCoveredByTest(
-            final ExecutionDataStore executionDataStore, final boolean testFailed) {
+            final ExecutionDataStore executionDataStore, final boolean testFailed, SFL sfl) {
 
         final CoverageBuilder coverageBuilder = new CoverageBuilder();
         final Analyzer analyzer = new Analyzer(executionDataStore, coverageBuilder);
@@ -154,9 +154,10 @@ public class JaCoCoController implements CoverageController {
         }
 
         for (final IClassCoverage classCoverage : coverageBuilder.getClasses()) {
-            for (final IMethodCoverage methodCoverage : classCoverage.getMethods()) {
-
-            }
+        	List<Integer> coveredLines = coveredLines(classCoverage);
+        	for (Integer line : coveredLines) {
+        		sfl.updateRequirement(classCoverage, line, testFailed);
+			}
         }
     }
 

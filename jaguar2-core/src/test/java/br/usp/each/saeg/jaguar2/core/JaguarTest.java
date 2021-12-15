@@ -17,9 +17,11 @@ import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.Mock;
+import org.mockito.Mockito;
 import org.mockito.runners.MockitoJUnitRunner;
 
 import br.usp.each.saeg.jaguar2.spi.CoverageController;
+import br.usp.each.saeg.jaguar2.spi.SFL;
 
 @RunWith(MockitoJUnitRunner.class)
 public class JaguarTest {
@@ -76,7 +78,7 @@ public class JaguarTest {
         jaguar.testRunFinished();
 
         // Then
-        verify(controllerMock, times(1)).analyze();
+        verify(controllerMock, times(1)).analyze(Mockito.any(SFL.class));
     }
 
 }

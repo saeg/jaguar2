@@ -30,6 +30,7 @@ import br.usp.each.saeg.badua.core.analysis.SourceLineDefUseChain;
 import br.usp.each.saeg.badua.core.data.ExecutionDataStore;
 import br.usp.each.saeg.jaguar2.commons.ClassFiles;
 import br.usp.each.saeg.jaguar2.spi.CoverageController;
+import br.usp.each.saeg.jaguar2.spi.SFL;
 
 public class BaDuaController implements CoverageController {
 
@@ -99,26 +100,30 @@ public class BaDuaController implements CoverageController {
     }
 
     @Override
-    public void analyze() {
+    public void analyze(SFL sfl) {
         classFiles = new ClassFiles(classesDir);
         for (final ExecutionDataStore executionDataStore : failExecutionDataStores) {
-            analyzeLinesCoveredByTest(executionDataStore, true);
+            analyzeLinesCoveredByTest(executionDataStore, true, sfl);
         }
         for (final ExecutionDataStore executionDataStore : successExecutionDataStores) {
-            analyzeLinesCoveredByTest(executionDataStore, false);
+            analyzeLinesCoveredByTest(executionDataStore, false, sfl);
         }
     }
 
     private void analyzeLinesCoveredByTest(
-            final ExecutionDataStore executionDataStore, final boolean testFailed) {
+            final ExecutionDataStore executionDataStore, final boolean testFailed, final SFL sfl) {
 
         final Analyzer analyzer = new Analyzer(executionDataStore, new ICoverageVisitor() {
 
 			@Override
 			public void visitCoverage(final ClassCoverage coverage) {
+				int methodId = 0;
 		        for (final MethodCoverage methodCoverage : coverage.getMethods()) {
+		        	int duaIndex = 0;
 		            for (final SourceLineDefUseChain defUse : methodCoverage.getDefUses()) {
-
+		            	if (defUse.covered) {
+		            		sfl.updateRequirement(coverage.getName(), methodCoverage.getDesc(), methodCoverage.getName(), methodId++, duaIndex++, defUse, testFailed); 
+		            	}
 		            }
 		        }
 			}
