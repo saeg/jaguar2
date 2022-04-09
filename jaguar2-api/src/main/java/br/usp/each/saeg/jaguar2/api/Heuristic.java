@@ -8,7 +8,7 @@
  * Contributors:
  *     Henrique Lemos - initial API and implementation and/or initial documentation
  */
-package br.usp.each.saeg.jaguar2.core.heuristic;
+package br.usp.each.saeg.jaguar2.api;
 
 /**
  * Interface representing a spectrum-base fault localization heuristic

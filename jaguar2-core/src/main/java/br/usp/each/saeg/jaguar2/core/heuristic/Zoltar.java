@@ -10,6 +10,8 @@
  */
 package br.usp.each.saeg.jaguar2.core.heuristic;
 
+import br.usp.each.saeg.jaguar2.api.Heuristic;
+
 public class Zoltar implements Heuristic {
 
     @Override
