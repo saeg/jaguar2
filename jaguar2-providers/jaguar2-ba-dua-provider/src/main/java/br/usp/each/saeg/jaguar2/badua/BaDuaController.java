@@ -13,10 +13,10 @@ package br.usp.each.saeg.jaguar2.badua;
 import java.util.LinkedList;
 import java.util.List;
 
-import br.usp.each.saeg.badua.agent.rt.internal_d2401f0.Agent;
-import br.usp.each.saeg.badua.agent.rt.internal_d2401f0.core.data.ExecutionData;
-import br.usp.each.saeg.badua.agent.rt.internal_d2401f0.core.data.IExecutionDataVisitor;
-import br.usp.each.saeg.badua.agent.rt.internal_d2401f0.core.runtime.RuntimeData;
+import br.usp.each.saeg.badua.agent.rt.internal_166b538.Agent;
+import br.usp.each.saeg.badua.agent.rt.internal_166b538.core.data.ExecutionData;
+import br.usp.each.saeg.badua.agent.rt.internal_166b538.core.data.IExecutionDataVisitor;
+import br.usp.each.saeg.badua.agent.rt.internal_166b538.core.runtime.RuntimeData;
 import br.usp.each.saeg.badua.core.data.ExecutionDataStore;
 import br.usp.each.saeg.jaguar2.spi.CoverageController;
 
