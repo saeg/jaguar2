@@ -23,7 +23,7 @@
 
 	<properties>
 		<license.header.fileLocation>../../LICENSE-TEMPLATE.txt</license.header.fileLocation>
-		<argLine>-javaagent:target/dependency/ba-dua-agent-rt-${ba-dua.version}-all.jar -Doutput.file=target/badua.ser</argLine>
+		<argLine>-javaagent:target/dependency/ba-dua-agent-${ba-dua.version}-runtime.jar -Doutput.file=target/badua.ser</argLine>
 	</properties>
 
 	<build>
@@ -43,10 +43,6 @@
 									<artifactId>ba-dua-agent</artifactId>
 									<classifier>runtime</classifier>
 									<version>${ba-dua.version}</version>
-									<!--
-										TODO: Remove destFileName when BA-DUA do not require this specific file name
-									-->
-									<destFileName>ba-dua-agent-rt-${ba-dua.version}-all.jar</destFileName>
 								</artifactItem>
 							</artifactItems>
 						</configuration>
