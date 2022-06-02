@@ -76,7 +76,7 @@ public class JaguarTest {
         jaguar.testRunFinished();
 
         // Then
-        verify(controllerMock, times(1)).analyze();
+        verify(controllerMock, times(1)).analyze(null);
     }
 
 }

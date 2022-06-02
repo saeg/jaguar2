@@ -15,6 +15,19 @@ package br.usp.each.saeg.jaguar2.api;
  */
 public interface Heuristic {
 
+    /**
+     * Evaluate heuristic for a given individual spectrum counters.
+     *
+     * @param cef count (C) of tests that executed (E) this spectrum and
+     *            the test failed (F).
+     * @param cnf count (C) of tests that NOT (N) executed this spectrum
+     *            and the test failed (F).
+     * @param cep count (C) of tests that executed (E) this spectrum and
+     *            the test passed (P).
+     * @param cnp count (C) of tests that NOT (N) executed this spectrum
+     *            and the test passed (P).
+     * @return heuristic evaluation.
+     */
     double eval(int cef, int cnf, int cep, int cnp);
 
 }

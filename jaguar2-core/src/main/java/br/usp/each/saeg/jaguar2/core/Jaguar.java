@@ -67,7 +67,7 @@ public class Jaguar {
      */
     public void testRunFinished() {
         if (controller != null) {
-            controller.analyze();
+            controller.analyze(null);
         }
     }
 

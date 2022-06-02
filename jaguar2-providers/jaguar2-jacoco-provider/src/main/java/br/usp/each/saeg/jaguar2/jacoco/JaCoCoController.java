@@ -22,6 +22,7 @@ import org.jacoco.core.data.ExecutionDataStore;
 import org.jacoco.core.data.ISessionInfoVisitor;
 import org.jacoco.core.data.SessionInfo;
 
+import br.usp.each.saeg.jaguar2.api.ISpectrumVisitor;
 import br.usp.each.saeg.jaguar2.spi.CoverageController;
 
 public class JaCoCoController implements CoverageController {
@@ -106,7 +107,7 @@ public class JaCoCoController implements CoverageController {
     }
 
     @Override
-    public void analyze() {
+    public void analyze(final ISpectrumVisitor spectrumVisitor) {
     }
 
 }

@@ -19,6 +19,7 @@ import br.usp.each.saeg.badua.agent.rt.BaDuaRuntime;
 import br.usp.each.saeg.badua.agent.rt.IAgent;
 import br.usp.each.saeg.badua.core.data.ExecutionDataReader;
 import br.usp.each.saeg.badua.core.data.ExecutionDataStore;
+import br.usp.each.saeg.jaguar2.api.ISpectrumVisitor;
 import br.usp.each.saeg.jaguar2.spi.CoverageController;
 
 public class BaDuaController implements CoverageController {
@@ -58,7 +59,7 @@ public class BaDuaController implements CoverageController {
         final byte[] executionData = agent.getExecutionData(false);
 
         /*
-         * Instantiate a reader that handles JaCoCo's internal binary format.
+         * Instantiate a reader that handles BA-DUA's internal binary format.
          */
         final ExecutionDataReader reader = new ExecutionDataReader(
                 new ByteArrayInputStream(executionData));
@@ -83,7 +84,7 @@ public class BaDuaController implements CoverageController {
     }
 
     @Override
-    public void analyze() {
+    public void analyze(final ISpectrumVisitor spectrumVisitor) {
     }
 
 }
