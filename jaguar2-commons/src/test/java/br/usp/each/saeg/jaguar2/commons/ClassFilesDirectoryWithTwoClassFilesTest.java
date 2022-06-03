@@ -19,6 +19,8 @@ public class ClassFilesDirectoryWithTwoClassFilesTest extends AbstractClassFiles
     public void setUp() {
         newFile("Some.class");
         newFile("Another.class");
+        newFileOtherFolder("Other.class");
+        newFileOtherFolder("OtherAnother.class");
         super.setUp();
     }
 
@@ -35,6 +37,16 @@ public class ClassFilesDirectoryWithTwoClassFilesTest extends AbstractClassFiles
     @Test
     public void testAnotherClassIsFound() {
         Assert.assertNotNull(classFiles.get("Another"));
+    }
+
+    @Test
+    public void testOtherClassIsFound() {
+        Assert.assertNotNull(classFiles.get("Other"));
+    }
+
+    @Test
+    public void testOtherAnotherClassIsFound() {
+        Assert.assertNotNull(classFiles.get("OtherAnother"));
     }
 
 }
