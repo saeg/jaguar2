@@ -18,6 +18,7 @@ public class ClassFilesDirectoryWithOneClassFileTest extends AbstractClassFilesT
     @Override
     public void setUp() {
         newFile("Some.class");
+        newFileOtherFolder("Other.class");
         super.setUp();
     }
 
@@ -29,6 +30,11 @@ public class ClassFilesDirectoryWithOneClassFileTest extends AbstractClassFilesT
     @Test
     public void testSomeClassIsFound() {
         Assert.assertNotNull(classFiles.get("Some"));
+    }
+
+    @Test
+    public void testOtherClassIsFound() {
+        Assert.assertNotNull(classFiles.get("Other"));
     }
 
     @Test

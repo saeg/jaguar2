@@ -22,6 +22,11 @@ public class ClassFilesDirectoryWithPackagesClassFilesTest extends AbstractClass
         newFile("Foo.class", "foo");
         newFile("Bar.class", "bar");
         newFile("FooBar.class", "foo", "bar");
+        newFileOtherFolder("Other.class");
+        newFileOtherFolder("OtherAnother.class");
+        newFileOtherFolder("OtherFoo.class", "foo");
+        newFileOtherFolder("OtherBar.class", "bar");
+        newFileOtherFolder("OtherFooBar.class", "foo", "bar");
         super.setUp();
     }
 
@@ -53,6 +58,31 @@ public class ClassFilesDirectoryWithPackagesClassFilesTest extends AbstractClass
     @Test
     public void testPackageFooNestedPackageBarClassFooBarIsFound() {
         Assert.assertNotNull(classFiles.get("foo/bar/FooBar"));
+    }
+
+    @Test
+    public void testOtherClassIsFound() {
+        Assert.assertNotNull(classFiles.get("Other"));
+    }
+
+    @Test
+    public void testOtherAnotherClassIsFound() {
+        Assert.assertNotNull(classFiles.get("OtherAnother"));
+    }
+
+    @Test
+    public void testPackageFooClassOtherFooIsFound() {
+        Assert.assertNotNull(classFiles.get("foo/OtherFoo"));
+    }
+
+    @Test
+    public void testPackageBarClassOtherBarIsFound() {
+        Assert.assertNotNull(classFiles.get("bar/OtherBar"));
+    }
+
+    @Test
+    public void testPackageFooNestedPackageBarClassOtherFooBarIsFound() {
+        Assert.assertNotNull(classFiles.get("foo/bar/OtherFooBar"));
     }
 
 }

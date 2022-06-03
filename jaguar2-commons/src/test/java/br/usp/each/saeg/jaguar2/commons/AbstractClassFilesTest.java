@@ -22,14 +22,19 @@ public class AbstractClassFilesTest {
     @Rule
     public final TemporaryFolder folder = new TemporaryFolder();
 
+    @Rule
+    public final TemporaryFolder otherFolder = new TemporaryFolder();
+
     protected ClassFiles classFiles;
 
     @Before
     public void setUp() {
-        classFiles = new ClassFiles(folder.getRoot());
+        classFiles = new ClassFiles(folder.getRoot(), otherFolder.getRoot());
     }
 
-    public File newFile(final String fileName, final String... paths) {
+    private static File newFile(final TemporaryFolder folder,
+            final String fileName, final String... paths) {
+
         try {
             if (paths.length > 0) {
                 final File f = new File(folder.newFolder(paths), fileName);
@@ -41,6 +46,14 @@ public class AbstractClassFilesTest {
         } catch (final IOException e) {
             throw new RuntimeException(e);
         }
+    }
+
+    public File newFile(final String fileName, final String... paths) {
+        return newFile(folder, fileName, paths);
+    }
+
+    public File newFileOtherFolder(final String fileName, final String... paths) {
+        return newFile(otherFolder, fileName, paths);
     }
 
 }

@@ -31,10 +31,12 @@ public class ClassFiles {
      * Utility that cache all .class files from a directory and look up
      * them based on the VM class name.
      *
-     * @param classesDir the directory to search for .class files.
+     * @param classesDirs the directories to search for .class files.
      */
-    public ClassFiles(final File classesDir) {
-        populateClassFilesCache(classesDir, "");
+    public ClassFiles(final File... classesDirs) {
+        for (final File file : classesDirs) {
+            populateClassFilesCache(file, "");
+        }
     }
 
     private void populateClassFilesCache(final File dir, final String path) {
@@ -49,7 +51,10 @@ public class ClassFiles {
             } else if (name.endsWith(DOT_CLASS)) {
                 final String className = path
                         + name.substring(0, name.length() - DOT_CLASS.length());
-                classFilesCache.put(className, file);
+
+                if (!classFilesCache.containsKey(className)) {
+                    classFilesCache.put(className, file);
+                }
             }
         }
     }
