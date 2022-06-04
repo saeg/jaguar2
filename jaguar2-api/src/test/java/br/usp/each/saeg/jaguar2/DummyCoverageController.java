@@ -31,4 +31,8 @@ public class DummyCoverageController implements CoverageController {
     public void analyze(final ISpectrumVisitor spectrumVisitor) {
     }
 
+    @Override
+    public void destroy() {
+    }
+
 }

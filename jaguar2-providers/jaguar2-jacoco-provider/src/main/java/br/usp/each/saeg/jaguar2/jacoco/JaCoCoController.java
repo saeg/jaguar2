@@ -110,4 +110,10 @@ public class JaCoCoController implements CoverageController {
     public void analyze(final ISpectrumVisitor spectrumVisitor) {
     }
 
+    @Override
+    public void destroy() {
+        failExecutionDataStores.clear();
+        successExecutionDataStores.clear();
+    }
+
 }

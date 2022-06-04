@@ -87,4 +87,10 @@ public class BaDuaController implements CoverageController {
     public void analyze(final ISpectrumVisitor spectrumVisitor) {
     }
 
+    @Override
+    public void destroy() {
+        failExecutionDataStores.clear();
+        successExecutionDataStores.clear();
+    }
+
 }
