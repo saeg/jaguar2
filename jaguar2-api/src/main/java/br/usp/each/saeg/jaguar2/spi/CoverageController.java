@@ -34,11 +34,18 @@ public interface CoverageController {
      * @param testFailed a flag indicating that code coverage data are
      *                   executed by a failing test case.
      */
-    void save(final boolean testFailed);
+    void save(boolean testFailed);
 
     /**
      * Analyze the saved runtime code coverage data.
      */
-    void analyze(final ISpectrumVisitor spectrumVisitor);
+    void analyze(ISpectrumVisitor spectrumVisitor);
+
+    /**
+     * Destroy the current state for the controller.
+     *
+     * The same instance can be used for new analysis.
+     */
+    void destroy();
 
 }
