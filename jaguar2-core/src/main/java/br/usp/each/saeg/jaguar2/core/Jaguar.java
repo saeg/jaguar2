@@ -11,6 +11,8 @@
 package br.usp.each.saeg.jaguar2.core;
 
 import br.usp.each.saeg.jaguar2.CoverageControllerLoader;
+import br.usp.each.saeg.jaguar2.api.IClassSpectrum;
+import br.usp.each.saeg.jaguar2.api.ISpectrumVisitor;
 import br.usp.each.saeg.jaguar2.spi.CoverageController;
 
 public class Jaguar {
@@ -67,7 +69,11 @@ public class Jaguar {
      */
     public void testRunFinished() {
         if (controller != null) {
-            controller.analyze(null);
+            controller.analyze(new ISpectrumVisitor() {
+                @Override
+                public void visitSpectrum(final IClassSpectrum spectrum) {
+                }
+            });
         }
     }
 

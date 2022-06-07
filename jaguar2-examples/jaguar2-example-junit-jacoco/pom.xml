@@ -41,6 +41,9 @@
 							<value>br.usp.each.saeg.jaguar2.junit.JaguarJUnitRunListener</value>
 						</property>
 					</properties>
+					<systemPropertyVariables>
+						<jaguar2.classesDirs>../jaguar2-example-junit/target/classes</jaguar2.classesDirs>
+					</systemPropertyVariables>
 				</configuration>
 			</plugin>
 		</plugins>

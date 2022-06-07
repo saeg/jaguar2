@@ -11,27 +11,37 @@
 package br.usp.each.saeg.jaguar2.jacoco;
 
 import java.io.ByteArrayInputStream;
+import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collection;
 import java.util.LinkedList;
 import java.util.List;
 
 import org.jacoco.agent.rt.IAgent;
 import org.jacoco.agent.rt.RT;
+import org.jacoco.core.analysis.Analyzer;
+import org.jacoco.core.analysis.ICoverageVisitor;
+import org.jacoco.core.data.ExecutionData;
 import org.jacoco.core.data.ExecutionDataReader;
 import org.jacoco.core.data.ExecutionDataStore;
 import org.jacoco.core.data.ISessionInfoVisitor;
 import org.jacoco.core.data.SessionInfo;
 
 import br.usp.each.saeg.jaguar2.api.ISpectrumVisitor;
+import br.usp.each.saeg.jaguar2.commons.ClassFilesController;
 import br.usp.each.saeg.jaguar2.spi.CoverageController;
 
-public class JaCoCoController implements CoverageController {
+public class JaCoCoController extends ClassFilesController implements CoverageController {
 
     private final IAgent agent;
 
     private final List<ExecutionDataStore> failExecutionDataStores;
 
     private final List<ExecutionDataStore> successExecutionDataStores;
+
+    private SpectrumBuilder spectrumBuilder;
 
     public JaCoCoController(final IAgent agent) {
         this.agent = agent;
@@ -45,6 +55,8 @@ public class JaCoCoController implements CoverageController {
 
     @Override
     public void init() {
+        super.init();
+        spectrumBuilder = new SpectrumBuilder();
     }
 
     @Override
@@ -108,12 +120,51 @@ public class JaCoCoController implements CoverageController {
 
     @Override
     public void analyze(final ISpectrumVisitor spectrumVisitor) {
+        analyze(new ExecutionDataStore(), spectrumBuilder, Arrays.asList(classesDirs));
+        for (final ExecutionDataStore executionDataStore : failExecutionDataStores) {
+            final Collection<File> files = classFilesOfStore(executionDataStore);
+            analyze(executionDataStore, spectrumBuilder.updateTestFailed, files);
+        }
+        for (final ExecutionDataStore executionDataStore : successExecutionDataStores) {
+            final Collection<File> files = classFilesOfStore(executionDataStore);
+            analyze(executionDataStore, spectrumBuilder.updateTestPassed, files);
+        }
+        spectrumBuilder.accept(spectrumVisitor);
     }
 
     @Override
     public void destroy() {
+        super.destroy();
         failExecutionDataStores.clear();
         successExecutionDataStores.clear();
+        spectrumBuilder = null;
+    }
+
+    private void analyze(final ExecutionDataStore executionDataStore,
+            final ICoverageVisitor coverageVisitor, final Collection<File> files) {
+
+        final Analyzer analyzer = new Analyzer(executionDataStore, coverageVisitor);
+        for (final File file : files) {
+            try {
+                analyzer.analyzeAll(file);
+            } catch (final Exception e) {
+                throw new RuntimeException(e);
+            }
+        }
+    }
+
+    private Collection<File> classFilesOfStore(
+            final ExecutionDataStore executionDataStore) {
+
+        final Collection<File> result = new ArrayList<File>();
+        for (final ExecutionData data : executionDataStore.getContents()) {
+            final String vmClassName = data.getName();
+            final File classFile = classFiles.get(vmClassName);
+            if (classFile != null) {
+                result.add(classFile);
+            }
+        }
+        return result;
     }
 
 }
