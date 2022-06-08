@@ -69,12 +69,12 @@ public class CodeSpectrum implements ICodeSpectrum {
         final int firstLine = coverage.getFirstLine();
         if (firstLine != UNKNOWN_LINE) {
             final int lastLine = coverage.getLastLine();
+            ensureCapacity(firstLine, lastLine);
             for (int i = firstLine; i <= lastLine; i++) {
                 final ILine line = coverage.getLine(i);
                 switch (line.getInstructionCounter().getStatus()) {
                 case ICounter.FULLY_COVERED:
                 case ICounter.PARTLY_COVERED:
-                    ensureCapacity(i, i);
                     lines[i - offset] = getLine(i).increment(testFailed);
                 }
             }
