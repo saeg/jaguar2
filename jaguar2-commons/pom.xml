@@ -25,4 +25,12 @@
 		<license.header.fileLocation>../LICENSE-TEMPLATE.txt</license.header.fileLocation>
 	</properties>
 
+	<dependencies>
+		<dependency>
+			<groupId>${project.groupId}</groupId>
+			<artifactId>jaguar2-api</artifactId>
+			<version>${project.version}</version>
+		</dependency>
+	</dependencies>
+
 </project>
