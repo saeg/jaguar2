@@ -14,6 +14,7 @@ import static org.mockito.Matchers.any;
 import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
 
+import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -79,6 +80,76 @@ public class JaguarTest {
 
         // Then
         verify(controllerMock, times(1)).analyze(any(ISpectrumVisitor.class));
+    }
+
+    @Test
+    public void testFailedPassedCounterInitialState() {
+        Assert.assertEquals(0, jaguar.getFailedTests());
+        Assert.assertEquals(0, jaguar.getPassedTests());
+    }
+
+    @Test
+    public void testFinishSuccessIncrementsPassedTests() {
+        // When
+        jaguar.testFinished(false);
+
+        // Then
+        Assert.assertEquals(0, jaguar.getFailedTests());
+        Assert.assertEquals(1, jaguar.getPassedTests());
+    }
+
+    @Test
+    public void testFinishFailIncrementsFailedTests() {
+        // When
+        jaguar.testFinished(true);
+
+        // Then
+        Assert.assertEquals(1, jaguar.getFailedTests());
+        Assert.assertEquals(0, jaguar.getPassedTests());
+    }
+
+    @Test
+    public void testFinishSuccessSuccessIncrementsPassedTestsTwoTimes() {
+        // When
+        jaguar.testFinished(false);
+        jaguar.testFinished(false);
+
+        // Then
+        Assert.assertEquals(0, jaguar.getFailedTests());
+        Assert.assertEquals(2, jaguar.getPassedTests());
+    }
+
+    @Test
+    public void testFinishFailFailIncrementsFailedTestsTwoTimes() {
+        // When
+        jaguar.testFinished(true);
+        jaguar.testFinished(true);
+
+        // Then
+        Assert.assertEquals(2, jaguar.getFailedTests());
+        Assert.assertEquals(0, jaguar.getPassedTests());
+    }
+
+    @Test
+    public void testFinishSuccessFailIncrementsCountersCorrectly() {
+        // When
+        jaguar.testFinished(false);
+        jaguar.testFinished(true);
+
+        // Then
+        Assert.assertEquals(1, jaguar.getFailedTests());
+        Assert.assertEquals(1, jaguar.getPassedTests());
+    }
+
+    @Test
+    public void testFinishFailSuccessIncrementsCountersCorrectly() {
+        // When
+        jaguar.testFinished(true);
+        jaguar.testFinished(false);
+
+        // Then
+        Assert.assertEquals(1, jaguar.getFailedTests());
+        Assert.assertEquals(1, jaguar.getPassedTests());
     }
 
 }
