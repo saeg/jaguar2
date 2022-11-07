@@ -19,8 +19,14 @@ public class Jaguar {
 
     private final CoverageController controller;
 
+    private int failedTests;
+
+    private int passedTests;
+
     public Jaguar(final CoverageController controller) {
         this.controller = controller;
+        failedTests = 0;
+        passedTests = 0;
     }
 
     public Jaguar() {
@@ -62,6 +68,11 @@ public class Jaguar {
         if (controller != null) {
             controller.save(testFailed);
         }
+        if (testFailed) {
+            failedTests++;
+        } else {
+            passedTests++;
+        }
     }
 
     /**
@@ -75,6 +86,14 @@ public class Jaguar {
                 }
             });
         }
+    }
+
+    public int getFailedTests() {
+        return failedTests;
+    }
+
+    public int getPassedTests() {
+        return passedTests;
     }
 
 }
