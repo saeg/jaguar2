@@ -11,26 +11,33 @@
 package br.usp.each.saeg.jaguar2.core;
 
 import br.usp.each.saeg.jaguar2.CoverageControllerLoader;
+import br.usp.each.saeg.jaguar2.api.Heuristic;
 import br.usp.each.saeg.jaguar2.api.IClassSpectrum;
+import br.usp.each.saeg.jaguar2.api.ILineSpectrum;
 import br.usp.each.saeg.jaguar2.api.ISpectrumVisitor;
+import br.usp.each.saeg.jaguar2.api.SpectrumEval;
+import br.usp.each.saeg.jaguar2.core.heuristic.Ochiai;
 import br.usp.each.saeg.jaguar2.spi.CoverageController;
 
-public class Jaguar {
+public class Jaguar implements SpectrumEval {
 
     private final CoverageController controller;
+
+    private final Heuristic heuristic;
 
     private int failedTests;
 
     private int passedTests;
 
-    public Jaguar(final CoverageController controller) {
+    public Jaguar(final CoverageController controller, final Heuristic heuristic) {
         this.controller = controller;
+        this.heuristic = heuristic;
         failedTests = 0;
         passedTests = 0;
     }
 
     public Jaguar() {
-        this(new CoverageControllerLoader().load());
+        this(new CoverageControllerLoader().load(), new Ochiai());
     }
 
     /**
@@ -94,6 +101,13 @@ public class Jaguar {
 
     public int getPassedTests() {
         return passedTests;
+    }
+
+    @Override
+    public double eval(final ILineSpectrum spectrum) {
+        return heuristic.eval(
+                spectrum.getCef(), failedTests - spectrum.getCef(),
+                spectrum.getCep(), passedTests - spectrum.getCep());
     }
 
 }
