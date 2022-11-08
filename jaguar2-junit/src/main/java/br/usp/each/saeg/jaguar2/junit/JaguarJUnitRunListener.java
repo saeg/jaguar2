@@ -10,6 +10,8 @@
  */
 package br.usp.each.saeg.jaguar2.junit;
 
+import java.io.IOException;
+
 import org.junit.runner.Description;
 import org.junit.runner.Result;
 import org.junit.runner.notification.Failure;
@@ -63,7 +65,7 @@ public class JaguarJUnitRunListener extends RunListener {
     }
 
     @Override
-    public void testRunFinished(final Result result) {
+    public void testRunFinished(final Result result) throws IOException {
         jaguar.testRunFinished();
     }
 
