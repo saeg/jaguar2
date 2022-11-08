@@ -10,6 +10,7 @@
  */
 package br.usp.each.saeg.jaguar2.core;
 
+import java.io.IOException;
 import java.util.Collection;
 
 import br.usp.each.saeg.jaguar2.CoverageControllerLoader;
@@ -88,8 +89,10 @@ public class Jaguar implements SpectrumEval {
 
     /**
      * Called when all tests have finished.
+     *
+     * @throws IOException
      */
-    public void testRunFinished() {
+    public void testRunFinished() throws IOException {
         final Collection<SpectrumExporter> exporters = new SpectrumExporterLoader().load();
         for (final SpectrumExporter exporter : exporters) {
             exporter.init();

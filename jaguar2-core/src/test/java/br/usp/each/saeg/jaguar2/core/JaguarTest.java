@@ -14,6 +14,8 @@ import static org.mockito.Matchers.any;
 import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
 
+import java.io.IOException;
+
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
@@ -78,7 +80,7 @@ public class JaguarTest {
     }
 
     @Test
-    public void testRunFinishedCallControllerAnalyze() {
+    public void testRunFinishedCallControllerAnalyze() throws IOException {
         // When
         jaguar.testRunFinished();
 
