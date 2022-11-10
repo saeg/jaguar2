@@ -92,7 +92,7 @@ public class Jaguar implements SpectrumEval {
      *
      * @throws IOException
      */
-    public void testRunFinished() throws IOException {
+    public void testRunFinished() throws Exception {
         final Collection<SpectrumExporter> exporters = new SpectrumExporterLoader().load();
         for (final SpectrumExporter exporter : exporters) {
             exporter.init();
@@ -102,7 +102,11 @@ public class Jaguar implements SpectrumEval {
                 @Override
                 public void visitSpectrum(final IClassSpectrum spectrum) {
                     for (final SpectrumExporter exporter : exporters) {
-                        exporter.write(spectrum, Jaguar.this);
+                        try {
+                            exporter.write(spectrum, Jaguar.this);
+                        } catch (final Exception e) {
+                            throw new RuntimeException(e);
+                        }
                     }
                 }
             });

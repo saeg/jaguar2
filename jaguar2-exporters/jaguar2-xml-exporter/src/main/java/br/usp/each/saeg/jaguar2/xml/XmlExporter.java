@@ -1,0 +1,69 @@
+/**
+ * Copyright (c) 2021, 2021 University of Sao Paulo and Contributors.
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
+ *
+ * Contributors:
+ *     Roberto Araujo - initial API and implementation and/or initial documentation
+ */
+package br.usp.each.saeg.jaguar2.xml;
+
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
+
+import javax.xml.stream.FactoryConfigurationError;
+import javax.xml.stream.XMLOutputFactory;
+import javax.xml.stream.XMLStreamException;
+import javax.xml.stream.XMLStreamWriter;
+
+import br.usp.each.saeg.jaguar2.api.IClassSpectrum;
+import br.usp.each.saeg.jaguar2.api.SpectrumEval;
+import br.usp.each.saeg.jaguar2.spi.SpectrumExporter;
+
+public class XmlExporter implements SpectrumExporter {
+
+    private XMLStreamWriter writer;
+
+    @Override
+    public void init()
+            throws XMLStreamException, FactoryConfigurationError, IOException {
+
+        writer = XMLOutputFactory.newInstance().createXMLStreamWriter(
+                new BufferedWriter(
+                        new FileWriter(
+                                new File("target", "jaguar2.xml"))));
+
+        writer.writeStartDocument();
+    }
+
+    @Override
+    public void write(final IClassSpectrum spectrum, final SpectrumEval eval)
+            throws XMLStreamException {
+
+        writer.writeStartElement("class");
+        writer.writeAttribute("name", spectrum.getName());
+
+        for (int nr = spectrum.getFirstLine(); nr <= spectrum.getLastLine(); nr++) {
+            final double susp = eval.eval(spectrum.getLine(nr));
+            if (susp > 0.0d) {
+                writer.writeStartElement("line");
+                writer.writeAttribute("nr", String.valueOf(nr));
+                writer.writeAttribute("susp", String.valueOf(susp));
+                writer.writeEndElement();
+            }
+        }
+
+        writer.writeEndElement();
+    }
+
+    @Override
+    public void shutdown() throws XMLStreamException {
+        writer.writeEndDocument();
+        writer.close();
+    }
+
+}
