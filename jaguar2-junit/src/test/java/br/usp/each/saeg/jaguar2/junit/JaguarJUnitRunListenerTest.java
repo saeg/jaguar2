@@ -15,8 +15,6 @@ import static org.mockito.Mockito.inOrder;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.times;
 
-import java.io.IOException;
-
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.Description;
@@ -48,7 +46,7 @@ public class JaguarJUnitRunListenerTest {
     // ---
 
     @Test
-    public void testSuccess() throws IOException {
+    public void testSuccess() throws Exception {
         // When
         runTests(new Runnable() {
 
@@ -71,7 +69,7 @@ public class JaguarJUnitRunListenerTest {
     }
 
     @Test
-    public void testFail() throws IOException {
+    public void testFail() throws Exception {
         // When
         runTests(new Runnable() {
 
@@ -94,7 +92,7 @@ public class JaguarJUnitRunListenerTest {
     }
 
     @Test
-    public void testAssumptionFailure() throws IOException {
+    public void testAssumptionFailure() throws Exception {
         // When
         runTests(new Runnable() {
 
@@ -119,7 +117,7 @@ public class JaguarJUnitRunListenerTest {
     // ---
 
     @Test
-    public void testSuccessAndSuccess() throws IOException {
+    public void testSuccessAndSuccess() throws Exception {
         // When
         runTests(new Runnable() {
 
@@ -144,7 +142,7 @@ public class JaguarJUnitRunListenerTest {
     }
 
     @Test
-    public void testSuccessAndFail() throws IOException {
+    public void testSuccessAndFail() throws Exception {
         // When
         runTests(new Runnable() {
 
@@ -169,7 +167,7 @@ public class JaguarJUnitRunListenerTest {
     }
 
     @Test
-    public void testSuccessAndAssumptionFailure() throws IOException {
+    public void testSuccessAndAssumptionFailure() throws Exception {
         // When
         runTests(new Runnable() {
 
@@ -196,7 +194,7 @@ public class JaguarJUnitRunListenerTest {
     // ---
 
     @Test
-    public void testFailAndSuccess() throws IOException {
+    public void testFailAndSuccess() throws Exception {
         // When
         runTests(new Runnable() {
 
@@ -221,7 +219,7 @@ public class JaguarJUnitRunListenerTest {
     }
 
     @Test
-    public void testFailAndFail() throws IOException {
+    public void testFailAndFail() throws Exception {
         // When
         runTests(new Runnable() {
 
@@ -246,7 +244,7 @@ public class JaguarJUnitRunListenerTest {
     }
 
     @Test
-    public void testFailAndAssumptionFailure() throws IOException {
+    public void testFailAndAssumptionFailure() throws Exception {
         // When
         runTests(new Runnable() {
 
@@ -273,7 +271,7 @@ public class JaguarJUnitRunListenerTest {
     // ---
 
     @Test
-    public void testAssumptionFailureAndSuccess() throws IOException {
+    public void testAssumptionFailureAndSuccess() throws Exception {
         // When
         runTests(new Runnable() {
 
@@ -298,7 +296,7 @@ public class JaguarJUnitRunListenerTest {
     }
 
     @Test
-    public void testAssumptionFailureAndFail() throws IOException {
+    public void testAssumptionFailureAndFail() throws Exception {
         // When
         runTests(new Runnable() {
 
@@ -323,7 +321,7 @@ public class JaguarJUnitRunListenerTest {
     }
 
     @Test
-    public void testAssumptionFailureAndAssumptionFailure() throws IOException {
+    public void testAssumptionFailureAndAssumptionFailure() throws Exception {
         // When
         runTests(new Runnable() {
 
@@ -348,7 +346,7 @@ public class JaguarJUnitRunListenerTest {
 
     // ---
 
-    private void runTests(final Runnable runnable) throws IOException {
+    private void runTests(final Runnable runnable) throws Exception {
         listener.testRunStarted(mock(Description.class));
         runnable.run();
         listener.testRunFinished(mock(Result.class));
@@ -376,7 +374,7 @@ public class JaguarJUnitRunListenerTest {
         listener.testFinished(desc);
     }
 
-    private void verifyTests(final Runnable runnable) throws IOException {
+    private void verifyTests(final Runnable runnable) throws Exception {
         inOrder.verify(jaguarMock).testRunStarted();
         runnable.run();
         inOrder.verify(jaguarMock).testRunFinished();
