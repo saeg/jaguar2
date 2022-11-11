@@ -17,6 +17,7 @@ import java.io.IOException;
 import java.io.PrintWriter;
 
 import br.usp.each.saeg.jaguar2.api.IClassSpectrum;
+import br.usp.each.saeg.jaguar2.api.ILineSpectrum;
 import br.usp.each.saeg.jaguar2.api.SpectrumEval;
 import br.usp.each.saeg.jaguar2.spi.SpectrumExporter;
 
@@ -33,9 +34,16 @@ public class CsvExporter implements SpectrumExporter {
     @Override
     public void write(final IClassSpectrum spectrum, final SpectrumEval eval) {
         for (int nr = spectrum.getFirstLine(); nr <= spectrum.getLastLine(); nr++) {
-            final double susp = eval.eval(spectrum.getLine(nr));
+            final ILineSpectrum line = spectrum.getLine(nr);
+            final double susp = eval.eval(line);
             if (susp > 0.0d) {
-                writer.format("%s,%d,%f\n", spectrum.getName(), nr, susp);
+                final String className = spectrum.getName();
+                final int cef = eval.getCef(line);
+                final int cnf = eval.getCnf(line);
+                final int cep = eval.getCep(line);
+                final int cnp = eval.getCnp(line);
+                writer.format("%s,%d,%d,%d,%d,%d,%f\n",
+                        className, nr, cef, cnf, cep, cnp, susp);
             }
         }
     }
