@@ -12,6 +12,18 @@ package br.usp.each.saeg.jaguar2.api;
 
 public interface SpectrumEval {
 
+    int getFailedTests();
+
+    int getPassedTests();
+
+    int getCef(ILineSpectrum spectrum);
+
+    int getCnf(ILineSpectrum spectrum);
+
+    int getCep(ILineSpectrum spectrum);
+
+    int getCnp(ILineSpectrum spectrum);
+
     double eval(ILineSpectrum spectrum);
 
 }
