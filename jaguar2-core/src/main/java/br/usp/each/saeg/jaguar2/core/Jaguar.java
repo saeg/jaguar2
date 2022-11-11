@@ -116,19 +116,41 @@ public class Jaguar implements SpectrumEval {
         }
     }
 
+    @Override
     public int getFailedTests() {
         return failedTests;
     }
 
+    @Override
     public int getPassedTests() {
         return passedTests;
     }
 
     @Override
+    public int getCef(final ILineSpectrum spectrum) {
+        return spectrum.getCef();
+    }
+
+    @Override
+    public int getCnf(final ILineSpectrum spectrum) {
+        return failedTests - spectrum.getCef();
+    }
+
+    @Override
+    public int getCep(final ILineSpectrum spectrum) {
+        return spectrum.getCep();
+    }
+
+    @Override
+    public int getCnp(final ILineSpectrum spectrum) {
+        return passedTests - spectrum.getCep();
+    }
+
+    @Override
     public double eval(final ILineSpectrum spectrum) {
         return heuristic.eval(
-                spectrum.getCef(), failedTests - spectrum.getCef(),
-                spectrum.getCep(), passedTests - spectrum.getCep());
+                getCef(spectrum), getCnf(spectrum),
+                getCep(spectrum), getCnp(spectrum));
     }
 
 }
