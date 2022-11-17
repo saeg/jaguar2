@@ -24,6 +24,7 @@
 	<properties>
 		<license.header.fileLocation>../../LICENSE-TEMPLATE.txt</license.header.fileLocation>
 		<argLine>-javaagent:target/dependency/ba-dua-agent-${ba-dua.version}-runtime.jar -Doutput.file=target/badua.ser</argLine>
+		<maven.install.skip>true</maven.install.skip>
 	</properties>
 
 	<build>
