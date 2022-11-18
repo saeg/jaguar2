@@ -22,4 +22,20 @@
 	<artifactId>jaguar2-validations</artifactId>
 	<packaging>pom</packaging>
 
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-verifier-plugin</artifactId>
+				<executions>
+					<execution>
+						<goals>
+							<goal>verify</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+		</plugins>
+	</build>
+
 </project>
