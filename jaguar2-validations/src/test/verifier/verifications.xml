@@ -12,12 +12,46 @@
 -->
 <verifications xmlns="http://maven.apache.org/verifications/1.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/verifications/1.0.0 http://maven.apache.org/xsd/verifications-1.0.0.xsd">
 	<files>
+		<!-- Verify test jaguar2-example-junit -->
 		<file>
-			<location>../jaguar2-examples/jaguar2-example-junit/target/surefire-reports/not-exists.txt</location>
+			<location>../jaguar2-examples/jaguar2-example-junit/target/surefire-reports/br.usp.each.saeg.jaguar2.MaxTest.txt</location>
+			<contains>Tests run: 5, Failures: 1, Errors: 1, Skipped: 0</contains>
 		</file>
 		<file>
 			<location>../jaguar2-examples/jaguar2-example-junit/target/surefire-reports/br.usp.each.saeg.jaguar2.MaxTest.txt</location>
-			<contains>Bad Expression</contains>
+			<contains>test4\(br.usp.each.saeg.jaguar2.MaxTest\)</contains>
+		</file>
+		<file>
+			<location>../jaguar2-examples/jaguar2-example-junit/target/surefire-reports/br.usp.each.saeg.jaguar2.MaxTest.txt</location>
+			<contains>test5\(br.usp.each.saeg.jaguar2.MaxTest\)</contains>
+		</file>
+
+		<!-- Verify test jaguar2-example-junit-ba-dua -->
+		<file>
+			<location>../jaguar2-examples/jaguar2-example-junit-ba-dua/target/surefire-reports/br.usp.each.saeg.jaguar2.MaxTest.txt</location>
+			<contains>Tests run: 5, Failures: 1, Errors: 1, Skipped: 0</contains>
+		</file>
+		<file>
+			<location>../jaguar2-examples/jaguar2-example-junit-ba-dua/target/surefire-reports/br.usp.each.saeg.jaguar2.MaxTest.txt</location>
+			<contains>test4\(br.usp.each.saeg.jaguar2.MaxTest\)</contains>
+		</file>
+		<file>
+			<location>../jaguar2-examples/jaguar2-example-junit-ba-dua/target/surefire-reports/br.usp.each.saeg.jaguar2.MaxTest.txt</location>
+			<contains>test5\(br.usp.each.saeg.jaguar2.MaxTest\)</contains>
+		</file>
+
+		<!-- Verify test jaguar2-example-junit-jacoco -->
+		<file>
+			<location>../jaguar2-examples/jaguar2-example-junit-jacoco/target/surefire-reports/br.usp.each.saeg.jaguar2.MaxTest.txt</location>
+			<contains>Tests run: 5, Failures: 1, Errors: 1, Skipped: 0</contains>
+		</file>
+		<file>
+			<location>../jaguar2-examples/jaguar2-example-junit-jacoco/target/surefire-reports/br.usp.each.saeg.jaguar2.MaxTest.txt</location>
+			<contains>test4\(br.usp.each.saeg.jaguar2.MaxTest\)</contains>
+		</file>
+		<file>
+			<location>../jaguar2-examples/jaguar2-example-junit-jacoco/target/surefire-reports/br.usp.each.saeg.jaguar2.MaxTest.txt</location>
+			<contains>test5\(br.usp.each.saeg.jaguar2.MaxTest\)</contains>
 		</file>
 	</files>
 </verifications>
