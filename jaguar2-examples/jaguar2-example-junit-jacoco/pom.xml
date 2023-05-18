@@ -43,7 +43,7 @@
 						</property>
 					</properties>
 					<systemPropertyVariables>
-						<jaguar2.classesDirs>../jaguar2-example-junit/target/classes</jaguar2.classesDirs>
+						<jaguar2.classesDirs>${project.build.outputDirectory}</jaguar2.classesDirs>
 					</systemPropertyVariables>
 				</configuration>
 			</plugin>
@@ -51,11 +51,6 @@
 	</build>
 
 	<dependencies>
-		<dependency>
-			<groupId>${project.groupId}</groupId>
-			<artifactId>jaguar2-example-junit</artifactId>
-			<version>${project.version}</version>
-		</dependency>
 		<dependency>
 			<groupId>${project.groupId}</groupId>
 			<artifactId>jaguar2-example-junit</artifactId>
