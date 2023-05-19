@@ -67,9 +67,6 @@
 				<artifactId>maven-surefire-plugin</artifactId>
 				<configuration>
 					<testFailureIgnore>true</testFailureIgnore>
-					<dependenciesToScan>
-						<dependency>${project.groupId}:jaguar2-example-junit</dependency>
-					</dependenciesToScan>
 					<properties>
 						<property>
 							<name>listener</name>
@@ -82,13 +79,6 @@
 	</build>
 
 	<dependencies>
-		<dependency>
-			<groupId>${project.groupId}</groupId>
-			<artifactId>jaguar2-example-junit</artifactId>
-			<version>${project.version}</version>
-			<classifier>tests</classifier>
-			<scope>test</scope>
-		</dependency>
 		<dependency>
 			<groupId>${project.groupId}</groupId>
 			<artifactId>jaguar2-junit</artifactId>
