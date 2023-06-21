@@ -18,7 +18,7 @@
 	<version>0.0.1-SNAPSHOT</version>
 
 	<properties>
-		<ba-dua.version>0.8.0<ba-dua.version>
+		<ba-dua.version>0.8.0</ba-dua.version>
 		<argLine>-javaagent:target/dependency/ba-dua-agent-${ba-dua.version}-runtime.jar -Doutput.file=target/badua.ser</argLine>
 	</properties>
 
