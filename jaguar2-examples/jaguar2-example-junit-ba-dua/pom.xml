@@ -13,16 +13,11 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 
-	<parent>
-		<groupId>br.usp.each.saeg</groupId>
-		<artifactId>jaguar2-examples</artifactId>
-		<version>0.0.1-SNAPSHOT</version>
-	</parent>
-
+	<groupId>br.usp.each.saeg</groupId>
 	<artifactId>jaguar2-example-junit-ba-dua</artifactId>
+	<version>0.0.1-SNAPSHOT</version>
 
 	<properties>
-		<license.header.fileLocation>../../LICENSE-TEMPLATE.txt</license.header.fileLocation>
 		<argLine>-javaagent:target/dependency/ba-dua-agent-${ba-dua.version}-runtime.jar -Doutput.file=target/badua.ser</argLine>
 	</properties>
 
@@ -48,19 +43,6 @@
 						</configuration>
 					</execution>
 				</executions>
-			</plugin>
-			<plugin>
-				<groupId>org.jacoco</groupId>
-				<artifactId>jacoco-maven-plugin</artifactId>
-				<configuration>
-					<!--
-						Skip JaCoCo to avoid conflicts with BA-DUA since both
-						will instrument loaded classes using Java agent.
-
-						NOTE: Consider do not inherit the parent POM
-					 -->
-					<skip>true</skip>
-				</configuration>
 			</plugin>
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
