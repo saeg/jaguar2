@@ -19,19 +19,32 @@
 		<version>0.0.1-SNAPSHOT</version>
 	</parent>
 
-	<artifactId>jaguar2-example-junit-jacoco</artifactId>
+	<artifactId>jaguar2-example-junit4-ba-dua</artifactId>
+
+	<properties>
+		<argLine>-javaagent:target/dependency/ba-dua-agent-${ba-dua.version}-runtime.jar -Doutput.file=target/badua.ser</argLine>
+	</properties>
 
 	<build>
 		<plugins>
 			<plugin>
-				<groupId>org.jacoco</groupId>
-				<artifactId>jacoco-maven-plugin</artifactId>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-dependency-plugin</artifactId>
 				<executions>
 					<execution>
-						<id>prepare-agent</id>
 						<goals>
-							<goal>prepare-agent</goal>
+							<goal>copy</goal>
 						</goals>
+						<configuration>
+							<artifactItems>
+								<artifactItem>
+									<groupId>br.usp.each.saeg</groupId>
+									<artifactId>ba-dua-agent</artifactId>
+									<classifier>runtime</classifier>
+									<version>${ba-dua.version}</version>
+								</artifactItem>
+							</artifactItems>
+						</configuration>
 					</execution>
 				</executions>
 			</plugin>
@@ -45,9 +58,6 @@
 							<value>br.usp.each.saeg.jaguar2.junit.JaguarJUnitRunListener</value>
 						</property>
 					</properties>
-					<systemPropertyVariables>
-						<jaguar2.classesDirs>${project.build.outputDirectory}</jaguar2.classesDirs>
-					</systemPropertyVariables>
 				</configuration>
 			</plugin>
 		</plugins>
@@ -66,7 +76,7 @@
 		</dependency>
 		<dependency>
 			<groupId>${project.groupId}</groupId>
-			<artifactId>jaguar2-jacoco-provider</artifactId>
+			<artifactId>jaguar2-ba-dua-provider</artifactId>
 			<scope>test</scope>
 		</dependency>
 		<dependency>

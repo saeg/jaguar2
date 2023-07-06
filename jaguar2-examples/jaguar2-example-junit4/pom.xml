@@ -19,35 +19,10 @@
 		<version>0.0.1-SNAPSHOT</version>
 	</parent>
 
-	<artifactId>jaguar2-example-junit-ba-dua</artifactId>
-
-	<properties>
-		<argLine>-javaagent:target/dependency/ba-dua-agent-${ba-dua.version}-runtime.jar -Doutput.file=target/badua.ser</argLine>
-	</properties>
+	<artifactId>jaguar2-example-junit4</artifactId>
 
 	<build>
 		<plugins>
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-dependency-plugin</artifactId>
-				<executions>
-					<execution>
-						<goals>
-							<goal>copy</goal>
-						</goals>
-						<configuration>
-							<artifactItems>
-								<artifactItem>
-									<groupId>br.usp.each.saeg</groupId>
-									<artifactId>ba-dua-agent</artifactId>
-									<classifier>runtime</classifier>
-									<version>${ba-dua.version}</version>
-								</artifactItem>
-							</artifactItems>
-						</configuration>
-					</execution>
-				</executions>
-			</plugin>
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-surefire-plugin</artifactId>
@@ -72,21 +47,6 @@
 		<dependency>
 			<groupId>${project.groupId}</groupId>
 			<artifactId>jaguar2-junit</artifactId>
-			<scope>test</scope>
-		</dependency>
-		<dependency>
-			<groupId>${project.groupId}</groupId>
-			<artifactId>jaguar2-ba-dua-provider</artifactId>
-			<scope>test</scope>
-		</dependency>
-		<dependency>
-			<groupId>${project.groupId}</groupId>
-			<artifactId>jaguar2-csv-exporter</artifactId>
-			<scope>test</scope>
-		</dependency>
-		<dependency>
-			<groupId>${project.groupId}</groupId>
-			<artifactId>jaguar2-xml-exporter</artifactId>
 			<scope>test</scope>
 		</dependency>
 	</dependencies>
