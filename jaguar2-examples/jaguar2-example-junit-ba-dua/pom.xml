@@ -22,7 +22,6 @@
 	<artifactId>jaguar2-example-junit-ba-dua</artifactId>
 
 	<properties>
-		<ba-dua.version>0.8.0</ba-dua.version>
 		<argLine>-javaagent:target/dependency/ba-dua-agent-${ba-dua.version}-runtime.jar -Doutput.file=target/badua.ser</argLine>
 	</properties>
 
@@ -39,7 +38,7 @@
 						<configuration>
 							<artifactItems>
 								<artifactItem>
-									<groupId>${project.groupId}</groupId>
+									<groupId>br.usp.each.saeg</groupId>
 									<artifactId>ba-dua-agent</artifactId>
 									<classifier>runtime</classifier>
 									<version>${ba-dua.version}</version>
