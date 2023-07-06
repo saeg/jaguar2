@@ -13,24 +13,20 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 
-	<groupId>br.usp.each.saeg</groupId>
-	<artifactId>jaguar2-example-junit</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
+	<parent>
+		<groupId>br.usp.each.saeg</groupId>
+		<artifactId>jaguar2-examples</artifactId>
+		<version>0.0.1-SNAPSHOT</version>
+	</parent>
 
-	<properties>
-		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-		<maven.compiler.source>1.6</maven.compiler.source>
-		<maven.compiler.target>1.6</maven.compiler.target>
-	</properties>
+	<artifactId>jaguar2-example-junit</artifactId>
 
 	<build>
 		<plugins>
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-surefire-plugin</artifactId>
-				<version>2.12.4</version>
 				<configuration>
-					<testFailureIgnore>true</testFailureIgnore>
 					<properties>
 						<property>
 							<name>listener</name>
@@ -46,38 +42,13 @@
 		<dependency>
 			<groupId>junit</groupId>
 			<artifactId>junit</artifactId>
-			<version>4.13.2</version>
 			<scope>test</scope>
 		</dependency>
 		<dependency>
 			<groupId>${project.groupId}</groupId>
 			<artifactId>jaguar2-junit</artifactId>
-			<version>${project.version}</version>
 			<scope>test</scope>
 		</dependency>
 	</dependencies>
-
-	<profiles>
-		<profile>
-			<id>jdk12</id>
-			<activation>
-				<jdk>[12,20)</jdk>
-			</activation>
-			<properties>
-				<maven.compiler.source>1.7</maven.compiler.source>
-				<maven.compiler.target>1.7</maven.compiler.target>
-			</properties>
-		</profile>
-		<profile>
-			<id>jdk20</id>
-			<activation>
-				<jdk>[20,)</jdk>
-			</activation>
-			<properties>
-				<maven.compiler.source>1.8</maven.compiler.source>
-				<maven.compiler.target>1.8</maven.compiler.target>
-			</properties>
-		</profile>
-	</profiles>
 
 </project>
