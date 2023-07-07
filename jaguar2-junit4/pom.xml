@@ -19,7 +19,7 @@
 		<version>0.0.1-SNAPSHOT</version>
 	</parent>
 
-	<artifactId>jaguar2-junit</artifactId>
+	<artifactId>jaguar2-junit4</artifactId>
 
 	<properties>
 		<license.header.fileLocation>../LICENSE-TEMPLATE.txt</license.header.fileLocation>

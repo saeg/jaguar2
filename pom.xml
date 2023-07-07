@@ -84,7 +84,7 @@
 		<module>jaguar2-api</module>
 		<module>jaguar2-core</module>
 		<module>jaguar2-commons</module>
-		<module>jaguar2-junit</module>
+		<module>jaguar2-junit4</module>
 		<module>jaguar2-providers</module>
 		<module>jaguar2-exporters</module>
 		<module>jaguar2-examples</module>
