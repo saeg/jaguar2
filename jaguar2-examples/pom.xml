@@ -60,7 +60,7 @@
 			</dependency>
 			<dependency>
 				<groupId>${project.groupId}</groupId>
-				<artifactId>jaguar2-junit</artifactId>
+				<artifactId>jaguar2-junit4</artifactId>
 				<version>${project.version}</version>
 			</dependency>
 			<dependency>

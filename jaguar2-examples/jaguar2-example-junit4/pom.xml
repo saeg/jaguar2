@@ -46,7 +46,7 @@
 		</dependency>
 		<dependency>
 			<groupId>${project.groupId}</groupId>
-			<artifactId>jaguar2-junit</artifactId>
+			<artifactId>jaguar2-junit4</artifactId>
 			<scope>test</scope>
 		</dependency>
 	</dependencies>
