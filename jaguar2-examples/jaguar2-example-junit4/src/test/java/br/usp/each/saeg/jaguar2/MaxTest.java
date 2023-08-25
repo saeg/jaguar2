@@ -19,35 +19,35 @@ public class MaxTest {
     public void test1() {
         final int[] array = { 1, 2, 3 };
 
-        Assert.assertEquals(3, Max.max(array, array.length));
+        Assert.assertEquals(3, new IntArray(array).max());
     }
 
     @Test
     public void test2() {
         final int[] array = { 5, 5, 6 };
 
-        Assert.assertEquals(6, Max.max(array, array.length));
+        Assert.assertEquals(6, new IntArray(array).max());
     }
 
     @Test
     public void test3() {
         final int[] array = { 2, 1, 10 };
 
-        Assert.assertEquals(10, Max.max(array, array.length));
+        Assert.assertEquals(10, new IntArray(array).max());
     }
 
     @Test
     public void test4() {
         final int[] array = { 4, 3, 2 };
 
-        Assert.assertEquals(4, Max.max(array, array.length));
+        Assert.assertEquals(4, new IntArray(array).max());
     }
 
     @Test
     public void test5() {
         final int[] array = { 4 };
 
-        Assert.assertEquals(4, Max.max(array, array.length));
+        Assert.assertEquals(4, new IntArray(array).max());
     }
 
 }
