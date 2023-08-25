@@ -60,17 +60,17 @@
 								</requireFileChecksum>
 								<requireFileChecksum>
 									<file>../jaguar2-examples/jaguar2-example-junit4-jacoco/target/jaguar2.csv</file>
-									<checksum>b0b094bc318faf9d5400534c7f28493d</checksum>
+									<checksum>d46dc1896d312426b0f45b55b2055837</checksum>
 									<type>md5</type>
 								</requireFileChecksum>
 								<requireFileChecksum>
 									<file>../jaguar2-examples/jaguar2-example-junit4-ba-dua/target/jaguar2.xml</file>
-									<checksum>66973079dc7fdc0eedbbcbed1bf0bde0</checksum>
+									<checksum>deeae38f282c32d2c06ca1b4117bec95</checksum>
 									<type>md5</type>
 								</requireFileChecksum>
 								<requireFileChecksum>
 									<file>../jaguar2-examples/jaguar2-example-junit4-jacoco/target/jaguar2.xml</file>
-									<checksum>30dd5b84869a04e8505d05c4de55e37f</checksum>
+									<checksum>b537bc886a131744e0abdc42efef504b</checksum>
 									<type>md5</type>
 								</requireFileChecksum>
 							</rules>
@@ -78,6 +78,34 @@
 						</configuration>
 					</execution>
 				</executions>
+			</plugin>
+			<plugin>
+				<groupId>org.codehaus.mojo</groupId>
+				<artifactId>xml-maven-plugin</artifactId>
+				<version>1.0.2</version>
+				<executions>
+					<execution>
+						<goals>
+							<goal>validate</goal>
+						</goals>
+					</execution>
+				</executions>
+				<configuration>
+					<validationSets>
+						<validationSet>
+							<dir>../jaguar2-examples/jaguar2-example-junit4-jacoco/target</dir>
+							<includes>
+								<include>jaguar2.xml</include>
+							</includes>
+						</validationSet>
+						<validationSet>
+							<dir>../jaguar2-examples/jaguar2-example-junit4-ba-dua/target</dir>
+							<includes>
+								<include>jaguar2.xml</include>
+							</includes>
+						</validationSet>
+					</validationSets>
+				</configuration>
 			</plugin>
 		</plugins>
 	</build>
