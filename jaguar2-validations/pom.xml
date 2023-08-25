@@ -60,7 +60,7 @@
 								</requireFileChecksum>
 								<requireFileChecksum>
 									<file>../jaguar2-examples/jaguar2-example-junit4-jacoco/target/jaguar2.csv</file>
-									<checksum>ee82bbdfc2f91421e7f3c001383f7318</checksum>
+									<checksum>d46dc1896d312426b0f45b55b2055837</checksum>
 									<type>md5</type>
 								</requireFileChecksum>
 								<requireFileChecksum>
@@ -70,7 +70,7 @@
 								</requireFileChecksum>
 								<requireFileChecksum>
 									<file>../jaguar2-examples/jaguar2-example-junit4-jacoco/target/jaguar2.xml</file>
-									<checksum>b9ff6031adbeeecdbd225b19b08adfde</checksum>
+									<checksum>b537bc886a131744e0abdc42efef504b</checksum>
 									<type>md5</type>
 								</requireFileChecksum>
 							</rules>
