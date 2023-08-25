@@ -39,6 +39,7 @@ public class XmlExporter implements SpectrumExporter {
                                 new File("target", "jaguar2.xml"))));
 
         writer.writeStartDocument();
+        writer.writeStartElement("report");
     }
 
     @Override
@@ -73,6 +74,7 @@ public class XmlExporter implements SpectrumExporter {
 
     @Override
     public void shutdown() throws XMLStreamException {
+        writer.writeEndElement();
         writer.writeEndDocument();
         writer.close();
     }
