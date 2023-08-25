@@ -123,6 +123,7 @@
 						<exclude>mvnw</exclude>
 						<exclude>mvnw.cmd</exclude>
 					</excludes>
+					<aggregate>true</aggregate>
 				</configuration>
 				<executions>
 					<execution>

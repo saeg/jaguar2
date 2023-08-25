@@ -22,6 +22,10 @@
 	<artifactId>jaguar2-exporters</artifactId>
 	<packaging>pom</packaging>
 
+	<properties>
+		<license.header.fileLocation>../LICENSE-TEMPLATE.txt</license.header.fileLocation>
+	</properties>
+
 	<modules>
 		<module>jaguar2-csv-exporter</module>
 		<module>jaguar2-xml-exporter</module>
