@@ -29,7 +29,6 @@ import org.jacoco.core.data.ExecutionDataStore;
 import org.jacoco.core.data.ISessionInfoVisitor;
 import org.jacoco.core.data.SessionInfo;
 
-import br.usp.each.saeg.jaguar2.api.ISpectrumVisitor;
 import br.usp.each.saeg.jaguar2.commons.ClassFilesController;
 import br.usp.each.saeg.jaguar2.spi.CoverageController;
 
@@ -119,7 +118,7 @@ public class JaCoCoController extends ClassFilesController implements CoverageCo
     }
 
     @Override
-    public void analyze(final ISpectrumVisitor spectrumVisitor) {
+    public Collection<ClassSpectrum> analyze() {
         analyze(new ExecutionDataStore(), spectrumBuilder, Arrays.asList(classesDirs));
         for (final ExecutionDataStore executionDataStore : failExecutionDataStores) {
             final Collection<File> files = classFilesOfStore(executionDataStore);
@@ -129,7 +128,7 @@ public class JaCoCoController extends ClassFilesController implements CoverageCo
             final Collection<File> files = classFilesOfStore(executionDataStore);
             analyze(executionDataStore, spectrumBuilder.updateTestPassed, files);
         }
-        spectrumBuilder.accept(spectrumVisitor);
+        return spectrumBuilder.getClasses();
     }
 
     @Override

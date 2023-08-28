@@ -10,7 +10,9 @@
  */
 package br.usp.each.saeg.jaguar2;
 
-import br.usp.each.saeg.jaguar2.api.ISpectrumVisitor;
+import java.util.Collection;
+
+import br.usp.each.saeg.jaguar2.api.IClassSpectrum;
 import br.usp.each.saeg.jaguar2.spi.CoverageController;
 
 public class DummyCoverageController implements CoverageController {
@@ -28,7 +30,8 @@ public class DummyCoverageController implements CoverageController {
     }
 
     @Override
-    public void analyze(final ISpectrumVisitor spectrumVisitor) {
+    public Collection<? extends IClassSpectrum> analyze() {
+        return null;
     }
 
     @Override

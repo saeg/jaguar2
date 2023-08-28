@@ -10,7 +10,9 @@
  */
 package br.usp.each.saeg.jaguar2.spi;
 
-import br.usp.each.saeg.jaguar2.api.ISpectrumVisitor;
+import java.util.Collection;
+
+import br.usp.each.saeg.jaguar2.api.IClassSpectrum;
 
 /**
  * A service that controls code coverage data.
@@ -38,8 +40,11 @@ public interface CoverageController {
 
     /**
      * Analyze the saved runtime code coverage data.
+     *
+     * @return a {@link Collection} of {@link IClassSpectrum} of the
+     *         analyzed runtime code coverage data.
      */
-    void analyze(ISpectrumVisitor spectrumVisitor);
+    Collection<? extends IClassSpectrum> analyze();
 
     /**
      * Destroy the current state for the controller.

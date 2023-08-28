@@ -10,7 +10,6 @@
  */
 package br.usp.each.saeg.jaguar2.core;
 
-import java.io.IOException;
 import java.util.Collection;
 
 import br.usp.each.saeg.jaguar2.CoverageControllerLoader;
@@ -18,7 +17,6 @@ import br.usp.each.saeg.jaguar2.SpectrumExporterLoader;
 import br.usp.each.saeg.jaguar2.api.Heuristic;
 import br.usp.each.saeg.jaguar2.api.IClassSpectrum;
 import br.usp.each.saeg.jaguar2.api.ILineSpectrum;
-import br.usp.each.saeg.jaguar2.api.ISpectrumVisitor;
 import br.usp.each.saeg.jaguar2.api.SpectrumEval;
 import br.usp.each.saeg.jaguar2.core.heuristic.Ochiai;
 import br.usp.each.saeg.jaguar2.spi.CoverageController;
@@ -90,7 +88,7 @@ public class Jaguar implements SpectrumEval {
     /**
      * Called when all tests have finished.
      *
-     * @throws IOException
+     * @throws Exception
      */
     public void testRunFinished() throws Exception {
         final Collection<SpectrumExporter> exporters = new SpectrumExporterLoader().load();
@@ -98,18 +96,11 @@ public class Jaguar implements SpectrumEval {
             exporter.init();
         }
         if (controller != null) {
-            controller.analyze(new ISpectrumVisitor() {
-                @Override
-                public void visitSpectrum(final IClassSpectrum spectrum) {
-                    for (final SpectrumExporter exporter : exporters) {
-                        try {
-                            exporter.write(spectrum, Jaguar.this);
-                        } catch (final Exception e) {
-                            throw new RuntimeException(e);
-                        }
-                    }
+            for (final IClassSpectrum spectrum : controller.analyze()) {
+                for (final SpectrumExporter exporter : exporters) {
+                    exporter.write(spectrum, Jaguar.this);
                 }
-            });
+            }
         }
         for (final SpectrumExporter exporter : exporters) {
             exporter.shutdown();

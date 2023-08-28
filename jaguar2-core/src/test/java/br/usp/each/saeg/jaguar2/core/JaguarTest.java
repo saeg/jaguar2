@@ -10,7 +10,6 @@
  */
 package br.usp.each.saeg.jaguar2.core;
 
-import static org.mockito.Matchers.any;
 import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
 
@@ -22,7 +21,6 @@ import org.mockito.Mock;
 import org.mockito.runners.MockitoJUnitRunner;
 
 import br.usp.each.saeg.jaguar2.api.Heuristic;
-import br.usp.each.saeg.jaguar2.api.ISpectrumVisitor;
 import br.usp.each.saeg.jaguar2.spi.CoverageController;
 
 @RunWith(MockitoJUnitRunner.class)
@@ -83,7 +81,7 @@ public class JaguarTest {
         jaguar.testRunFinished();
 
         // Then
-        verify(controllerMock, times(1)).analyze(any(ISpectrumVisitor.class));
+        verify(controllerMock, times(1)).analyze();
     }
 
     @Test
