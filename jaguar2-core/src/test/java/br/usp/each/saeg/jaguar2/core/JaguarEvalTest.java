@@ -24,12 +24,16 @@ import org.mockito.runners.MockitoJUnitRunner;
 import br.usp.each.saeg.jaguar2.api.Heuristic;
 import br.usp.each.saeg.jaguar2.api.ILineSpectrum;
 import br.usp.each.saeg.jaguar2.spi.CoverageController;
+import br.usp.each.saeg.jaguar2.spi.SpectrumExporter;
 
 @RunWith(MockitoJUnitRunner.class)
 public class JaguarEvalTest {
 
     @Mock
     private CoverageController controllerMock;
+
+    @Mock
+    private SpectrumExporter exporterMock;
 
     @Mock
     private Heuristic heuristicMock;
@@ -40,7 +44,7 @@ public class JaguarEvalTest {
 
     @Before
     public void setUp() {
-        jaguar = new Jaguar(controllerMock, heuristicMock);
+        jaguar = new Jaguar(controllerMock, exporterMock, heuristicMock);
         expectedValue = Math.random();
     }
 

@@ -15,7 +15,10 @@ import org.junit.runner.Result;
 import org.junit.runner.notification.Failure;
 import org.junit.runner.notification.RunListener;
 
+import br.usp.each.saeg.jaguar2.CoverageControllerLoader;
+import br.usp.each.saeg.jaguar2.SpectrumExporterLoader;
 import br.usp.each.saeg.jaguar2.core.Jaguar;
+import br.usp.each.saeg.jaguar2.core.heuristic.Ochiai;
 
 public class JaguarJUnitRunListener extends RunListener {
 
@@ -30,7 +33,10 @@ public class JaguarJUnitRunListener extends RunListener {
     }
 
     public JaguarJUnitRunListener() {
-        this(new Jaguar());
+        this(new Jaguar(
+                new CoverageControllerLoader().load(),
+                new SpectrumExporterLoader().load(),
+                new Ochiai()));
     }
 
     @Override
