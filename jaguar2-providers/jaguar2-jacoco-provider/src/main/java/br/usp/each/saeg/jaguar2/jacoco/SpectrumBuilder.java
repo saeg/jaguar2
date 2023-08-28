@@ -10,6 +10,7 @@
  */
 package br.usp.each.saeg.jaguar2.jacoco;
 
+import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.TreeMap;
@@ -17,8 +18,6 @@ import java.util.TreeMap;
 import org.jacoco.core.analysis.IClassCoverage;
 import org.jacoco.core.analysis.ICoverageVisitor;
 import org.jacoco.core.analysis.IMethodCoverage;
-
-import br.usp.each.saeg.jaguar2.api.ISpectrumVisitor;
 
 public class SpectrumBuilder implements ICoverageVisitor {
 
@@ -56,11 +55,9 @@ public class SpectrumBuilder implements ICoverageVisitor {
 
     }
 
-    public void accept(final ISpectrumVisitor spectrumVisitor) {
+    public Collection<ClassSpectrum> getClasses() {
         // Using tree map to guarantee iteration order (for reproducible builds/validation)
-        for (final ClassSpectrum cs : new TreeMap<String, ClassSpectrum>(classes).values()) {
-            spectrumVisitor.visitSpectrum(cs);
-        }
+        return new TreeMap<String, ClassSpectrum>(classes).values();
     }
 
 }

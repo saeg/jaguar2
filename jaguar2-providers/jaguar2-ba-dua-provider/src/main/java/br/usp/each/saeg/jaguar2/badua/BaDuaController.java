@@ -12,6 +12,8 @@ package br.usp.each.saeg.jaguar2.badua;
 
 import java.io.ByteArrayInputStream;
 import java.io.IOException;
+import java.util.Collection;
+import java.util.Collections;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -19,7 +21,7 @@ import br.usp.each.saeg.badua.agent.rt.BaDuaRuntime;
 import br.usp.each.saeg.badua.agent.rt.IAgent;
 import br.usp.each.saeg.badua.core.data.ExecutionDataReader;
 import br.usp.each.saeg.badua.core.data.ExecutionDataStore;
-import br.usp.each.saeg.jaguar2.api.ISpectrumVisitor;
+import br.usp.each.saeg.jaguar2.api.IClassSpectrum;
 import br.usp.each.saeg.jaguar2.spi.CoverageController;
 
 public class BaDuaController implements CoverageController {
@@ -84,7 +86,8 @@ public class BaDuaController implements CoverageController {
     }
 
     @Override
-    public void analyze(final ISpectrumVisitor spectrumVisitor) {
+    public Collection<IClassSpectrum> analyze() {
+        return Collections.emptyList();
     }
 
     @Override
