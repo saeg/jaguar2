@@ -10,8 +10,15 @@
  */
 package br.usp.each.saeg.jaguar2.core;
 
+import static org.mockito.Matchers.any;
+import static org.mockito.Matchers.same;
+import static org.mockito.Mockito.doReturn;
+import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
+
+import java.util.Arrays;
+import java.util.Collections;
 
 import org.junit.Assert;
 import org.junit.Before;
@@ -21,7 +28,9 @@ import org.mockito.Mock;
 import org.mockito.runners.MockitoJUnitRunner;
 
 import br.usp.each.saeg.jaguar2.api.Heuristic;
+import br.usp.each.saeg.jaguar2.api.IClassSpectrum;
 import br.usp.each.saeg.jaguar2.spi.CoverageController;
+import br.usp.each.saeg.jaguar2.spi.SpectrumExporter;
 
 @RunWith(MockitoJUnitRunner.class)
 public class JaguarTest {
@@ -30,13 +39,16 @@ public class JaguarTest {
     private CoverageController controllerMock;
 
     @Mock
+    private SpectrumExporter exporterMock;
+
+    @Mock
     private Heuristic heuristicMock;
 
     private Jaguar jaguar;
 
     @Before
     public void setUp() {
-        jaguar = new Jaguar(controllerMock, heuristicMock);
+        jaguar = new Jaguar(controllerMock, exporterMock, heuristicMock);
     }
 
     @Test
@@ -82,6 +94,64 @@ public class JaguarTest {
 
         // Then
         verify(controllerMock, times(1)).analyze();
+    }
+
+    @Test
+    public void testRunFinishedCallExporterInit() throws Exception {
+        // When
+        jaguar.testRunFinished();
+
+        // Then
+        verify(exporterMock, times(1)).init();
+    }
+
+    @Test
+    public void testRunFinishedCallExporterShutdown() throws Exception {
+        // When
+        jaguar.testRunFinished();
+
+        // Then
+        verify(exporterMock, times(1)).shutdown();
+    }
+
+    @Test
+    public void testRunFinishedCallExporterWrite0() throws Exception {
+        // Given
+        doReturn(Collections.emptyList()).when(controllerMock).analyze();
+
+        // When
+        jaguar.testRunFinished();
+
+        // Then
+        verify(exporterMock, times(0)).write(any(IClassSpectrum.class), same(jaguar));
+    }
+
+    @Test
+    public void testRunFinishedCallExporterWrite1() throws Exception {
+        // Given
+        final IClassSpectrum spectrum = mock(IClassSpectrum.class);
+        doReturn(Collections.singleton(spectrum)).when(controllerMock).analyze();
+
+        // When
+        jaguar.testRunFinished();
+
+        // Then
+        verify(exporterMock, times(1)).write(spectrum, jaguar);
+    }
+
+    @Test
+    public void testRunFinishedCallExporterWrite2() throws Exception {
+        // Given
+        final IClassSpectrum spectrum1 = mock(IClassSpectrum.class);
+        final IClassSpectrum spectrum2 = mock(IClassSpectrum.class);
+        doReturn(Arrays.asList(spectrum1, spectrum2)).when(controllerMock).analyze();
+
+        // When
+        jaguar.testRunFinished();
+
+        // Then
+        verify(exporterMock, times(1)).write(spectrum1, jaguar);
+        verify(exporterMock, times(1)).write(spectrum2, jaguar);
     }
 
     @Test

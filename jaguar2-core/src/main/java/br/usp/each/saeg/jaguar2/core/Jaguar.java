@@ -10,13 +10,10 @@
  */
 package br.usp.each.saeg.jaguar2.core;
 
-import br.usp.each.saeg.jaguar2.CoverageControllerLoader;
-import br.usp.each.saeg.jaguar2.SpectrumExporterLoader;
 import br.usp.each.saeg.jaguar2.api.Heuristic;
 import br.usp.each.saeg.jaguar2.api.IClassSpectrum;
 import br.usp.each.saeg.jaguar2.api.ILineSpectrum;
 import br.usp.each.saeg.jaguar2.api.SpectrumEval;
-import br.usp.each.saeg.jaguar2.core.heuristic.Ochiai;
 import br.usp.each.saeg.jaguar2.spi.CoverageController;
 import br.usp.each.saeg.jaguar2.spi.SpectrumExporter;
 
@@ -24,21 +21,23 @@ public class Jaguar implements SpectrumEval {
 
     private final CoverageController controller;
 
+    private final SpectrumExporter exporter;
+
     private final Heuristic heuristic;
 
     private int failedTests;
 
     private int passedTests;
 
-    public Jaguar(final CoverageController controller, final Heuristic heuristic) {
+    public Jaguar(
+            final CoverageController controller,
+            final SpectrumExporter exporter,
+            final Heuristic heuristic) {
         this.controller = controller;
+        this.exporter = exporter;
         this.heuristic = heuristic;
         failedTests = 0;
         passedTests = 0;
-    }
-
-    public Jaguar() {
-        this(new CoverageControllerLoader().load(), new Ochiai());
     }
 
     /**
@@ -89,7 +88,6 @@ public class Jaguar implements SpectrumEval {
      * @throws Exception
      */
     public void testRunFinished() throws Exception {
-        final SpectrumExporter exporter = new SpectrumExporterLoader().load();
         exporter.init();
         if (controller != null) {
             for (final IClassSpectrum spectrum : controller.analyze()) {
