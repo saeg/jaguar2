@@ -10,8 +10,6 @@
  */
 package br.usp.each.saeg.jaguar2.core;
 
-import java.util.Collection;
-
 import br.usp.each.saeg.jaguar2.CoverageControllerLoader;
 import br.usp.each.saeg.jaguar2.SpectrumExporterLoader;
 import br.usp.each.saeg.jaguar2.api.Heuristic;
@@ -91,20 +89,14 @@ public class Jaguar implements SpectrumEval {
      * @throws Exception
      */
     public void testRunFinished() throws Exception {
-        final Collection<SpectrumExporter> exporters = new SpectrumExporterLoader().load();
-        for (final SpectrumExporter exporter : exporters) {
-            exporter.init();
-        }
+        final SpectrumExporter exporter = new SpectrumExporterLoader().load();
+        exporter.init();
         if (controller != null) {
             for (final IClassSpectrum spectrum : controller.analyze()) {
-                for (final SpectrumExporter exporter : exporters) {
-                    exporter.write(spectrum, Jaguar.this);
-                }
+                exporter.write(spectrum, Jaguar.this);
             }
         }
-        for (final SpectrumExporter exporter : exporters) {
-            exporter.shutdown();
-        }
+        exporter.shutdown();
     }
 
     @Override

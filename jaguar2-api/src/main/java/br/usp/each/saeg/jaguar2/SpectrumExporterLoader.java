@@ -15,6 +15,7 @@ import java.util.Collection;
 import java.util.Iterator;
 import java.util.ServiceLoader;
 
+import br.usp.each.saeg.jaguar2.api.MultipleSpectrumExporter;
 import br.usp.each.saeg.jaguar2.spi.SpectrumExporter;
 
 /**
@@ -34,21 +35,21 @@ public class SpectrumExporterLoader {
     }
 
     /**
-     * Loads and returns all spectrum exporter services available.
+     * Loads and returns a spectrum exporter service.
      *
-     * This implementation returns a {@link Collection} of
-     * {@link SpectrumExporter} available from underlying
+     * This implementation returns a {@link MultipleSpectrumExporter}
+     * joining all {@link SpectrumExporter} available from underlying
      * {@link ServiceLoader}.
      *
-     * @return a collection of spectrum export services.
+     * @return a spectrum exporter service.
      */
-    public Collection<SpectrumExporter> load() {
+    public SpectrumExporter load() {
         final Collection<SpectrumExporter> exporters = new ArrayList<SpectrumExporter>();
         final Iterator<SpectrumExporter> iterator = serviceLoader.iterator();
         while (iterator.hasNext()) {
             exporters.add(iterator.next());
         }
-        return exporters;
+        return new MultipleSpectrumExporter(exporters);
     }
 
 }

@@ -13,16 +13,31 @@ package br.usp.each.saeg.jaguar2;
 import java.util.Collection;
 
 import org.junit.Assert;
+import org.junit.Before;
 import org.junit.Test;
 
+import br.usp.each.saeg.jaguar2.api.MultipleSpectrumExporter;
 import br.usp.each.saeg.jaguar2.spi.SpectrumExporter;
 
 public class SpectrumExporterLoaderTest {
 
+    private SpectrumExporter exporter;
+
+    @Before
+    public void setUp() {
+        exporter = new SpectrumExporterLoader().load();
+    }
+
     @Test
-    public void loadsSpectrumExportersCorrectly() {
-        final SpectrumExporterLoader loader = new SpectrumExporterLoader();
-        final Collection<SpectrumExporter> exporters = loader.load();
+    public void loadsSpectrumExporterCorrectly() {
+        Assert.assertTrue(exporter instanceof MultipleSpectrumExporter);
+    }
+
+    @Test
+    public void loadsInternalSpectrumExportersCorrectly() {
+        final Collection<SpectrumExporter> exporters = 
+                ((MultipleSpectrumExporter) exporter).getExporters();
+
         Assert.assertEquals(1, exporters.size());
         Assert.assertTrue(exporters.iterator().next() instanceof DummySpectrumExporter);
     }
