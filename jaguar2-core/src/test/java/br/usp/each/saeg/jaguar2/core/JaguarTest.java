@@ -18,6 +18,7 @@ import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
 
 import java.util.Arrays;
+import java.util.Collection;
 import java.util.Collections;
 
 import org.junit.Assert;
@@ -28,7 +29,9 @@ import org.mockito.Mock;
 import org.mockito.runners.MockitoJUnitRunner;
 
 import br.usp.each.saeg.jaguar2.api.Heuristic;
+import br.usp.each.saeg.jaguar2.api.IBundleSpectrum;
 import br.usp.each.saeg.jaguar2.api.IClassSpectrum;
+import br.usp.each.saeg.jaguar2.api.IPackageSpectrum;
 import br.usp.each.saeg.jaguar2.spi.CoverageController;
 import br.usp.each.saeg.jaguar2.spi.SpectrumExporter;
 
@@ -89,6 +92,26 @@ public class JaguarTest {
 
     @Test
     public void testRunFinishedCallControllerAnalyze() throws Exception {
+        // Given
+        doReturn(new IBundleSpectrum() {
+            @Override
+            public Collection<? extends IPackageSpectrum> getPackages() {
+                return Collections.singleton(new IPackageSpectrum() {
+
+                    @Override
+                    public String getName() {
+                        return "package";
+                    }
+
+                    @Override
+                    public Collection<IClassSpectrum> getClasses() {
+                        return Collections.emptyList();
+                    }
+
+                });
+            }
+        }).when(controllerMock).analyze();
+
         // When
         jaguar.testRunFinished();
 
@@ -98,6 +121,26 @@ public class JaguarTest {
 
     @Test
     public void testRunFinishedCallExporterInit() throws Exception {
+        // Given
+        doReturn(new IBundleSpectrum() {
+            @Override
+            public Collection<? extends IPackageSpectrum> getPackages() {
+                return Collections.singleton(new IPackageSpectrum() {
+
+                    @Override
+                    public String getName() {
+                        return "package";
+                    }
+
+                    @Override
+                    public Collection<IClassSpectrum> getClasses() {
+                        return Collections.emptyList();
+                    }
+
+                });
+            }
+        }).when(controllerMock).analyze();
+
         // When
         jaguar.testRunFinished();
 
@@ -107,6 +150,26 @@ public class JaguarTest {
 
     @Test
     public void testRunFinishedCallExporterShutdown() throws Exception {
+        // Given
+        doReturn(new IBundleSpectrum() {
+            @Override
+            public Collection<? extends IPackageSpectrum> getPackages() {
+                return Collections.singleton(new IPackageSpectrum() {
+
+                    @Override
+                    public String getName() {
+                        return "package";
+                    }
+
+                    @Override
+                    public Collection<IClassSpectrum> getClasses() {
+                        return Collections.emptyList();
+                    }
+
+                });
+            }
+        }).when(controllerMock).analyze();
+
         // When
         jaguar.testRunFinished();
 
@@ -117,7 +180,24 @@ public class JaguarTest {
     @Test
     public void testRunFinishedCallExporterWrite0() throws Exception {
         // Given
-        doReturn(Collections.emptyList()).when(controllerMock).analyze();
+        doReturn(new IBundleSpectrum() {
+            @Override
+            public Collection<? extends IPackageSpectrum> getPackages() {
+                return Collections.singleton(new IPackageSpectrum() {
+
+                    @Override
+                    public String getName() {
+                        return "package";
+                    }
+
+                    @Override
+                    public Collection<IClassSpectrum> getClasses() {
+                        return Collections.emptyList();
+                    }
+
+                });
+            }
+        }).when(controllerMock).analyze();
 
         // When
         jaguar.testRunFinished();
@@ -130,7 +210,24 @@ public class JaguarTest {
     public void testRunFinishedCallExporterWrite1() throws Exception {
         // Given
         final IClassSpectrum spectrum = mock(IClassSpectrum.class);
-        doReturn(Collections.singleton(spectrum)).when(controllerMock).analyze();
+        doReturn(new IBundleSpectrum() {
+            @Override
+            public Collection<? extends IPackageSpectrum> getPackages() {
+                return Collections.singleton(new IPackageSpectrum() {
+
+                    @Override
+                    public String getName() {
+                        return "package";
+                    }
+
+                    @Override
+                    public Collection<IClassSpectrum> getClasses() {
+                        return Collections.singleton(spectrum);
+                    }
+
+                });
+            }
+        }).when(controllerMock).analyze();
 
         // When
         jaguar.testRunFinished();
@@ -144,7 +241,24 @@ public class JaguarTest {
         // Given
         final IClassSpectrum spectrum1 = mock(IClassSpectrum.class);
         final IClassSpectrum spectrum2 = mock(IClassSpectrum.class);
-        doReturn(Arrays.asList(spectrum1, spectrum2)).when(controllerMock).analyze();
+        doReturn(new IBundleSpectrum() {
+            @Override
+            public Collection<? extends IPackageSpectrum> getPackages() {
+                return Collections.singleton(new IPackageSpectrum() {
+
+                    @Override
+                    public String getName() {
+                        return "package";
+                    }
+
+                    @Override
+                    public Collection<IClassSpectrum> getClasses() {
+                        return Arrays.asList(spectrum1, spectrum2);
+                    }
+
+                });
+            }
+        }).when(controllerMock).analyze();
 
         // When
         jaguar.testRunFinished();
