@@ -11,7 +11,6 @@
 package br.usp.each.saeg.jaguar2.core;
 
 import br.usp.each.saeg.jaguar2.api.Heuristic;
-import br.usp.each.saeg.jaguar2.api.IClassSpectrum;
 import br.usp.each.saeg.jaguar2.api.ILineSpectrum;
 import br.usp.each.saeg.jaguar2.api.SpectrumEval;
 import br.usp.each.saeg.jaguar2.spi.CoverageController;
@@ -90,9 +89,7 @@ public class Jaguar implements SpectrumEval {
     public void testRunFinished() throws Exception {
         exporter.init();
         if (controller != null) {
-            for (final IClassSpectrum spectrum : controller.analyze()) {
-                exporter.write(spectrum, Jaguar.this);
-            }
+            exporter.write(controller.analyze(), this);
         }
         exporter.shutdown();
     }

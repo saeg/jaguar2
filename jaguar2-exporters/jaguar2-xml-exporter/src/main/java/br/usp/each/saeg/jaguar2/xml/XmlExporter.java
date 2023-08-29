@@ -20,8 +20,10 @@ import javax.xml.stream.XMLOutputFactory;
 import javax.xml.stream.XMLStreamException;
 import javax.xml.stream.XMLStreamWriter;
 
+import br.usp.each.saeg.jaguar2.api.IBundleSpectrum;
 import br.usp.each.saeg.jaguar2.api.IClassSpectrum;
 import br.usp.each.saeg.jaguar2.api.ILineSpectrum;
+import br.usp.each.saeg.jaguar2.api.IPackageSpectrum;
 import br.usp.each.saeg.jaguar2.api.SpectrumEval;
 import br.usp.each.saeg.jaguar2.spi.SpectrumExporter;
 
@@ -43,6 +45,16 @@ public class XmlExporter implements SpectrumExporter {
     }
 
     @Override
+    public void write(final IBundleSpectrum bundle, final SpectrumEval eval)
+            throws XMLStreamException {
+
+        for (final IPackageSpectrum packageSpectrum : bundle.getPackages()) {
+            for (final IClassSpectrum spectrum : packageSpectrum.getClasses()) {
+                write(spectrum, eval);
+            }
+        }
+    }
+
     public void write(final IClassSpectrum spectrum, final SpectrumEval eval)
             throws XMLStreamException {
 

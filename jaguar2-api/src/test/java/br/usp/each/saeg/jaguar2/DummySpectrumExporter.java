@@ -10,7 +10,7 @@
  */
 package br.usp.each.saeg.jaguar2;
 
-import br.usp.each.saeg.jaguar2.api.IClassSpectrum;
+import br.usp.each.saeg.jaguar2.api.IBundleSpectrum;
 import br.usp.each.saeg.jaguar2.api.SpectrumEval;
 import br.usp.each.saeg.jaguar2.spi.SpectrumExporter;
 
@@ -21,7 +21,7 @@ public class DummySpectrumExporter implements SpectrumExporter {
     }
 
     @Override
-    public void write(final IClassSpectrum spectrum, final SpectrumEval eval) {
+    public void write(final IBundleSpectrum spectrum, final SpectrumEval eval) {
     }
 
     @Override
