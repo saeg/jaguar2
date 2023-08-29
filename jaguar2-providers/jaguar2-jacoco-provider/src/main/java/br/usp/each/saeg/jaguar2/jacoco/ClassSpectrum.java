@@ -40,6 +40,11 @@ public class ClassSpectrum extends CodeSpectrum implements IClassSpectrum {
     }
 
     @Override
+    public String getSourceFileName() {
+        return coverage.getSourceFileName();
+    }
+
+    @Override
     public Collection<MethodSpectrum> getMethods() {
         return methods.values();
     }

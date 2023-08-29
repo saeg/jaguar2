@@ -35,6 +35,13 @@ public interface IClassSpectrum extends ICodeSpectrum {
     String getPackageName();
 
     /**
+     * Returns the optional name of the corresponding source file.
+     *
+     * @return name of the corresponding source file.
+     */
+    String getSourceFileName();
+
+    /**
      * Returns the spectrum data of methods included in this class.
      *
      * @return a {@link Collection} of {@link IMethodSpectrum}.

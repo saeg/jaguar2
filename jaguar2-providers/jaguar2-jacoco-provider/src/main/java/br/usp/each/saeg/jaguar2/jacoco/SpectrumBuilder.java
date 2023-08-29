@@ -23,6 +23,8 @@ public class SpectrumBuilder implements ICoverageVisitor {
 
     private final Map<String, ClassSpectrum> classes = new HashMap<String, ClassSpectrum>();
 
+    private final Map<String, SourceFileSpectrum> sourceFiles = new HashMap<String, SourceFileSpectrum>();
+
     public final UpdateSpectrum updateTestFailed = new UpdateSpectrum(true);
 
     public final UpdateSpectrum updateTestPassed = new UpdateSpectrum(false);
@@ -34,6 +36,9 @@ public class SpectrumBuilder implements ICoverageVisitor {
             cs.addMethod(methodCoverage);
         }
         classes.put(cs.getName(), cs);
+        if (cs.getSourceFileName() != null) {
+            getSourceFile(cs.getSourceFileName(), cs.getPackageName());
+        }
     }
 
     private class UpdateSpectrum implements ICoverageVisitor {
@@ -51,6 +56,11 @@ public class SpectrumBuilder implements ICoverageVisitor {
             for (final IMethodCoverage methodCoverage : classCoverage.getMethods()) {
                 cs.getMethod(methodCoverage).increment(methodCoverage, testFailed);
             }
+            if (cs.getSourceFileName() != null) {
+                final SourceFileSpectrum sourceFile =
+                        getSourceFile(cs.getSourceFileName(), cs.getPackageName());
+                sourceFile.increment(classCoverage, testFailed);
+            }
         }
 
     }
@@ -58,6 +68,23 @@ public class SpectrumBuilder implements ICoverageVisitor {
     public Collection<ClassSpectrum> getClasses() {
         // Using tree map to guarantee iteration order (for reproducible builds/validation)
         return new TreeMap<String, ClassSpectrum>(classes).values();
+    }
+
+    public Collection<SourceFileSpectrum> getSourceFiles() {
+        // Using tree map to guarantee iteration order (for reproducible builds/validation)
+        return new TreeMap<String, SourceFileSpectrum>(sourceFiles).values();
+    }
+
+    private SourceFileSpectrum getSourceFile(
+            final String fileName, final String packageName) {
+
+        final String key = packageName + '/' + fileName;
+        SourceFileSpectrum sourceFile = sourceFiles.get(key);
+        if (sourceFile == null) {
+            sourceFile = new SourceFileSpectrum(fileName, packageName);
+            sourceFiles.put(key, sourceFile);
+        }
+        return sourceFile;
     }
 
 }

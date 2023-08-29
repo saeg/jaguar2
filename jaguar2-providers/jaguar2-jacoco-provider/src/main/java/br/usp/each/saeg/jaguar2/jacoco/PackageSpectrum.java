@@ -20,9 +20,15 @@ public class PackageSpectrum implements IPackageSpectrum {
 
     private final Collection<ClassSpectrum> classes;
 
-    public PackageSpectrum(final String name, final Collection<ClassSpectrum> classes) {
+    private final Collection<SourceFileSpectrum> sourceFiles;
+
+    public PackageSpectrum(final String name,
+            final Collection<ClassSpectrum> classes,
+            final Collection<SourceFileSpectrum> sourceFiles) {
+
         this.name = name;
         this.classes = classes;
+        this.sourceFiles = sourceFiles;
     }
 
     @Override
@@ -33,6 +39,11 @@ public class PackageSpectrum implements IPackageSpectrum {
     @Override
     public Collection<ClassSpectrum> getClasses() {
         return classes;
+    }
+
+    @Override
+    public Collection<SourceFileSpectrum> getSourceFiles() {
+        return sourceFiles;
     }
 
 }

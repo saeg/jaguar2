@@ -12,6 +12,12 @@ package br.usp.each.saeg.jaguar2.api;
 
 import java.util.Collection;
 
+/**
+ * Spectrum data of a single package.
+ *
+ * @see IClassSpectrum
+ * @see ISourceFileSpectrum
+ */
 public interface IPackageSpectrum {
 
     /**
@@ -27,5 +33,12 @@ public interface IPackageSpectrum {
      * @return a {@link Collection} of {@link IClassSpectrum}.
      */
     Collection<? extends IClassSpectrum> getClasses();
+
+    /**
+     * Returns the spectrum data of source files included in this package.
+     *
+     * @return a {@link Collection} of {@link ISourceFileSpectrum}.
+     */
+    Collection<? extends ISourceFileSpectrum> getSourceFiles();
 
 }
