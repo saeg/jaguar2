@@ -31,7 +31,7 @@ public class MultipleSpectrumExporter implements SpectrumExporter {
     }
 
     @Override
-    public void write(final IClassSpectrum spectrum, final SpectrumEval eval)
+    public void write(final IBundleSpectrum spectrum, final SpectrumEval eval)
             throws Exception {
 
         for (final SpectrumExporter exporter : exporters) {

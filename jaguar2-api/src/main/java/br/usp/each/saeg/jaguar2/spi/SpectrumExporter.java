@@ -10,7 +10,7 @@
  */
 package br.usp.each.saeg.jaguar2.spi;
 
-import br.usp.each.saeg.jaguar2.api.IClassSpectrum;
+import br.usp.each.saeg.jaguar2.api.IBundleSpectrum;
 import br.usp.each.saeg.jaguar2.api.SpectrumEval;
 
 /**
@@ -28,15 +28,15 @@ public interface SpectrumExporter {
     /**
      * Write the spectrum data for a class.
      *
-     * @param spectrum a {@link IClassSpectrum} that represents spectrum
-     *                 data for a single class.
+     * @param spectrum a {@link IBundleSpectrum} that represents spectrum
+     *                 data for all classes and packages.
      *
      * @param eval     a {@link SpectrumEval} that calculate a spectrum
      *                 suspiciousness.
      *
      * @throws Exception
      */
-    void write(IClassSpectrum spectrum, SpectrumEval eval) throws Exception;
+    void write(IBundleSpectrum spectrum, SpectrumEval eval) throws Exception;
 
     /**
      * Shutdown the exporter service and cleanup created resources.

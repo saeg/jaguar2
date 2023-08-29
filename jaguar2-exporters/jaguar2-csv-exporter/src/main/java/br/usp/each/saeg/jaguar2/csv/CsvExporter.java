@@ -16,8 +16,10 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
 
+import br.usp.each.saeg.jaguar2.api.IBundleSpectrum;
 import br.usp.each.saeg.jaguar2.api.IClassSpectrum;
 import br.usp.each.saeg.jaguar2.api.ILineSpectrum;
+import br.usp.each.saeg.jaguar2.api.IPackageSpectrum;
 import br.usp.each.saeg.jaguar2.api.SpectrumEval;
 import br.usp.each.saeg.jaguar2.spi.SpectrumExporter;
 
@@ -32,6 +34,14 @@ public class CsvExporter implements SpectrumExporter {
     }
 
     @Override
+    public void write(final IBundleSpectrum bundle, final SpectrumEval eval) {
+        for (final IPackageSpectrum packageSpectrum : bundle.getPackages()) {
+            for (final IClassSpectrum spectrum : packageSpectrum.getClasses()) {
+                write(spectrum, eval);
+            }
+        }
+    }
+
     public void write(final IClassSpectrum spectrum, final SpectrumEval eval) {
         for (int nr = spectrum.getFirstLine(); nr <= spectrum.getLastLine(); nr++) {
             final ILineSpectrum line = spectrum.getLine(nr);
