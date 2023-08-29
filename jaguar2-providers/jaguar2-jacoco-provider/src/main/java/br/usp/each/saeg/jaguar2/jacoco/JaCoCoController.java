@@ -128,7 +128,8 @@ public class JaCoCoController extends ClassFilesController implements CoverageCo
             final Collection<File> files = classFilesOfStore(executionDataStore);
             analyze(executionDataStore, spectrumBuilder.updateTestPassed, files);
         }
-        return new BundleSpectrum(spectrumBuilder.getClasses());
+        return new BundleSpectrum(
+                spectrumBuilder.getClasses(), spectrumBuilder.getSourceFiles());
     }
 
     @Override

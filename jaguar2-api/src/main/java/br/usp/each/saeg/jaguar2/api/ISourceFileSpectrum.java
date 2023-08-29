@@ -10,20 +10,20 @@
  */
 package br.usp.each.saeg.jaguar2.api;
 
-import java.util.Collection;
-
-/**
- * Spectrum data of a group of packages.
- *
- * @see IPackageSpectrum
- */
-public interface IBundleSpectrum {
+public interface ISourceFileSpectrum extends ICodeSpectrum {
 
     /**
-     * Returns the spectrum data of packages included in this bundle.
+     * Returns name of the corresponding source file.
      *
-     * @return a {@link Collection} of {@link IPackageSpectrum}.
+     * @return name of the corresponding source file.
      */
-    Collection<? extends IPackageSpectrum> getPackages();
+    String getName();
+
+    /**
+     * Returns the VM name of the package the source file belongs to.
+     *
+     * @return VM name of the package.
+     */
+    String getPackageName();
 
 }
