@@ -10,9 +10,7 @@
  */
 package br.usp.each.saeg.jaguar2.spi;
 
-import java.util.Collection;
-
-import br.usp.each.saeg.jaguar2.api.IClassSpectrum;
+import br.usp.each.saeg.jaguar2.api.IBundleSpectrum;
 
 /**
  * A service that controls code coverage data.
@@ -41,10 +39,10 @@ public interface CoverageController {
     /**
      * Analyze the saved runtime code coverage data.
      *
-     * @return a {@link Collection} of {@link IClassSpectrum} of the
-     *         analyzed runtime code coverage data.
+     * @return a {@link IBundleSpectrum} of the analyzed runtime code
+     *         coverage data.
      */
-    Collection<? extends IClassSpectrum> analyze();
+    IBundleSpectrum analyze();
 
     /**
      * Destroy the current state for the controller.

@@ -21,7 +21,8 @@ import br.usp.each.saeg.badua.agent.rt.BaDuaRuntime;
 import br.usp.each.saeg.badua.agent.rt.IAgent;
 import br.usp.each.saeg.badua.core.data.ExecutionDataReader;
 import br.usp.each.saeg.badua.core.data.ExecutionDataStore;
-import br.usp.each.saeg.jaguar2.api.IClassSpectrum;
+import br.usp.each.saeg.jaguar2.api.IBundleSpectrum;
+import br.usp.each.saeg.jaguar2.api.IPackageSpectrum;
 import br.usp.each.saeg.jaguar2.spi.CoverageController;
 
 public class BaDuaController implements CoverageController {
@@ -86,8 +87,13 @@ public class BaDuaController implements CoverageController {
     }
 
     @Override
-    public Collection<IClassSpectrum> analyze() {
-        return Collections.emptyList();
+    public IBundleSpectrum analyze() {
+        return new IBundleSpectrum() {
+            @Override
+            public Collection<IPackageSpectrum> getPackages() {
+                return Collections.emptyList();
+            }
+        };
     }
 
     @Override

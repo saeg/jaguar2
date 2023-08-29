@@ -118,7 +118,7 @@ public class JaCoCoController extends ClassFilesController implements CoverageCo
     }
 
     @Override
-    public Collection<ClassSpectrum> analyze() {
+    public BundleSpectrum analyze() {
         analyze(new ExecutionDataStore(), spectrumBuilder, Arrays.asList(classesDirs));
         for (final ExecutionDataStore executionDataStore : failExecutionDataStores) {
             final Collection<File> files = classFilesOfStore(executionDataStore);
@@ -128,7 +128,7 @@ public class JaCoCoController extends ClassFilesController implements CoverageCo
             final Collection<File> files = classFilesOfStore(executionDataStore);
             analyze(executionDataStore, spectrumBuilder.updateTestPassed, files);
         }
-        return spectrumBuilder.getClasses();
+        return new BundleSpectrum(spectrumBuilder.getClasses());
     }
 
     @Override
