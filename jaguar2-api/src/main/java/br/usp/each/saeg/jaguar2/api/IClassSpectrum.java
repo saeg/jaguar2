@@ -28,6 +28,13 @@ public interface IClassSpectrum extends ICodeSpectrum {
     String getName();
 
     /**
+     * Returns the VM name of the package this class belongs to.
+     *
+     * @return VM name of the package.
+     */
+    String getPackageName();
+
+    /**
      * Returns the spectrum data of methods included in this class.
      *
      * @return a {@link Collection} of {@link IMethodSpectrum}.
