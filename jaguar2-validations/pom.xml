@@ -70,7 +70,7 @@
 								</requireFileChecksum>
 								<requireFileChecksum>
 									<file>../jaguar2-examples/jaguar2-example-junit4-jacoco/target/jaguar2.xml</file>
-									<checksum>b537bc886a131744e0abdc42efef504b</checksum>
+									<checksum>333b8b0a247e4f4ec19fb96597ecc72e</checksum>
 									<type>md5</type>
 								</requireFileChecksum>
 							</rules>
