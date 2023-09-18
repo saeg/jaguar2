@@ -21,9 +21,9 @@ import javax.xml.stream.XMLStreamException;
 import javax.xml.stream.XMLStreamWriter;
 
 import br.usp.each.saeg.jaguar2.api.IBundleSpectrum;
-import br.usp.each.saeg.jaguar2.api.IClassSpectrum;
 import br.usp.each.saeg.jaguar2.api.ILineSpectrum;
 import br.usp.each.saeg.jaguar2.api.IPackageSpectrum;
+import br.usp.each.saeg.jaguar2.api.ISourceFileSpectrum;
 import br.usp.each.saeg.jaguar2.api.SpectrumEval;
 import br.usp.each.saeg.jaguar2.spi.SpectrumExporter;
 
@@ -49,16 +49,19 @@ public class XmlExporter implements SpectrumExporter {
             throws XMLStreamException {
 
         for (final IPackageSpectrum packageSpectrum : bundle.getPackages()) {
-            for (final IClassSpectrum spectrum : packageSpectrum.getClasses()) {
+            writer.writeStartElement("package");
+            writer.writeAttribute("name", packageSpectrum.getName());
+            for (final ISourceFileSpectrum spectrum : packageSpectrum.getSourceFiles()) {
                 write(spectrum, eval);
             }
+            writer.writeEndElement();
         }
     }
 
-    public void write(final IClassSpectrum spectrum, final SpectrumEval eval)
+    public void write(final ISourceFileSpectrum spectrum, final SpectrumEval eval)
             throws XMLStreamException {
 
-        writer.writeStartElement("class");
+        writer.writeStartElement("sourcefile");
         writer.writeAttribute("name", spectrum.getName());
 
         for (int nr = spectrum.getFirstLine(); nr <= spectrum.getLastLine(); nr++) {
