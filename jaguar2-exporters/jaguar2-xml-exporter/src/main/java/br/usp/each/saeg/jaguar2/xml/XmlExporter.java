@@ -74,17 +74,13 @@ public class XmlExporter implements SpectrumExporter {
             final double susp = eval.eval(line);
             if (susp > 0.0d) {
                 final int cef = eval.getCef(line);
-                final int cnf = eval.getCnf(line);
                 final int cep = eval.getCep(line);
-                final int cnp = eval.getCnp(line);
 
                 writer.writeStartElement("line");
                 writer.writeAttribute("nr", String.valueOf(nr));
                 writer.writeAttribute("cef", String.valueOf(cef));
-                writer.writeAttribute("cnf", String.valueOf(cnf));
                 writer.writeAttribute("cep", String.valueOf(cep));
-                writer.writeAttribute("cnp", String.valueOf(cnp));
-                writer.writeAttribute("susp", String.valueOf(susp));
+                writer.writeAttribute("susp", String.format("%f", susp));
                 writer.writeEndElement();
             }
         }
