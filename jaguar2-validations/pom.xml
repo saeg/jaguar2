@@ -65,12 +65,12 @@
 								</requireFileChecksum>
 								<requireFileChecksum>
 									<file>../jaguar2-examples/jaguar2-example-junit4-ba-dua/target/jaguar2.xml</file>
-									<checksum>deeae38f282c32d2c06ca1b4117bec95</checksum>
+									<checksum>710b9f0fba70b834703da7b3aaa274b9</checksum>
 									<type>md5</type>
 								</requireFileChecksum>
 								<requireFileChecksum>
 									<file>../jaguar2-examples/jaguar2-example-junit4-jacoco/target/jaguar2.xml</file>
-									<checksum>333b8b0a247e4f4ec19fb96597ecc72e</checksum>
+									<checksum>ce63d64406513bff4e3bde9dace1bdf2</checksum>
 									<type>md5</type>
 								</requireFileChecksum>
 							</rules>

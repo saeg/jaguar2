@@ -48,6 +48,11 @@ public class XmlExporter implements SpectrumExporter {
     public void write(final IBundleSpectrum bundle, final SpectrumEval eval)
             throws XMLStreamException {
 
+        writer.writeStartElement("tests");
+        writer.writeAttribute("fail", String.valueOf(eval.getFailedTests()));
+        writer.writeAttribute("pass", String.valueOf(eval.getPassedTests()));
+        writer.writeEndElement();
+
         for (final IPackageSpectrum packageSpectrum : bundle.getPackages()) {
             writer.writeStartElement("package");
             writer.writeAttribute("name", packageSpectrum.getName());
