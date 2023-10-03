@@ -84,7 +84,7 @@ public class Jaguar implements SpectrumEval {
     /**
      * Called when all tests have finished.
      *
-     * @throws Exception
+     * @throws Exception in case of exceptions during export.
      */
     public void testRunFinished() throws Exception {
         exporter.init();
