@@ -213,6 +213,9 @@
 						<version>2.6</version>
 					</dependency>
 				</dependencies>
+				<configuration>
+					<source>${maven.compiler.source}</source>
+				</configuration>
 				<executions>
 					<execution>
 						<goals>
