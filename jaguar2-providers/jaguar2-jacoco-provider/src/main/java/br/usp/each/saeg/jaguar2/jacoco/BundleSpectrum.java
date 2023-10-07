@@ -20,11 +20,11 @@ import java.util.Set;
 
 import br.usp.each.saeg.jaguar2.api.IBundleSpectrum;
 
-public class BundleSpectrum implements IBundleSpectrum {
+class BundleSpectrum implements IBundleSpectrum {
 
     private final Collection<PackageSpectrum> packages;
 
-    public BundleSpectrum(
+    BundleSpectrum(
             final Collection<ClassSpectrum> classes,
             final Collection<SourceFileSpectrum> sourceFiles) {
 

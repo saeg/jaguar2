@@ -14,11 +14,11 @@ import org.jacoco.core.analysis.IMethodCoverage;
 
 import br.usp.each.saeg.jaguar2.api.IMethodSpectrum;
 
-public class MethodSpectrum extends CodeSpectrum implements IMethodSpectrum {
+class MethodSpectrum extends CodeSpectrum implements IMethodSpectrum {
 
     private final IMethodCoverage coverage;
 
-    public MethodSpectrum(final IMethodCoverage coverage) {
+    MethodSpectrum(final IMethodCoverage coverage) {
         this.coverage = coverage;
     }
 
