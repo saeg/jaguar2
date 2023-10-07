@@ -15,7 +15,6 @@ import java.util.Collection;
 import java.util.Iterator;
 import java.util.ServiceLoader;
 
-import br.usp.each.saeg.jaguar2.api.MultipleSpectrumExporter;
 import br.usp.each.saeg.jaguar2.spi.SpectrumExporter;
 
 /**
