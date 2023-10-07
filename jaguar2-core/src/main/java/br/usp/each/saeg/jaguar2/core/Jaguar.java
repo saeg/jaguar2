@@ -11,11 +11,42 @@
 package br.usp.each.saeg.jaguar2.core;
 
 import br.usp.each.saeg.jaguar2.api.Heuristic;
+import br.usp.each.saeg.jaguar2.api.IBundleSpectrum;
 import br.usp.each.saeg.jaguar2.api.ILineSpectrum;
 import br.usp.each.saeg.jaguar2.api.SpectrumEval;
 import br.usp.each.saeg.jaguar2.spi.CoverageController;
 import br.usp.each.saeg.jaguar2.spi.SpectrumExporter;
 
+/**
+ * This class is the heart of the Jaguar execution.
+ *
+ * An instance of this class is notified of events of the underlying
+ * test framework by method calls {@link Jaguar#testRunStarted()},
+ * {@link Jaguar#testStarted()}, {@link Jaguar#testRunFinished()} and
+ * {@link Jaguar#testRunFinished()}.
+ *
+ * By those method calls, the instance will interact with the
+ * underlying code coverage provider and also count how many tests
+ * succeed/passed.
+ *
+ * The interaction with the code coverage provider is made by the
+ * class {@link CoverageController}. When a test is about to start the
+ * current code coverage is dropped/reseted, and when the test
+ * finishes the code coverage is saved together with a flag indicating
+ * if the test passed or failed.
+ *
+ * Finally, when the test run finishes, the {@link CoverageController}
+ * builds a {@link IBundleSpectrum} that groups each individual line
+ * spectrum ({@link ILineSpectrum} and its CEF (count (C) of tests
+ * that executed (E) the spectrum and the test failed (F)) and CEP
+ * (count (C) of tests that executed (E) the spectrum and the test
+ * passed (P)).
+ *
+ * Each spectrum is evaluated by {@link SpectrumEval} with a given
+ * {@link Heuristic} and all the {@link IBundleSpectrum} is
+ * written/exported with an implementation of a
+ * {@link SpectrumExporter}.
+ */
 public class Jaguar implements SpectrumEval {
 
     private final CoverageController controller;
@@ -28,6 +59,13 @@ public class Jaguar implements SpectrumEval {
 
     private int passedTests;
 
+    /**
+     * Instantiate a {@link Jaguar}.
+     *
+     * @param controller a {@link CoverageController}.
+     * @param exporter   a {@link SpectrumExporter}.
+     * @param heuristic  a {@link Heuristic}.
+     */
     public Jaguar(
             final CoverageController controller,
             final SpectrumExporter exporter,

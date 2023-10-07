@@ -12,9 +12,12 @@ package br.usp.each.saeg.jaguar2.api;
 
 /**
  * Spectrum data of portions of code that have individual source lines
- * like methods and classes.
+ * like methods, classes and source files.
  *
  * @see ILineSpectrum
+ * @see IMethodSpectrum
+ * @see IClassSpectrum
+ * @see ISourceFileSpectrum
  */
 public interface ICodeSpectrum {
 

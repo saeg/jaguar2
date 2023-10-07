@@ -12,6 +12,9 @@ package br.usp.each.saeg.jaguar2.core.heuristic;
 
 import br.usp.each.saeg.jaguar2.api.Heuristic;
 
+/**
+ * Implementation of the Tarantula heuristic.
+ */
 public class Tarantula implements Heuristic {
 
     @Override

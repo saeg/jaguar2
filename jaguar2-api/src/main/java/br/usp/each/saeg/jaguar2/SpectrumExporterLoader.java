@@ -24,11 +24,23 @@ public class SpectrumExporterLoader {
 
     private final ServiceLoader<SpectrumExporter> serviceLoader;
 
+    /**
+     * Instantiate a {@link SpectrumExporterLoader} for a given
+     * service-provider loading facility ({@link ServiceLoader}).
+     *
+     * @param serviceLoader a {@link ServiceLoader} that may load
+     *                      {@link SpectrumExporter} services.
+     */
     public SpectrumExporterLoader(
             final ServiceLoader<SpectrumExporter> serviceLoader) {
         this.serviceLoader = serviceLoader;
     }
 
+    /**
+     * Instantiate a {@link SpectrumExporterLoader} for a new service
+     * loader of the {@link SpectrumExporter} service type created by
+     * {@link ServiceLoader#load(Class)} method.
+     */
     public SpectrumExporterLoader() {
         this(ServiceLoader.load(SpectrumExporter.class));
     }
