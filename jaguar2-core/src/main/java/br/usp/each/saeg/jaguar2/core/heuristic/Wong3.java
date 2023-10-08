@@ -17,6 +17,12 @@ import br.usp.each.saeg.jaguar2.api.Heuristic;
  */
 public class Wong3 implements Heuristic {
 
+    /**
+     * Default constructor
+     */
+    public Wong3() {
+    }
+
     @Override
     public double eval(
             final int cef, final int cnf,

@@ -17,6 +17,12 @@ import br.usp.each.saeg.jaguar2.api.Heuristic;
  */
 public class Tarantula implements Heuristic {
 
+    /**
+     * Default constructor
+     */
+    public Tarantula() {
+    }
+
     @Override
     public double eval(
             final int cef, final int cnf,

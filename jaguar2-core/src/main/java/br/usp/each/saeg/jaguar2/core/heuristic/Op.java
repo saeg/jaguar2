@@ -17,6 +17,12 @@ import br.usp.each.saeg.jaguar2.api.Heuristic;
  */
 public class Op implements Heuristic {
 
+    /**
+     * Default constructor
+     */
+    public Op() {
+    }
+
     @Override
     public double eval(
             final int cef, final int cnf,

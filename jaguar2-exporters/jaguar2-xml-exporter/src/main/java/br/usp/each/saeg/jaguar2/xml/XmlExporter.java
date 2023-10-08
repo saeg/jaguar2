@@ -34,6 +34,12 @@ public class XmlExporter implements SpectrumExporter {
 
     private XMLStreamWriter writer;
 
+    /**
+     * Default constructor
+     */
+    public XmlExporter() {
+    }
+
     @Override
     public void init()
             throws XMLStreamException, FactoryConfigurationError, IOException {

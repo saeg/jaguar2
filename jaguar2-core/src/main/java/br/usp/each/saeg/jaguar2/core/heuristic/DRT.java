@@ -17,6 +17,12 @@ import br.usp.each.saeg.jaguar2.api.Heuristic;
  */
 public class DRT implements Heuristic {
 
+    /**
+     * Default constructor
+     */
+    public DRT() {
+    }
+
     @Override
     public double eval(
             final int cef, final int cnf,

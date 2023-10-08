@@ -44,6 +44,12 @@ public abstract class ClassFilesController implements CoverageController {
      */
     protected ClassFiles classFiles;
 
+    /**
+     * Default constructor
+     */
+    public ClassFilesController() {
+    }
+
     @Override
     public void init() {
         classesDirs = getClassesDirs();

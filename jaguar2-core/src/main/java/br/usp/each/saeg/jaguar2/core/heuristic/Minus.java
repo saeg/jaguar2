@@ -17,6 +17,12 @@ import br.usp.each.saeg.jaguar2.api.Heuristic;
  */
 public class Minus implements Heuristic {
 
+    /**
+     * Default constructor
+     */
+    public Minus() {
+    }
+
     @Override
     public double eval(
             final int cef, final int cnf,

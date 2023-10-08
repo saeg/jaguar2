@@ -30,6 +30,12 @@ public class CsvExporter implements SpectrumExporter {
 
     private PrintWriter writer;
 
+    /**
+     * Default constructor
+     */
+    public CsvExporter() {
+    }
+
     @Override
     public void init() throws IOException {
         final File output = new File("target", "jaguar2.csv");
