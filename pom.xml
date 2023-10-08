@@ -214,6 +214,7 @@
 					</dependency>
 				</dependencies>
 				<configuration>
+					<quiet>true</quiet>
 					<source>${maven.compiler.source}</source>
 				</configuration>
 				<executions>
