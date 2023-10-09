@@ -216,6 +216,7 @@
 				<configuration>
 					<quiet>true</quiet>
 					<source>${maven.compiler.source}</source>
+					<detectOfflineLinks>false</detectOfflineLinks>
 				</configuration>
 				<executions>
 					<execution>
