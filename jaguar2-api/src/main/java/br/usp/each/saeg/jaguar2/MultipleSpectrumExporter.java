@@ -21,7 +21,7 @@ class MultipleSpectrumExporter implements SpectrumExporter {
 
     private final Collection<SpectrumExporter> exporters;
 
-    public MultipleSpectrumExporter(final Collection<SpectrumExporter> exporters) {
+    MultipleSpectrumExporter(final Collection<SpectrumExporter> exporters) {
         this.exporters = exporters;
     }
 
@@ -48,7 +48,7 @@ class MultipleSpectrumExporter implements SpectrumExporter {
         }
     }
 
-    public Collection<SpectrumExporter> getExporters() {
+    Collection<SpectrumExporter> getExporters() {
         return Collections.unmodifiableCollection(exporters);
     }
 
