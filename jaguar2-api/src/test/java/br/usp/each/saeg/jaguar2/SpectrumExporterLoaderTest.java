@@ -16,7 +16,6 @@ import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
-import br.usp.each.saeg.jaguar2.api.MultipleSpectrumExporter;
 import br.usp.each.saeg.jaguar2.spi.SpectrumExporter;
 
 public class SpectrumExporterLoaderTest {

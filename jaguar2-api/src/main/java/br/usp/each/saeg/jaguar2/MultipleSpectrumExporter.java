@@ -8,18 +8,20 @@
  * Contributors:
  *     Roberto Araujo - initial API and implementation and/or initial documentation
  */
-package br.usp.each.saeg.jaguar2.api;
+package br.usp.each.saeg.jaguar2;
 
 import java.util.Collection;
 import java.util.Collections;
 
+import br.usp.each.saeg.jaguar2.api.IBundleSpectrum;
+import br.usp.each.saeg.jaguar2.api.SpectrumEval;
 import br.usp.each.saeg.jaguar2.spi.SpectrumExporter;
 
-public class MultipleSpectrumExporter implements SpectrumExporter {
+class MultipleSpectrumExporter implements SpectrumExporter {
 
     private final Collection<SpectrumExporter> exporters;
 
-    public MultipleSpectrumExporter(final Collection<SpectrumExporter> exporters) {
+    MultipleSpectrumExporter(final Collection<SpectrumExporter> exporters) {
         this.exporters = exporters;
     }
 
@@ -46,7 +48,7 @@ public class MultipleSpectrumExporter implements SpectrumExporter {
         }
     }
 
-    public Collection<SpectrumExporter> getExporters() {
+    Collection<SpectrumExporter> getExporters() {
         return Collections.unmodifiableCollection(exporters);
     }
 

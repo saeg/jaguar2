@@ -12,7 +12,16 @@ package br.usp.each.saeg.jaguar2.core.heuristic;
 
 import br.usp.each.saeg.jaguar2.api.Heuristic;
 
+/**
+ * Implementation of the Minus heuristic.
+ */
 public class Minus implements Heuristic {
+
+    /**
+     * Default constructor
+     */
+    public Minus() {
+    }
 
     @Override
     public double eval(

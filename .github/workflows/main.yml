@@ -22,7 +22,9 @@ jobs:
         java-version: ${{ matrix.java }}
         java-package: jdk
         cache: maven
+    - name: Setup GPG
+      run: gpg --batch --passphrase '' --quick-gen-key "John Doe <johndoe@x.y>" ed25519 sign 1d
     - name: Java version
       run: java -version && javac -version
     - name: Build
-      run: ./mvnw install
+      run: ./mvnw install -Prelease

@@ -32,6 +32,10 @@ import org.jacoco.core.data.SessionInfo;
 import br.usp.each.saeg.jaguar2.commons.ClassFilesController;
 import br.usp.each.saeg.jaguar2.spi.CoverageController;
 
+/**
+ * A {@link CoverageController} service implementation that interacts
+ * with JaCoCo.
+ */
 public class JaCoCoController extends ClassFilesController implements CoverageController {
 
     private final IAgent agent;
@@ -42,12 +46,23 @@ public class JaCoCoController extends ClassFilesController implements CoverageCo
 
     private SpectrumBuilder spectrumBuilder;
 
+    /**
+     * Instantiate a {@link JaCoCoController} for a given agent instance
+     * of the JaCoCo runtime.
+     *
+     * @param agent an {@link IAgent} that allow interaction with JaCoCo
+     *              agent runtime.
+     */
     public JaCoCoController(final IAgent agent) {
         this.agent = agent;
         failExecutionDataStores = new LinkedList<ExecutionDataStore>();
         successExecutionDataStores = new LinkedList<ExecutionDataStore>();
     }
 
+    /**
+     * Instantiate a {@link JaCoCoController} for the default agent
+     * instance of the JaCoCo runtime in this JVM.
+     */
     public JaCoCoController() {
         this(RT.getAgent());
     }

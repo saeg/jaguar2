@@ -12,7 +12,16 @@ package br.usp.each.saeg.jaguar2.core.heuristic;
 
 import br.usp.each.saeg.jaguar2.api.Heuristic;
 
+/**
+ * Implementation of the Kulczynski2 heuristic.
+ */
 public class Kulczynski2 implements Heuristic {
+
+    /**
+     * Default constructor
+     */
+    public Kulczynski2() {
+    }
 
     @Override
     public double eval(

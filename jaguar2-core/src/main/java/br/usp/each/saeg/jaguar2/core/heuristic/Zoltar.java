@@ -12,7 +12,16 @@ package br.usp.each.saeg.jaguar2.core.heuristic;
 
 import br.usp.each.saeg.jaguar2.api.Heuristic;
 
+/**
+ * Implementation of the Zoltar heuristic.
+ */
 public class Zoltar implements Heuristic {
+
+    /**
+     * Default constructor
+     */
+    public Zoltar() {
+    }
 
     @Override
     public double eval(

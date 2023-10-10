@@ -14,7 +14,7 @@ import java.util.Collection;
 
 import br.usp.each.saeg.jaguar2.api.IPackageSpectrum;
 
-public class PackageSpectrum implements IPackageSpectrum {
+class PackageSpectrum implements IPackageSpectrum {
 
     private final String name;
 
@@ -22,7 +22,7 @@ public class PackageSpectrum implements IPackageSpectrum {
 
     private final Collection<SourceFileSpectrum> sourceFiles;
 
-    public PackageSpectrum(final String name,
+    PackageSpectrum(final String name,
             final Collection<ClassSpectrum> classes,
             final Collection<SourceFileSpectrum> sourceFiles) {
 

@@ -25,6 +25,10 @@ import br.usp.each.saeg.jaguar2.api.IBundleSpectrum;
 import br.usp.each.saeg.jaguar2.api.IPackageSpectrum;
 import br.usp.each.saeg.jaguar2.spi.CoverageController;
 
+/**
+ * A {@link CoverageController} service implementation that interacts
+ * with BA-DUA.
+ */
 public class BaDuaController implements CoverageController {
 
     private final IAgent agent;
@@ -33,12 +37,23 @@ public class BaDuaController implements CoverageController {
 
     private final List<ExecutionDataStore> successExecutionDataStores;
 
+    /**
+     * Instantiate a {@link BaDuaController} for a given agent instance of
+     * the BA-DUA runtime.
+     *
+     * @param agent an {@link IAgent} that allow interaction with BA-DUA
+     *              agent runtime.
+     */
     public BaDuaController(final IAgent agent) {
         this.agent = agent;
         failExecutionDataStores = new LinkedList<ExecutionDataStore>();
         successExecutionDataStores = new LinkedList<ExecutionDataStore>();
     }
 
+    /**
+     * Instantiate a {@link BaDuaController} for the default agent
+     * instance of the BA-DUA runtime in this JVM.
+     */
     public BaDuaController() {
         this(BaDuaRuntime.getAgent());
     }

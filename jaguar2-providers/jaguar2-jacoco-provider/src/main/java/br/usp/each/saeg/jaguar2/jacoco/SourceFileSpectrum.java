@@ -12,13 +12,13 @@ package br.usp.each.saeg.jaguar2.jacoco;
 
 import br.usp.each.saeg.jaguar2.api.ISourceFileSpectrum;
 
-public class SourceFileSpectrum extends CodeSpectrum implements ISourceFileSpectrum {
+class SourceFileSpectrum extends CodeSpectrum implements ISourceFileSpectrum {
 
     private final String name;
 
     private final String packageName;
 
-    public SourceFileSpectrum(final String name, final String packageName) {
+    SourceFileSpectrum(final String name, final String packageName) {
         this.name = name;
         this.packageName = packageName;
     }

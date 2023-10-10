@@ -12,9 +12,9 @@ package br.usp.each.saeg.jaguar2.jacoco;
 
 import br.usp.each.saeg.jaguar2.api.ILineSpectrum;
 
-public class LineSpectrum implements ILineSpectrum {
+class LineSpectrum implements ILineSpectrum {
 
-    public static final LineSpectrum EMPTY = new LineSpectrum(0, 0);
+    static final LineSpectrum EMPTY = new LineSpectrum(0, 0);
 
     private final int cef;
 
@@ -35,7 +35,7 @@ public class LineSpectrum implements ILineSpectrum {
         return cep;
     }
 
-    public LineSpectrum increment(final boolean testFailed) {
+    LineSpectrum increment(final boolean testFailed) {
         if (testFailed) {
             return new LineSpectrum(cef + 1, cep);
         } else {

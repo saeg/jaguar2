@@ -12,7 +12,16 @@ package br.usp.each.saeg.jaguar2.core.heuristic;
 
 import br.usp.each.saeg.jaguar2.api.Heuristic;
 
+/**
+ * Implementation of the Jaccard heuristic.
+ */
 public class Jaccard implements Heuristic {
+
+    /**
+     * Default constructor
+     */
+    public Jaccard() {
+    }
 
     @Override
     public double eval(

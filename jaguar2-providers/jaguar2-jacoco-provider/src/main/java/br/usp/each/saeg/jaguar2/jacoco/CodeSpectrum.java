@@ -16,13 +16,13 @@ import org.jacoco.core.analysis.ISourceNode;
 
 import br.usp.each.saeg.jaguar2.api.ICodeSpectrum;
 
-public class CodeSpectrum implements ICodeSpectrum {
+class CodeSpectrum implements ICodeSpectrum {
 
     private LineSpectrum[] lines;
 
     private int offset;
 
-    public CodeSpectrum() {
+    CodeSpectrum() {
         offset = UNKNOWN_LINE;
     }
 
@@ -65,7 +65,7 @@ public class CodeSpectrum implements ICodeSpectrum {
         }
     }
 
-    public void increment(final ISourceNode coverage, final boolean testFailed) {
+    void increment(final ISourceNode coverage, final boolean testFailed) {
         final int firstLine = coverage.getFirstLine();
         if (firstLine != UNKNOWN_LINE) {
             final int lastLine = coverage.getLastLine();

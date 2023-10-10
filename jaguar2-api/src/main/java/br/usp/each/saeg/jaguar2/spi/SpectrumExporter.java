@@ -21,7 +21,7 @@ public interface SpectrumExporter {
     /**
      * Initialize the exporter service.
      *
-     * @throws Exception
+     * @throws Exception in case of exceptions during initialization.
      */
     void init() throws Exception;
 
@@ -34,14 +34,14 @@ public interface SpectrumExporter {
      * @param eval     a {@link SpectrumEval} that calculate a spectrum
      *                 suspiciousness.
      *
-     * @throws Exception
+     * @throws Exception in case of exceptions during write operation.
      */
     void write(IBundleSpectrum spectrum, SpectrumEval eval) throws Exception;
 
     /**
      * Shutdown the exporter service and cleanup created resources.
      *
-     * @throws Exception
+     * @throws Exception in case of exceptions during tear down.
      */
     void shutdown() throws Exception;
 

@@ -23,9 +23,18 @@ import br.usp.each.saeg.jaguar2.api.IPackageSpectrum;
 import br.usp.each.saeg.jaguar2.api.SpectrumEval;
 import br.usp.each.saeg.jaguar2.spi.SpectrumExporter;
 
+/**
+ * A {@link SpectrumExporter} implementation that writes to a CSV file
+ */
 public class CsvExporter implements SpectrumExporter {
 
     private PrintWriter writer;
+
+    /**
+     * Default constructor
+     */
+    public CsvExporter() {
+    }
 
     @Override
     public void init() throws IOException {
@@ -42,7 +51,7 @@ public class CsvExporter implements SpectrumExporter {
         }
     }
 
-    public void write(final IClassSpectrum spectrum, final SpectrumEval eval) {
+    private void write(final IClassSpectrum spectrum, final SpectrumEval eval) {
         for (int nr = spectrum.getFirstLine(); nr <= spectrum.getLastLine(); nr++) {
             final ILineSpectrum line = spectrum.getLine(nr);
             final double susp = eval.eval(line);

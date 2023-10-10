@@ -10,6 +10,11 @@
  */
 package br.usp.each.saeg.jaguar2.api;
 
+/**
+ * Spectrum data of a single source file.
+ *
+ * @see ICodeSpectrum
+ */
 public interface ISourceFileSpectrum extends ICodeSpectrum {
 
     /**

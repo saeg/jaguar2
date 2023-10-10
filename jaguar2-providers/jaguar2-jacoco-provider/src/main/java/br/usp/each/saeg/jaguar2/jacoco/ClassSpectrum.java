@@ -19,13 +19,13 @@ import org.jacoco.core.analysis.IMethodCoverage;
 
 import br.usp.each.saeg.jaguar2.api.IClassSpectrum;
 
-public class ClassSpectrum extends CodeSpectrum implements IClassSpectrum {
+class ClassSpectrum extends CodeSpectrum implements IClassSpectrum {
 
     private final Map<String, MethodSpectrum> methods = new LinkedHashMap<String, MethodSpectrum>();
 
     private final IClassCoverage coverage;
 
-    public ClassSpectrum(final IClassCoverage coverage) {
+    ClassSpectrum(final IClassCoverage coverage) {
         this.coverage = coverage;
     }
 
@@ -49,12 +49,12 @@ public class ClassSpectrum extends CodeSpectrum implements IClassSpectrum {
         return methods.values();
     }
 
-    public void addMethod(final IMethodCoverage coverage) {
+    void addMethod(final IMethodCoverage coverage) {
         final MethodSpectrum spectrum = new MethodSpectrum(coverage);
         methods.put(k(coverage.getName(), coverage.getDesc()), spectrum);
     }
 
-    public MethodSpectrum getMethod(final IMethodCoverage coverage) {
+    MethodSpectrum getMethod(final IMethodCoverage coverage) {
         return methods.get(k(coverage.getName(), coverage.getDesc()));
     }
 

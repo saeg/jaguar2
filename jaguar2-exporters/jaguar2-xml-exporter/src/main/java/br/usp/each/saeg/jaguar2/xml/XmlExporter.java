@@ -27,9 +27,18 @@ import br.usp.each.saeg.jaguar2.api.ISourceFileSpectrum;
 import br.usp.each.saeg.jaguar2.api.SpectrumEval;
 import br.usp.each.saeg.jaguar2.spi.SpectrumExporter;
 
+/**
+ * A {@link SpectrumExporter} implementation that writes to a XML file
+ */
 public class XmlExporter implements SpectrumExporter {
 
     private XMLStreamWriter writer;
+
+    /**
+     * Default constructor
+     */
+    public XmlExporter() {
+    }
 
     @Override
     public void init()
@@ -63,7 +72,7 @@ public class XmlExporter implements SpectrumExporter {
         }
     }
 
-    public void write(final ISourceFileSpectrum spectrum, final SpectrumEval eval)
+    private void write(final ISourceFileSpectrum spectrum, final SpectrumEval eval)
             throws XMLStreamException {
 
         writer.writeStartElement("sourcefile");

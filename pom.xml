@@ -78,6 +78,7 @@
 		<license.header.fileLocation>LICENSE-TEMPLATE.txt</license.header.fileLocation>
 		<ba-dua.version>0.8.0</ba-dua.version>
 		<jacoco.version>0.8.7</jacoco.version>
+		<gpg.skip>true</gpg.skip>
 	</properties>
 
 	<modules>
@@ -201,6 +202,65 @@
 					</execution>
 				</executions>
 			</plugin>
+
+			<!-- Release Plugins -->
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-javadoc-plugin</artifactId>
+				<version>2.10.4</version>
+				<dependencies>
+					<dependency>
+						<groupId>commons-lang</groupId>
+						<artifactId>commons-lang</artifactId>
+						<version>2.6</version>
+					</dependency>
+				</dependencies>
+				<configuration>
+					<quiet>true</quiet>
+					<source>${maven.compiler.source}</source>
+					<detectOfflineLinks>false</detectOfflineLinks>
+				</configuration>
+				<executions>
+					<execution>
+						<goals>
+							<goal>jar</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-source-plugin</artifactId>
+				<version>3.0.1</version>
+				<executions>
+					<execution>
+						<goals>
+							<goal>jar-no-fork</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-gpg-plugin</artifactId>
+				<version>1.6</version>
+				<executions>
+					<execution>
+						<goals>
+							<goal>sign</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-release-plugin</artifactId>
+				<configuration>
+					<releaseProfiles>release</releaseProfiles>
+					<autoVersionSubmodules>true</autoVersionSubmodules>
+					<tagNameFormat>v@{project.version}</tagNameFormat>
+				</configuration>
+			</plugin>
 		</plugins>
 	</build>
 
@@ -247,6 +307,23 @@
 			<properties>
 				<maven.compiler.source>1.8</maven.compiler.source>
 				<maven.compiler.target>1.8</maven.compiler.target>
+			</properties>
+		</profile>
+		<profile>
+			<id>html5-javadoc</id>
+			<activation>
+				<!-- This feature is only available for Java >= 9 -->
+				<!-- HTML 5 is the default for Java >= 11 -->
+				<jdk>[9,11)</jdk>
+			</activation>
+			<properties>
+				<additionalJOption>-html5</additionalJOption>
+			</properties>
+		</profile>
+		<profile>
+			<id>release</id>
+			<properties>
+				<gpg.skip>false</gpg.skip>
 			</properties>
 		</profile>
 	</profiles>

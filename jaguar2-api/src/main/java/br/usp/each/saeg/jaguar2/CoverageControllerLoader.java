@@ -22,11 +22,23 @@ public class CoverageControllerLoader {
 
     private final ServiceLoader<CoverageController> serviceLoader;
 
+    /**
+     * Instantiate a {@link CoverageControllerLoader} for a given
+     * service-provider loading facility ({@link ServiceLoader}).
+     *
+     * @param serviceLoader a {@link ServiceLoader} that may load
+     *                      {@link CoverageController} services.
+     */
     public CoverageControllerLoader(
             final ServiceLoader<CoverageController> serviceLoader) {
         this.serviceLoader = serviceLoader;
     }
 
+    /**
+     * Instantiate a {@link CoverageControllerLoader} for a new service
+     * loader of the {@link CoverageController} service type created by
+     * {@link ServiceLoader#load(Class)} method.
+     */
     public CoverageControllerLoader() {
         this(ServiceLoader.load(CoverageController.class));
     }

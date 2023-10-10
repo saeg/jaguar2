@@ -19,15 +19,15 @@ import org.jacoco.core.analysis.IClassCoverage;
 import org.jacoco.core.analysis.ICoverageVisitor;
 import org.jacoco.core.analysis.IMethodCoverage;
 
-public class SpectrumBuilder implements ICoverageVisitor {
+class SpectrumBuilder implements ICoverageVisitor {
 
     private final Map<String, ClassSpectrum> classes = new HashMap<String, ClassSpectrum>();
 
     private final Map<String, SourceFileSpectrum> sourceFiles = new HashMap<String, SourceFileSpectrum>();
 
-    public final UpdateSpectrum updateTestFailed = new UpdateSpectrum(true);
+    final UpdateSpectrum updateTestFailed = new UpdateSpectrum(true);
 
-    public final UpdateSpectrum updateTestPassed = new UpdateSpectrum(false);
+    final UpdateSpectrum updateTestPassed = new UpdateSpectrum(false);
 
     @Override
     public void visitCoverage(final IClassCoverage classCoverage) {
@@ -65,12 +65,12 @@ public class SpectrumBuilder implements ICoverageVisitor {
 
     }
 
-    public Collection<ClassSpectrum> getClasses() {
+    Collection<ClassSpectrum> getClasses() {
         // Using tree map to guarantee iteration order (for reproducible builds/validation)
         return new TreeMap<String, ClassSpectrum>(classes).values();
     }
 
-    public Collection<SourceFileSpectrum> getSourceFiles() {
+    Collection<SourceFileSpectrum> getSourceFiles() {
         // Using tree map to guarantee iteration order (for reproducible builds/validation)
         return new TreeMap<String, SourceFileSpectrum>(sourceFiles).values();
     }

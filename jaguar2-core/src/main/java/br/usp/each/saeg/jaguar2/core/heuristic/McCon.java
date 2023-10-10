@@ -12,7 +12,16 @@ package br.usp.each.saeg.jaguar2.core.heuristic;
 
 import br.usp.each.saeg.jaguar2.api.Heuristic;
 
+/**
+ * Implementation of the McCon heuristic.
+ */
 public class McCon implements Heuristic {
+
+    /**
+     * Default constructor
+     */
+    public McCon() {
+    }
 
     @Override
     public double eval(
