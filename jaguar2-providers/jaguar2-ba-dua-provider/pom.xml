@@ -23,6 +23,7 @@
 
 	<properties>
 		<license.header.fileLocation>../../LICENSE-TEMPLATE.txt</license.header.fileLocation>
+		<maven.deploy.skip>true</maven.deploy.skip>
 	</properties>
 
 	<dependencies>
