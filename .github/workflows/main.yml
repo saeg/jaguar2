@@ -27,4 +27,4 @@ jobs:
     - name: Java version
       run: java -version && javac -version
     - name: Build
-      run: ./mvnw install
+      run: ./mvnw install -Prelease

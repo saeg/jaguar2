@@ -78,6 +78,7 @@
 		<license.header.fileLocation>LICENSE-TEMPLATE.txt</license.header.fileLocation>
 		<ba-dua.version>0.8.0</ba-dua.version>
 		<jacoco.version>0.8.7</jacoco.version>
+		<gpg.skip>true</gpg.skip>
 	</properties>
 
 	<modules>
@@ -307,6 +308,12 @@
 			</activation>
 			<properties>
 				<additionalJOption>-html5</additionalJOption>
+			</properties>
+		</profile>
+		<profile>
+			<id>release</id>
+			<properties>
+				<gpg.skip>false</gpg.skip>
 			</properties>
 		</profile>
 	</profiles>
