@@ -16,7 +16,7 @@
 	<parent>
 		<groupId>br.usp.each.saeg</groupId>
 		<artifactId>jaguar2-parent</artifactId>
-		<version>0.0.1-jdk6</version>
+		<version>0.0.2-SNAPSHOT</version>
 	</parent>
 
 	<artifactId>jaguar2-commons</artifactId>
