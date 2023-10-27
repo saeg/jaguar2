@@ -356,7 +356,7 @@
 			<id>toolchain</id>
 			<activation>
 				<property>
-					<name>jdk.version</name>
+					<name>jdk</name>
 				</property>
 			</activation>
 			<build>
@@ -368,7 +368,7 @@
 						<configuration>
 							<toolchains>
 								<jdk>
-									<version>${jdk.version}</version>
+									<version>${jdk}</version>
 								</jdk>
 							</toolchains>
 						</configuration>
@@ -387,7 +387,7 @@
 			<id>toolchain-jdk6</id>
 			<activation>
 				<property>
-					<name>jdk.version</name>
+					<name>jdk</name>
 					<value>6</value>
 				</property>
 			</activation>
