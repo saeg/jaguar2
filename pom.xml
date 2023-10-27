@@ -353,6 +353,54 @@
 			</properties>
 		</profile>
 		<profile>
+			<id>toolchain</id>
+			<activation>
+				<property>
+					<name>jdk.version</name>
+				</property>
+			</activation>
+			<build>
+				<plugins>
+					<plugin>
+						<groupId>org.apache.maven.plugins</groupId>
+						<artifactId>maven-toolchains-plugin</artifactId>
+						<configuration>
+							<toolchains>
+								<jdk>
+									<version>${jdk.version}</version>
+								</jdk>
+							</toolchains>
+						</configuration>
+						<executions>
+							<execution>
+								<goals>
+									<goal>toolchain</goal>
+								</goals>
+							</execution>
+						</executions>
+					</plugin>
+				</plugins>
+			</build>
+		</profile>
+		<profile>
+			<id>toolchain-jdk6</id>
+			<activation>
+				<property>
+					<name>jdk.version</name>
+					<value>6</value>
+				</property>
+			</activation>
+			<properties>
+				<!--
+					overrides properties possibly defined by
+					jdk12, jdk20 or html5-javadoc profiles
+				-->
+				<maven.compiler.source>1.6</maven.compiler.source>
+				<maven.compiler.target>1.6</maven.compiler.target>
+				<additionalJOption/>
+			</properties>
+		</profile>
+		<profile>
 			<id>release</id>
 			<properties>
 				<gpg.skip>false</gpg.skip>
