@@ -22,9 +22,25 @@ jobs:
         java-version: ${{ matrix.java }}
         java-package: jdk
         cache: maven
+        mvn-toolchain-id: ${{ matrix.java }}
+    - id: get-major-java-version
+      run: echo "::set-output name=value::$(echo ${{ matrix.java }} | cut -d. -f1)"
+    - name: Setup minimum Java version
+      if: ${{ steps.get-major-java-version.outputs.value < 7 }}
+      uses: actions/setup-java@v3
+      with:
+        distribution: zulu
+        java-version: 7
+        java-package: jdk
     - name: Setup GPG
       run: gpg --batch --passphrase '' --quick-gen-key "John Doe <johndoe@x.y>" ed25519 sign 1d
+    - name: Available toolchains
+      run: cat $HOME/.m2/toolchains.xml
     - name: Java version
       run: java -version && javac -version
     - name: Build
+      if: ${{ steps.get-major-java-version.outputs.value >= 7 }}
       run: ./mvnw install -Prelease
+    - name: Build
+      if: ${{ steps.get-major-java-version.outputs.value < 7 }}
+      run: ./mvnw install -Prelease -Djdk=6

@@ -100,9 +100,39 @@
 					<artifactId>maven-surefire-plugin</artifactId>
 					<version>2.12.4</version>
 				</plugin>
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-enforcer-plugin</artifactId>
+					<!--
+						Using this version to support requireFileChecksum with Java 6
+
+						Actually, version 3.0.0-M2 still runs on Java 6, but final
+						version 3.0.0 does not. And 3.0.0-M1 was the first release
+						with the features that we want to use (requireFileChecksum).
+					-->
+					<version>3.0.0-M1</version>
+				</plugin>
 			</plugins>
 		</pluginManagement>
 		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-enforcer-plugin</artifactId>
+				<configuration>
+					<rules>
+						<requireJavaVersion>
+							<version>1.7</version>
+						</requireJavaVersion>
+					</rules>
+				</configuration>
+				<executions>
+					<execution>
+						<goals>
+							<goal>enforce</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
 			<plugin>
 				<groupId>com.mycila</groupId>
 				<artifactId>license-maven-plugin</artifactId>
@@ -320,6 +350,55 @@
 			</activation>
 			<properties>
 				<additionalJOption>-html5</additionalJOption>
+			</properties>
+		</profile>
+		<profile>
+			<id>toolchain</id>
+			<activation>
+				<property>
+					<name>jdk</name>
+				</property>
+			</activation>
+			<build>
+				<plugins>
+					<plugin>
+						<groupId>org.apache.maven.plugins</groupId>
+						<artifactId>maven-toolchains-plugin</artifactId>
+						<version>3.0.0</version>
+						<configuration>
+							<toolchains>
+								<jdk>
+									<version>${jdk}</version>
+								</jdk>
+							</toolchains>
+						</configuration>
+						<executions>
+							<execution>
+								<goals>
+									<goal>toolchain</goal>
+								</goals>
+							</execution>
+						</executions>
+					</plugin>
+				</plugins>
+			</build>
+		</profile>
+		<profile>
+			<id>toolchain-jdk6</id>
+			<activation>
+				<property>
+					<name>jdk</name>
+					<value>6</value>
+				</property>
+			</activation>
+			<properties>
+				<!--
+					overrides properties possibly defined by
+					jdk12, jdk20 or html5-javadoc profiles
+				-->
+				<maven.compiler.source>1.6</maven.compiler.source>
+				<maven.compiler.target>1.6</maven.compiler.target>
+				<additionalJOption/>
 			</properties>
 		</profile>
 		<profile>
