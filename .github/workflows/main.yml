@@ -39,9 +39,8 @@ jobs:
     - name: Java version
       run: java -version && javac -version
     - name: Build
-      run: |
-        if [ ${{ steps.get-major-java-version.outputs.value }} -ge 7 ]; then
-          ./mvnw install -Prelease
-        else
-          ./mvnw install -Prelease -Djdk.version=6
-        fi
+      if: ${{ steps.get-major-java-version.outputs.value >= 7 }}
+      run: ./mvnw install -Prelease
+    - name: Build
+      if: ${{ steps.get-major-java-version.outputs.value < 7 }}
+      run: ./mvnw install -Prelease -Djdk.version=6
