@@ -20,7 +20,6 @@
 	</parent>
 
 	<artifactId>jaguar2-validations</artifactId>
-	<packaging>pom</packaging>
 
 	<properties>
 		<license.header.fileLocation>../LICENSE-TEMPLATE.txt</license.header.fileLocation>
