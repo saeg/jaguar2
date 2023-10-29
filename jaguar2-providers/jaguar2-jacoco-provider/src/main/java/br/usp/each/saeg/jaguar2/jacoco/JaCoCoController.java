@@ -79,6 +79,11 @@ public class JaCoCoController extends ClassFilesController implements CoverageCo
     }
 
     @Override
+    public void dump(final boolean reset) throws IOException {
+        agent.dump(reset);
+    }
+
+    @Override
     public void save(final boolean testFailed) {
         /*
          * JaCoCo's execution data.

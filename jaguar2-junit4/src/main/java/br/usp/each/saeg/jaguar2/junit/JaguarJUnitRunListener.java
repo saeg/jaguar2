@@ -10,6 +10,8 @@
  */
 package br.usp.each.saeg.jaguar2.junit;
 
+import java.io.IOException;
+
 import org.junit.runner.Description;
 import org.junit.runner.Result;
 import org.junit.runner.notification.Failure;
@@ -31,6 +33,11 @@ import br.usp.each.saeg.jaguar2.spi.SpectrumExporter;
  * Jaguar will got this information when test finishes.
  */
 public class JaguarJUnitRunListener extends RunListener {
+
+    /**
+     * Name of the property that allows enable no dump feature.
+     */
+    public static final String JAGUAR2_NO_DUMP = "jaguar2.noDump";
 
     private final Jaguar jaguar;
 
@@ -73,7 +80,8 @@ public class JaguarJUnitRunListener extends RunListener {
         this(new Jaguar(
                 new CoverageControllerLoader().load(),
                 new SpectrumExporterLoader().load(),
-                new Ochiai()));
+                new Ochiai(),
+                Boolean.getBoolean(JAGUAR2_NO_DUMP)));
     }
 
     @Override
@@ -82,7 +90,7 @@ public class JaguarJUnitRunListener extends RunListener {
     }
 
     @Override
-    public void testStarted(final Description description) {
+    public void testStarted(final Description description) throws IOException {
         fail = false;
         skip = false;
         jaguar.testStarted();

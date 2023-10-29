@@ -68,6 +68,11 @@ public class BaDuaController implements CoverageController {
     }
 
     @Override
+    public void dump(final boolean reset) throws IOException {
+        agent.dump(reset);
+    }
+
+    @Override
     public void save(final boolean testFailed) {
         /*
          * BA-DUA's execution data.

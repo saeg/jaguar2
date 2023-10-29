@@ -10,6 +10,8 @@
  */
 package br.usp.each.saeg.jaguar2.spi;
 
+import java.io.IOException;
+
 import br.usp.each.saeg.jaguar2.api.IBundleSpectrum;
 
 /**
@@ -26,6 +28,16 @@ public interface CoverageController {
      * Reset runtime code coverage data.
      */
     void reset();
+
+    /**
+     * Dump runtime code coverage data.
+     *
+     * @param reset a flag indicating that code coverage data should
+     *              also be reset.
+     *
+     * @throws IOException in case of exceptions during dump.
+     */
+    void dump(boolean reset) throws IOException;
 
     /**
      * Save runtime code coverage data for further analysis. The data is
