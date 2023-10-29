@@ -242,6 +242,7 @@
 					<quiet>true</quiet>
 					<source>${maven.compiler.source}</source>
 					<detectOfflineLinks>false</detectOfflineLinks>
+					<failOnWarnings>true</failOnWarnings>
 				</configuration>
 				<executions>
 					<execution>
