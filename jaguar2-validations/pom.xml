@@ -20,14 +20,26 @@
 	</parent>
 
 	<artifactId>jaguar2-validations</artifactId>
-	<packaging>pom</packaging>
 
 	<properties>
 		<license.header.fileLocation>../LICENSE-TEMPLATE.txt</license.header.fileLocation>
 		<maven.deploy.skip>true</maven.deploy.skip>
+		<gpg.skip>true</gpg.skip>
+		<maven.install.skip>true</maven.install.skip>
 	</properties>
 
 	<build>
+		<pluginManagement>
+			<plugins>
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-jar-plugin</artifactId>
+					<configuration>
+						<skipIfEmpty>true</skipIfEmpty>
+					</configuration>
+				</plugin>
+			</plugins>
+		</pluginManagement>
 		<plugins>
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>

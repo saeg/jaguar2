@@ -10,6 +10,8 @@
  */
 package br.usp.each.saeg.jaguar2.core;
 
+import java.io.IOException;
+
 import br.usp.each.saeg.jaguar2.api.Heuristic;
 import br.usp.each.saeg.jaguar2.api.IBundleSpectrum;
 import br.usp.each.saeg.jaguar2.api.ILineSpectrum;
@@ -55,9 +57,32 @@ public class Jaguar implements SpectrumEval {
 
     private final Heuristic heuristic;
 
+    private final boolean noDump;
+
     private int failedTests;
 
     private int passedTests;
+
+    /**
+     * Instantiate a {@link Jaguar}.
+     *
+     * @param controller a {@link CoverageController}.
+     * @param exporter   a {@link SpectrumExporter}.
+     * @param heuristic  a {@link Heuristic}.
+     * @param noDump     enable not dump and only reset the coverage.
+     */
+    public Jaguar(
+            final CoverageController controller,
+            final SpectrumExporter exporter,
+            final Heuristic heuristic,
+            final boolean noDump) {
+        this.controller = controller;
+        this.exporter = exporter;
+        this.heuristic = heuristic;
+        this.noDump = noDump;
+        failedTests = 0;
+        passedTests = 0;
+    }
 
     /**
      * Instantiate a {@link Jaguar}.
@@ -70,11 +95,7 @@ public class Jaguar implements SpectrumEval {
             final CoverageController controller,
             final SpectrumExporter exporter,
             final Heuristic heuristic) {
-        this.controller = controller;
-        this.exporter = exporter;
-        this.heuristic = heuristic;
-        failedTests = 0;
-        passedTests = 0;
+        this(controller, exporter, heuristic, false);
     }
 
     /**
@@ -91,10 +112,16 @@ public class Jaguar implements SpectrumEval {
      *
      * The current implementation reset runtime code coverage data as no
      * code executed so far is related to current test.
+     *
+     * @throws IOException in case of exceptions during dump.
      */
-    public void testStarted() {
+    public void testStarted() throws IOException {
         if (controller != null) {
-            controller.reset();
+            if (noDump) {
+                controller.reset();
+            } else {
+                controller.dump(true);
+            }
         }
     }
 

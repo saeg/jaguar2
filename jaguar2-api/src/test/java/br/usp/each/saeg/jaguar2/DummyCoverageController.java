@@ -24,6 +24,10 @@ public class DummyCoverageController implements CoverageController {
     }
 
     @Override
+    public void dump(final boolean reset) {
+    }
+
+    @Override
     public void save(final boolean testFailed) {
     }
 

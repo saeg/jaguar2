@@ -10,10 +10,13 @@
  */
 package br.usp.each.saeg.jaguar2.junit;
 
+import static org.junit.Assert.fail;
 import static org.mockito.Matchers.eq;
 import static org.mockito.Mockito.inOrder;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.times;
+
+import java.io.IOException;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -288,8 +291,12 @@ public class JaguarJUnitRunListenerTest {
 
             @Override
             public void run() {
-                inOrder.verify(jaguarMock, times(2)).testStarted();
-                inOrder.verify(jaguarMock).testFinished(eq(false));
+                try {
+                    inOrder.verify(jaguarMock, times(2)).testStarted();
+                    inOrder.verify(jaguarMock).testFinished(eq(false));
+                } catch (final IOException e) {
+                    fail();
+                }
             }
 
         });
@@ -313,8 +320,12 @@ public class JaguarJUnitRunListenerTest {
 
             @Override
             public void run() {
-                inOrder.verify(jaguarMock, times(2)).testStarted();
-                inOrder.verify(jaguarMock).testFinished(eq(true));
+                try {
+                    inOrder.verify(jaguarMock, times(2)).testStarted();
+                    inOrder.verify(jaguarMock).testFinished(eq(true));
+                } catch (final IOException e) {
+                    fail();
+                }
             }
 
         });
@@ -338,7 +349,11 @@ public class JaguarJUnitRunListenerTest {
 
             @Override
             public void run() {
-                inOrder.verify(jaguarMock, times(2)).testStarted();
+                try {
+                    inOrder.verify(jaguarMock, times(2)).testStarted();
+                } catch (final IOException e) {
+                    fail();
+                }
             }
 
         });
@@ -353,25 +368,37 @@ public class JaguarJUnitRunListenerTest {
     }
 
     private void successTest() {
-        final Description desc = mock(Description.class);
-        listener.testStarted(desc);
-        listener.testFinished(desc);
+        try {
+            final Description desc = mock(Description.class);
+            listener.testStarted(desc);
+            listener.testFinished(desc);
+        } catch (final IOException e) {
+            fail();
+        }
     }
 
     private void failTest() {
-        final Description desc = mock(Description.class);
-        final Failure failure = mock(Failure.class);
-        listener.testStarted(desc);
-        listener.testFailure(failure);
-        listener.testFinished(desc);
+        try {
+            final Description desc = mock(Description.class);
+            final Failure failure = mock(Failure.class);
+            listener.testStarted(desc);
+            listener.testFailure(failure);
+            listener.testFinished(desc);
+        } catch (final IOException e) {
+            fail();
+        }
     }
 
     private void assumptionFailureTest() {
-        final Description desc = mock(Description.class);
-        final Failure failure = mock(Failure.class);
-        listener.testStarted(desc);
-        listener.testAssumptionFailure(failure);
-        listener.testFinished(desc);
+        try {
+            final Description desc = mock(Description.class);
+            final Failure failure = mock(Failure.class);
+            listener.testStarted(desc);
+            listener.testAssumptionFailure(failure);
+            listener.testFinished(desc);
+        } catch (final IOException e) {
+            fail();
+        }
     }
 
     private void verifyTests(final Runnable runnable) throws Exception {
@@ -382,17 +409,29 @@ public class JaguarJUnitRunListenerTest {
     }
 
     private void verifySuccessTest() {
-        inOrder.verify(jaguarMock).testStarted();
-        inOrder.verify(jaguarMock).testFinished(eq(false));
+        try {
+            inOrder.verify(jaguarMock).testStarted();
+            inOrder.verify(jaguarMock).testFinished(eq(false));
+        } catch (final IOException e) {
+            fail();
+        }
     }
 
     private void verifyFailTest() {
-        inOrder.verify(jaguarMock).testStarted();
-        inOrder.verify(jaguarMock).testFinished(eq(true));
+        try {
+            inOrder.verify(jaguarMock).testStarted();
+            inOrder.verify(jaguarMock).testFinished(eq(true));
+        } catch (final IOException e) {
+            fail();
+        }
     }
 
     private void verifyAssumptionFailure() {
-        inOrder.verify(jaguarMock).testStarted();
+        try {
+            inOrder.verify(jaguarMock).testStarted();
+        } catch (final IOException e) {
+            fail();
+        }
     }
 
 }

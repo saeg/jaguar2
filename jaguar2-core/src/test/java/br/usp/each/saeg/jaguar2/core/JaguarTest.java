@@ -16,6 +16,8 @@ import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
 
+import java.io.IOException;
+
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
@@ -57,7 +59,19 @@ public class JaguarTest {
     }
 
     @Test
-    public void testStartedCallControllerReset() {
+    public void testStartedCallControllerDump() throws IOException {
+        // When
+        jaguar.testStarted();
+
+        // Then
+        verify(controllerMock, times(1)).dump(true);
+    }
+
+    @Test
+    public void testStartedCallControllerResetWhenNoDump() throws IOException {
+        // Given
+        jaguar = new Jaguar(controllerMock, exporterMock, heuristicMock, true);
+
         // When
         jaguar.testStarted();
 
