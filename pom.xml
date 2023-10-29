@@ -103,14 +103,7 @@
 				<plugin>
 					<groupId>org.apache.maven.plugins</groupId>
 					<artifactId>maven-enforcer-plugin</artifactId>
-					<!--
-						Using this version to support requireFileChecksum with Java 6
-
-						Actually, version 3.0.0-M2 still runs on Java 6, but final
-						version 3.0.0 does not. And 3.0.0-M1 was the first release
-						with the features that we want to use (requireFileChecksum).
-					-->
-					<version>3.0.0-M1</version>
+					<version>3.0.0-M3</version>
 				</plugin>
 			</plugins>
 		</pluginManagement>
@@ -167,7 +160,7 @@
 			<plugin>
 				<groupId>org.codehaus.mojo</groupId>
 				<artifactId>animal-sniffer-maven-plugin</artifactId>
-				<version>1.16</version>
+				<version>1.17</version>
 				<configuration>
 					<signature>
 						<groupId>org.codehaus.mojo.signature</groupId>
@@ -219,7 +212,7 @@
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-pmd-plugin</artifactId>
-				<version>3.6</version>
+				<version>3.13.0</version>
 				<configuration>
 					<verbose>true</verbose>
 				</configuration>
@@ -261,7 +254,7 @@
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-source-plugin</artifactId>
-				<version>3.0.1</version>
+				<version>3.2.1</version>
 				<executions>
 					<execution>
 						<goals>
