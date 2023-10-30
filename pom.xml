@@ -114,7 +114,7 @@
 				<configuration>
 					<rules>
 						<requireJavaVersion>
-							<version>1.7</version>
+							<version>1.8</version>
 						</requireJavaVersion>
 					</rules>
 				</configuration>
@@ -382,6 +382,24 @@
 				<property>
 					<name>jdk</name>
 					<value>6</value>
+				</property>
+			</activation>
+			<properties>
+				<!--
+					overrides properties possibly defined by
+					jdk12, jdk20 or html5-javadoc profiles
+				-->
+				<maven.compiler.source>1.6</maven.compiler.source>
+				<maven.compiler.target>1.6</maven.compiler.target>
+				<additionalJOption/>
+			</properties>
+		</profile>
+		<profile>
+			<id>toolchain-jdk7</id>
+			<activation>
+				<property>
+					<name>jdk</name>
+					<value>7</value>
 				</property>
 			</activation>
 			<properties>
