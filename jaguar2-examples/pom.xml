@@ -26,7 +26,6 @@
 	<packaging>pom</packaging>
 
 	<properties>
-		<ba-dua.version>0.8.0</ba-dua.version>
 		<maven.deploy.skip>true</maven.deploy.skip>
 	</properties>
 
