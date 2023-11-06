@@ -311,16 +311,6 @@
 
 	<profiles>
 		<profile>
-			<id>jdk20</id>
-			<activation>
-				<jdk>[20,)</jdk>
-			</activation>
-			<properties>
-				<maven.compiler.source>1.8</maven.compiler.source>
-				<maven.compiler.target>1.8</maven.compiler.target>
-			</properties>
-		</profile>
-		<profile>
 			<id>html5-javadoc</id>
 			<activation>
 				<!-- This feature is only available for Java >= 9 -->
