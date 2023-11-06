@@ -30,7 +30,6 @@
 		<dependency>
 			<groupId>${project.groupId}</groupId>
 			<artifactId>jaguar2-api</artifactId>
-			<version>${project.version}</version>
 		</dependency>
 		<dependency>
 			<groupId>br.usp.each.saeg</groupId>
