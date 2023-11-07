@@ -13,6 +13,13 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 
+	<parent>
+		<groupId>br.usp.each.saeg</groupId>
+		<artifactId>jaguar2-build</artifactId>
+		<version>0.0.2-SNAPSHOT</version>
+		<relativePath>./jaguar2-build/pom.xml</relativePath>
+	</parent>
+
 	<groupId>br.usp.each.saeg</groupId>
 	<artifactId>jaguar2-parent</artifactId>
 	<version>0.0.2-SNAPSHOT</version>
@@ -72,12 +79,7 @@
 	</developers>
 
 	<properties>
-		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-		<maven.compiler.source>1.6</maven.compiler.source>
-		<maven.compiler.target>1.6</maven.compiler.target>
 		<license.header.fileLocation>LICENSE-TEMPLATE.txt</license.header.fileLocation>
-		<ba-dua.version>0.8.0</ba-dua.version>
-		<jacoco.version>0.8.7</jacoco.version>
 		<gpg.skip>true</gpg.skip>
 	</properties>
 
@@ -95,11 +97,6 @@
 	<build>
 		<pluginManagement>
 			<plugins>
-				<plugin>
-					<groupId>org.apache.maven.plugins</groupId>
-					<artifactId>maven-surefire-plugin</artifactId>
-					<version>2.22.2</version>
-				</plugin>
 				<plugin>
 					<groupId>org.apache.maven.plugins</groupId>
 					<artifactId>maven-enforcer-plugin</artifactId>
@@ -179,7 +176,6 @@
 			<plugin>
 				<groupId>org.jacoco</groupId>
 				<artifactId>jacoco-maven-plugin</artifactId>
-				<version>${jacoco.version}</version>
 				<executions>
 					<execution>
 						<id>prepare-agent</id>
@@ -289,21 +285,11 @@
 		</plugins>
 	</build>
 
-	<dependencyManagement>
-		<dependencies>
-			<dependency>
-				<groupId>junit</groupId>
-				<artifactId>junit</artifactId>
-				<version>4.13.2</version>
-				<scope>test</scope>
-			</dependency>
-		</dependencies>
-	</dependencyManagement>
-
 	<dependencies>
 		<dependency>
 			<groupId>junit</groupId>
 			<artifactId>junit</artifactId>
+			<scope>test</scope>
 		</dependency>
 		<dependency>
 			<groupId>org.mockito</groupId>
@@ -315,26 +301,6 @@
 
 	<profiles>
 		<profile>
-			<id>jdk12</id>
-			<activation>
-				<jdk>[12,20)</jdk>
-			</activation>
-			<properties>
-				<maven.compiler.source>1.7</maven.compiler.source>
-				<maven.compiler.target>1.7</maven.compiler.target>
-			</properties>
-		</profile>
-		<profile>
-			<id>jdk20</id>
-			<activation>
-				<jdk>[20,)</jdk>
-			</activation>
-			<properties>
-				<maven.compiler.source>1.8</maven.compiler.source>
-				<maven.compiler.target>1.8</maven.compiler.target>
-			</properties>
-		</profile>
-		<profile>
 			<id>html5-javadoc</id>
 			<activation>
 				<!-- This feature is only available for Java >= 9 -->
@@ -343,73 +309,6 @@
 			</activation>
 			<properties>
 				<additionalJOption>-html5</additionalJOption>
-			</properties>
-		</profile>
-		<profile>
-			<id>toolchain</id>
-			<activation>
-				<property>
-					<name>jdk</name>
-				</property>
-			</activation>
-			<build>
-				<plugins>
-					<plugin>
-						<groupId>org.apache.maven.plugins</groupId>
-						<artifactId>maven-toolchains-plugin</artifactId>
-						<version>3.1.0</version>
-						<configuration>
-							<toolchains>
-								<jdk>
-									<version>${jdk}</version>
-								</jdk>
-							</toolchains>
-						</configuration>
-						<executions>
-							<execution>
-								<goals>
-									<goal>toolchain</goal>
-								</goals>
-							</execution>
-						</executions>
-					</plugin>
-				</plugins>
-			</build>
-		</profile>
-		<profile>
-			<id>toolchain-jdk6</id>
-			<activation>
-				<property>
-					<name>jdk</name>
-					<value>6</value>
-				</property>
-			</activation>
-			<properties>
-				<!--
-					overrides properties possibly defined by
-					jdk12, jdk20 or html5-javadoc profiles
-				-->
-				<maven.compiler.source>1.6</maven.compiler.source>
-				<maven.compiler.target>1.6</maven.compiler.target>
-				<additionalJOption/>
-			</properties>
-		</profile>
-		<profile>
-			<id>toolchain-jdk7</id>
-			<activation>
-				<property>
-					<name>jdk</name>
-					<value>7</value>
-				</property>
-			</activation>
-			<properties>
-				<!--
-					overrides properties possibly defined by
-					jdk12, jdk20 or html5-javadoc profiles
-				-->
-				<maven.compiler.source>1.6</maven.compiler.source>
-				<maven.compiler.target>1.6</maven.compiler.target>
-				<additionalJOption/>
 			</properties>
 		</profile>
 		<profile>

@@ -29,12 +29,10 @@
 		<dependency>
 			<groupId>${project.groupId}</groupId>
 			<artifactId>jaguar2-api</artifactId>
-			<version>${project.version}</version>
 		</dependency>
 		<dependency>
 			<groupId>${project.groupId}</groupId>
 			<artifactId>jaguar2-commons</artifactId>
-			<version>${project.version}</version>
 		</dependency>
 		<dependency>
 			<groupId>org.jacoco</groupId>

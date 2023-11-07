@@ -29,7 +29,6 @@
 		<dependency>
 			<groupId>${project.groupId}</groupId>
 			<artifactId>jaguar2-core</artifactId>
-			<version>${project.version}</version>
 		</dependency>
 		<dependency>
 			<groupId>junit</groupId>
