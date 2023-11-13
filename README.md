@@ -4,7 +4,11 @@
 
 **Attention:** we are not using semantic versioning (yet).
 
-### 0.0.2-SNAPSHOT
+### 0.0.3-SNAPSHOT
+
+Nothing yet.
+
+### [v0.0.2](https://github.com/saeg/jaguar2/releases/tag/v0.0.2)
 
 This version added a new API on `CoverageController` and Jaguar2 Core will not
 work with older Jaguar2 Coverage Providers.
