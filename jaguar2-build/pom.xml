@@ -15,7 +15,7 @@
 
 	<groupId>br.usp.each.saeg</groupId>
 	<artifactId>jaguar2-build</artifactId>
-	<version>0.0.2</version>
+	<version>0.0.3-SNAPSHOT</version>
 	<packaging>pom</packaging>
 	<name>Jaguar2</name>
 	<url>https://github.com/saeg/jaguar2</url>
@@ -38,7 +38,7 @@
 		<url>https://github.com/saeg/jaguar2</url>
 		<connection>scm:git:https://github.com/saeg/jaguar2.git</connection>
 		<developerConnection>scm:git:git@github.com:saeg/jaguar2.git</developerConnection>
-		<tag>v0.0.2</tag>
+		<tag>HEAD</tag>
 	</scm>
 
 	<distributionManagement>
