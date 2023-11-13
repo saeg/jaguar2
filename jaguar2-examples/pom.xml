@@ -16,13 +16,13 @@
 	<parent>
 		<groupId>br.usp.each.saeg</groupId>
 		<artifactId>jaguar2-build</artifactId>
-		<version>0.0.2-SNAPSHOT</version>
+		<version>0.0.2</version>
 		<relativePath>../jaguar2-build/pom.xml</relativePath>
 	</parent>
 
 	<groupId>br.usp.each.saeg</groupId>
 	<artifactId>jaguar2-examples</artifactId>
-	<version>0.0.2-SNAPSHOT</version>
+	<version>0.0.2</version>
 	<packaging>pom</packaging>
 
 	<properties>

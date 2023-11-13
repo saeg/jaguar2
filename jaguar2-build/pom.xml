@@ -15,7 +15,7 @@
 
 	<groupId>br.usp.each.saeg</groupId>
 	<artifactId>jaguar2-build</artifactId>
-	<version>0.0.2-SNAPSHOT</version>
+	<version>0.0.2</version>
 	<packaging>pom</packaging>
 	<name>Jaguar2</name>
 	<url>https://github.com/saeg/jaguar2</url>
@@ -38,7 +38,7 @@
 		<url>https://github.com/saeg/jaguar2</url>
 		<connection>scm:git:https://github.com/saeg/jaguar2.git</connection>
 		<developerConnection>scm:git:git@github.com:saeg/jaguar2.git</developerConnection>
-		<tag>HEAD</tag>
+		<tag>v0.0.2</tag>
 	</scm>
 
 	<distributionManagement>
@@ -228,7 +228,7 @@
 				-->
 				<maven.compiler.source>1.6</maven.compiler.source>
 				<maven.compiler.target>1.6</maven.compiler.target>
-				<additionalJOption/>
+				<additionalJOption />
 			</properties>
 		</profile>
 		<profile>
@@ -246,7 +246,7 @@
 				-->
 				<maven.compiler.source>1.6</maven.compiler.source>
 				<maven.compiler.target>1.6</maven.compiler.target>
-				<additionalJOption/>
+				<additionalJOption />
 			</properties>
 		</profile>
 		<profile>
