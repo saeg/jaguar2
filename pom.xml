@@ -25,6 +25,13 @@
 	<version>0.0.2-SNAPSHOT</version>
 	<packaging>pom</packaging>
 
+	<scm>
+		<url>https://github.com/saeg/jaguar2</url>
+		<connection>scm:git:https://github.com/saeg/jaguar2.git</connection>
+		<developerConnection>scm:git:git@github.com:saeg/jaguar2.git</developerConnection>
+		<tag>HEAD</tag>
+	</scm>
+
 	<properties>
 		<license.header.fileLocation>LICENSE-TEMPLATE.txt</license.header.fileLocation>
 		<gpg.skip>true</gpg.skip>

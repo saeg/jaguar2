@@ -34,13 +34,6 @@
 		</license>
 	</licenses>
 
-	<scm>
-		<url>https://github.com/saeg/jaguar2</url>
-		<connection>scm:git:https://github.com/saeg/jaguar2.git</connection>
-		<developerConnection>scm:git:git@github.com:saeg/jaguar2.git</developerConnection>
-		<tag>HEAD</tag>
-	</scm>
-
 	<distributionManagement>
 		<snapshotRepository>
 			<id>ossrh</id>
