@@ -84,6 +84,7 @@
 	</properties>
 
 	<modules>
+		<module>jaguar2-build</module>
 		<module>jaguar2-api</module>
 		<module>jaguar2-core</module>
 		<module>jaguar2-commons</module>
