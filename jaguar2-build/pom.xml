@@ -77,6 +77,7 @@
 		<maven.compiler.target>1.6</maven.compiler.target>
 		<ba-dua.version>0.8.0</ba-dua.version>
 		<jacoco.version>0.8.7</jacoco.version>
+		<gpg.skip>true</gpg.skip>
 	</properties>
 
 	<build>
@@ -94,6 +95,20 @@
 				</plugin>
 			</plugins>
 		</pluginManagement>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-gpg-plugin</artifactId>
+				<version>1.6</version>
+				<executions>
+					<execution>
+						<goals>
+							<goal>sign</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+		</plugins>
 	</build>
 
 	<dependencyManagement>
@@ -232,6 +247,12 @@
 				<maven.compiler.source>1.6</maven.compiler.source>
 				<maven.compiler.target>1.6</maven.compiler.target>
 				<additionalJOption/>
+			</properties>
+		</profile>
+		<profile>
+			<id>release</id>
+			<properties>
+				<gpg.skip>false</gpg.skip>
 			</properties>
 		</profile>
 	</profiles>

@@ -34,7 +34,6 @@
 
 	<properties>
 		<license.header.fileLocation>LICENSE-TEMPLATE.txt</license.header.fileLocation>
-		<gpg.skip>true</gpg.skip>
 	</properties>
 
 	<modules>
@@ -216,18 +215,6 @@
 			</plugin>
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-gpg-plugin</artifactId>
-				<version>1.6</version>
-				<executions>
-					<execution>
-						<goals>
-							<goal>sign</goal>
-						</goals>
-					</execution>
-				</executions>
-			</plugin>
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-release-plugin</artifactId>
 				<version>2.5.3</version>
 				<configuration>
@@ -264,12 +251,6 @@
 			</activation>
 			<properties>
 				<additionalJOption>-html5</additionalJOption>
-			</properties>
-		</profile>
-		<profile>
-			<id>release</id>
-			<properties>
-				<gpg.skip>false</gpg.skip>
 			</properties>
 		</profile>
 	</profiles>
