@@ -26,7 +26,12 @@ work with older Jaguar2 Coverage Providers.
   [#69](https://github.com/saeg/jaguar2/pull/69)
 ).
 * New module Jaguar2 Build (
-  [#79](https://github.com/saeg/jaguar2/pull/79)
+  [#79](https://github.com/saeg/jaguar2/pull/79),
+  [#82](https://github.com/saeg/jaguar2/pull/82),
+  [#84](https://github.com/saeg/jaguar2/pull/84),
+  [026eb1c](https://github.com/saeg/jaguar2/commit/026eb1c0552390bd0fb61a311f8df1c1fcdc215c),
+  [54ee0b1](https://github.com/saeg/jaguar2/commit/54ee0b19545d3da4af7bc4e167fa6e53e8e7ff56),
+  [78e62ee](https://github.com/saeg/jaguar2/commit/78e62ee89c0540d8add8fed75ba73955fd65b515)
 ).
 
 ### [v0.0.1-jdk6](https://github.com/saeg/jaguar2/releases/tag/v0.0.1-jdk6)
