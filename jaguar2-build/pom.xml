@@ -73,9 +73,9 @@
 
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-		<bytecode.version>1.6</bytecode.version>
-		<maven.compiler.source>${bytecode.version}</maven.compiler.source>
-		<maven.compiler.target>${bytecode.version}</maven.compiler.target>
+		<bytecode>1.6</bytecode>
+		<maven.compiler.source>${bytecode}</maven.compiler.source>
+		<maven.compiler.target>${bytecode}</maven.compiler.target>
 		<ba-dua.version>0.8.0</ba-dua.version>
 		<jacoco.version>0.8.7</jacoco.version>
 		<gpg.skip>true</gpg.skip>
@@ -169,7 +169,7 @@
 				<jdk>[12,20)</jdk>
 			</activation>
 			<properties>
-				<bytecode.version>1.7</bytecode.version>
+				<bytecode>1.7</bytecode>
 			</properties>
 		</profile>
 		<profile>
@@ -178,7 +178,7 @@
 				<jdk>[20,)</jdk>
 			</activation>
 			<properties>
-				<bytecode.version>1.8</bytecode.version>
+				<bytecode>1.8</bytecode>
 			</properties>
 		</profile>
 		<profile>
@@ -225,7 +225,7 @@
 					overrides properties possibly defined by
 					jdk12, jdk20 or html5-javadoc profiles
 				-->
-				<bytecode.version>1.6</bytecode.version>
+				<bytecode>1.6</bytecode>
 				<additionalJOption />
 			</properties>
 		</profile>
@@ -242,7 +242,7 @@
 					overrides properties possibly defined by
 					jdk12, jdk20 or html5-javadoc profiles
 				-->
-				<bytecode.version>1.6</bytecode.version>
+				<bytecode>1.6</bytecode>
 				<additionalJOption />
 			</properties>
 		</profile>
