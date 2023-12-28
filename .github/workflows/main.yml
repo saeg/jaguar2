@@ -38,7 +38,9 @@ jobs:
       run: java -version && javac -version
     - name: Build
       if: ${{ matrix.java >= 8 }}
-      run: ./mvnw install -Prelease -Dbytecode=${{ matrix.java }}
+      run: ./mvnw install -Prelease -Dbytecode=${{ matrix.java }} -X
     - name: Build
       if: ${{ matrix.java < 8 }}
-      run: ./mvnw install -Prelease -Djdk=${{ matrix.java }} -Dbytecode=${{ matrix.java }}
+      run: ./mvnw install -Prelease -Djdk=${{ matrix.java }} -Dbytecode=${{ matrix.java }} -X
+    - name: Generated Javadoc options
+      run: cat jaguar2-api/target/apidocs/options
