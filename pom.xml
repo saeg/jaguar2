@@ -253,6 +253,18 @@
 				<additionalJOption>-html5</additionalJOption>
 			</properties>
 		</profile>
+		<profile>
+			<id>animal-sniffer-bytecode-java21</id>
+			<activation>
+				<property>
+					<name>bytecode</name>
+					<value>21</value>
+				</property>
+			</activation>
+			<properties>
+				<animal.sniffer.skip>true</animal.sniffer.skip>
+			</properties>
+		</profile>
 	</profiles>
 
 </project>
