@@ -6,7 +6,15 @@
 
 ### 0.0.3-SNAPSHOT
 
-Nothing yet.
+#### Non-functional Changes
+
+* CI targeting current JDK (
+  [#86](https://github.com/saeg/jaguar2/pull/86)
+).
+  * GitHub Actions targets all supported bytecode versions (6 to 21);
+  * JaCoCo updated from 0.8.7 to 0.8.9;
+  * Build with JDK >= 16 opens `java.base/java.lang` to unnamed module;
+  * Build targeting Java 21 bytecode version skips Animal Sniffer Maven Plugin.
 
 ### [v0.0.2](https://github.com/saeg/jaguar2/releases/tag/v0.0.2)
 
