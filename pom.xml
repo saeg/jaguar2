@@ -254,16 +254,6 @@
 			</properties>
 		</profile>
 		<profile>
-			<id>mockito-add-opens</id>
-			<activation>
-				<!-- Required only for Java >= 16 -->
-				<jdk>[16,)</jdk>
-			</activation>
-			<properties>
-				<argLine>--add-opens=java.base/java.lang=ALL-UNNAMED</argLine>
-			</properties>
-		</profile>
-		<profile>
 			<id>animal-sniffer-bytecode-java21</id>
 			<activation>
 				<property>
