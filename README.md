@@ -8,12 +8,15 @@
 
 #### Non-functional Changes
 
+* Update Mockito to 2.28.2 (
+  [#92](https://github.com/saeg/jaguar2/pull/92)
+).
 * CI targeting current JDK (
   [#86](https://github.com/saeg/jaguar2/pull/86)
 ).
   * GitHub Actions targets all supported bytecode versions (6 to 21);
   * JaCoCo updated from 0.8.7 to 0.8.9;
-  * Build with JDK >= 16 opens `java.base/java.lang` to unnamed module;
+  * ~~Build with JDK >= 16 opens `java.base/java.lang` to unnamed module;~~ (Reverted by [#92](https://github.com/saeg/jaguar2/pull/92))
   * Build targeting Java 21 bytecode version skips Animal Sniffer Maven Plugin.
 
 ### [v0.0.2](https://github.com/saeg/jaguar2/releases/tag/v0.0.2)
