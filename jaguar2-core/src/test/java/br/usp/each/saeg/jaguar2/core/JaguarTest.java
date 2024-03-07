@@ -10,7 +10,7 @@
  */
 package br.usp.each.saeg.jaguar2.core;
 
-import static org.mockito.Matchers.same;
+import static org.mockito.ArgumentMatchers.same;
 import static org.mockito.Mockito.doReturn;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.times;
@@ -23,7 +23,7 @@ import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.Mock;
-import org.mockito.runners.MockitoJUnitRunner;
+import org.mockito.junit.MockitoJUnitRunner;
 
 import br.usp.each.saeg.jaguar2.api.Heuristic;
 import br.usp.each.saeg.jaguar2.api.IBundleSpectrum;

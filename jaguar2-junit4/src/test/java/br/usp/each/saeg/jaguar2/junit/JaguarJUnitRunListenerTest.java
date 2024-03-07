@@ -11,7 +11,7 @@
 package br.usp.each.saeg.jaguar2.junit;
 
 import static org.junit.Assert.fail;
-import static org.mockito.Matchers.eq;
+import static org.mockito.ArgumentMatchers.eq;
 import static org.mockito.Mockito.inOrder;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.times;
@@ -26,7 +26,7 @@ import org.junit.runner.RunWith;
 import org.junit.runner.notification.Failure;
 import org.mockito.InOrder;
 import org.mockito.Mock;
-import org.mockito.runners.MockitoJUnitRunner;
+import org.mockito.junit.MockitoJUnitRunner;
 
 import br.usp.each.saeg.jaguar2.core.Jaguar;
 
