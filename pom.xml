@@ -275,7 +275,7 @@
 				</property>
 			</activation>
 			<properties>
-				<maven-pmd-plugin.version>3.14.0</maven-pmd-plugin.version>
+				<maven-pmd-plugin.version>3.13.0</maven-pmd-plugin.version>
 			</properties>
 		</profile>
 	</profiles>
