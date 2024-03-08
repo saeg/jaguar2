@@ -268,7 +268,7 @@
 			</properties>
 		</profile>
 		<profile>
-			<id>toolchain-jdk6-versions</id>
+			<id>toolchain-jdk6-parent</id>
 			<activation>
 				<property>
 					<name>jdk</name>
@@ -276,11 +276,12 @@
 				</property>
 			</activation>
 			<properties>
+				<additionalJOption />
 				<maven-pmd-plugin.version>3.13.0</maven-pmd-plugin.version>
 			</properties>
 		</profile>
 		<profile>
-			<id>toolchain-jdk7-versions</id>
+			<id>toolchain-jdk7-parent</id>
 			<activation>
 				<property>
 					<name>jdk</name>
@@ -288,6 +289,7 @@
 				</property>
 			</activation>
 			<properties>
+				<additionalJOption />
 				<maven-pmd-plugin.version>3.13.0</maven-pmd-plugin.version>
 			</properties>
 		</profile>

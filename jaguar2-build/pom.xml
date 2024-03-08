@@ -226,11 +226,10 @@
 			<properties>
 				<!--
 					overrides properties possibly defined by
-					jdk12, jdk20 or html5-javadoc profiles
+					jdk12 and jdk20 profiles
 				-->
 				<source>1.6</source>
 				<bytecode>1.6</bytecode>
-				<additionalJOption />
 			</properties>
 		</profile>
 		<profile>
@@ -244,11 +243,10 @@
 			<properties>
 				<!--
 					overrides properties possibly defined by
-					jdk12, jdk20 or html5-javadoc profiles
+					jdk12 and jdk20 profiles
 				-->
 				<source>1.6</source>
 				<bytecode>1.6</bytecode>
-				<additionalJOption />
 			</properties>
 		</profile>
 		<profile>
