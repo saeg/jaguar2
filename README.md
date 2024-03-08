@@ -21,6 +21,9 @@
 * Update Apache Maven PMD Plugin to 3.21.2 (
   [#93](https://github.com/saeg/jaguar2/pull/93)
 ).
+* Disable PMD type resolution when targeting Java 21 bytecode (
+  [#94](https://github.com/saeg/jaguar2/pull/94)
+).
 
 ### [v0.0.2](https://github.com/saeg/jaguar2/releases/tag/v0.0.2)
 
