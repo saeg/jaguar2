@@ -255,7 +255,7 @@
 			</properties>
 		</profile>
 		<profile>
-			<id>animal-sniffer-bytecode-java21</id>
+			<id>bytecode-java21</id>
 			<activation>
 				<property>
 					<name>bytecode</name>
@@ -264,6 +264,7 @@
 			</activation>
 			<properties>
 				<animal.sniffer.skip>true</animal.sniffer.skip>
+				<pmd.typeResolution>false</pmd.typeResolution>
 			</properties>
 		</profile>
 		<profile>
