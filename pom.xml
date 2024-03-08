@@ -34,6 +34,7 @@
 
 	<properties>
 		<license.header.fileLocation>LICENSE-TEMPLATE.txt</license.header.fileLocation>
+		<maven-pmd-plugin.version>3.21.2</maven-pmd-plugin.version>
 	</properties>
 
 	<modules>
@@ -162,7 +163,7 @@
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-pmd-plugin</artifactId>
-				<version>3.13.0</version>
+				<version>${maven-pmd-plugin.version}</version>
 				<configuration>
 					<verbose>true</verbose>
 				</configuration>
@@ -263,6 +264,30 @@
 			</activation>
 			<properties>
 				<animal.sniffer.skip>true</animal.sniffer.skip>
+			</properties>
+		</profile>
+		<profile>
+			<id>toolchain-jdk6-versions</id>
+			<activation>
+				<property>
+					<name>jdk</name>
+					<value>6</value>
+				</property>
+			</activation>
+			<properties>
+				<maven-pmd-plugin.version>3.13.0</maven-pmd-plugin.version>
+			</properties>
+		</profile>
+		<profile>
+			<id>toolchain-jdk7-versions</id>
+			<activation>
+				<property>
+					<name>jdk</name>
+					<value>7</value>
+				</property>
+			</activation>
+			<properties>
+				<maven-pmd-plugin.version>3.13.0</maven-pmd-plugin.version>
 			</properties>
 		</profile>
 	</profiles>
