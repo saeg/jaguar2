@@ -24,6 +24,9 @@
 * Disable PMD type resolution when targeting Java 21 bytecode (
   [#94](https://github.com/saeg/jaguar2/pull/94)
 ).
+* Fix invalid `-html5` Javadoc option when building with Java 9 or 10 and using JDK Toolchain 6 or 7 (
+  [#96](https://github.com/saeg/jaguar2/pull/96)
+).
 
 ### [v0.0.2](https://github.com/saeg/jaguar2/releases/tag/v0.0.2)
 

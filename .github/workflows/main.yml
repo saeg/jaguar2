@@ -42,3 +42,36 @@ jobs:
     - name: Build
       if: ${{ matrix.java < 8 }}
       run: ./mvnw install -Prelease -Djdk=${{ matrix.java }} -Dbytecode=${{ matrix.java }}
+
+  issue-80:
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-20.04]
+        java: [9, 10]
+        jdk: [6, 7]
+    runs-on: ${{ matrix.os }}
+    steps:
+    - uses: actions/checkout@v3
+    - name: Setup JDK toolchain
+      uses: actions/setup-java@v3
+      with:
+        distribution: zulu
+        java-version: ${{ matrix.jdk }}
+        java-package: jdk
+        cache: maven
+        mvn-toolchain-id: ${{ matrix.jdk }}
+    - name: Setup Java
+      uses: actions/setup-java@v3
+      with:
+        distribution: zulu
+        java-version: ${{ matrix.java }}
+        java-package: jdk
+    - name: Setup GPG
+      run: gpg --batch --passphrase '' --quick-gen-key "John Doe <johndoe@x.y>" ed25519 sign 1d
+    - name: Available toolchains
+      run: cat $HOME/.m2/toolchains.xml
+    - name: Java version
+      run: java -version && javac -version
+    - name: Build
+      run: ./mvnw install -Prelease -Djdk=${{ matrix.jdk }} -Dbytecode=${{ matrix.jdk }}
