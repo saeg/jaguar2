@@ -267,6 +267,18 @@
 			</properties>
 		</profile>
 		<profile>
+			<id>toolchain-jdk6-versions</id>
+			<activation>
+				<property>
+					<name>jdk</name>
+					<value>6</value>
+				</property>
+			</activation>
+			<properties>
+				<maven-pmd-plugin.version>3.13.0</maven-pmd-plugin.version>
+			</properties>
+		</profile>
+		<profile>
 			<id>toolchain-jdk7-versions</id>
 			<activation>
 				<property>
