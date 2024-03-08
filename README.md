@@ -18,6 +18,9 @@
   * JaCoCo updated from 0.8.7 to 0.8.9;
   * ~~Build with JDK >= 16 opens `java.base/java.lang` to unnamed module;~~ (Reverted by [#92](https://github.com/saeg/jaguar2/pull/92))
   * Build targeting Java 21 bytecode version skips Animal Sniffer Maven Plugin.
+* Update Apache Maven PMD Plugin to 3.21.2 (
+  [#93](https://github.com/saeg/jaguar2/pull/93)
+).
 
 ### [v0.0.2](https://github.com/saeg/jaguar2/releases/tag/v0.0.2)
 
