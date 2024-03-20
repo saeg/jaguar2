@@ -78,7 +78,7 @@
 		<maven.compiler.source>${source}</maven.compiler.source>
 		<maven.compiler.target>${bytecode}</maven.compiler.target>
 		<ba-dua.version>0.8.0</ba-dua.version>
-		<jacoco.version>0.8.10</jacoco.version>
+		<jacoco.version>0.8.11</jacoco.version>
 		<gpg.skip>true</gpg.skip>
 	</properties>
 
