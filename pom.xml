@@ -268,6 +268,18 @@
 			</properties>
 		</profile>
 		<profile>
+			<id>bytecode-java22</id>
+			<activation>
+				<property>
+					<name>bytecode</name>
+					<value>22</value>
+				</property>
+			</activation>
+			<properties>
+				<animal.sniffer.skip>true</animal.sniffer.skip>
+			</properties>
+		</profile>
+		<profile>
 			<id>toolchain-jdk6-parent</id>
 			<activation>
 				<property>
