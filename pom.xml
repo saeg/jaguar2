@@ -277,6 +277,7 @@
 			</activation>
 			<properties>
 				<animal.sniffer.skip>true</animal.sniffer.skip>
+				<pmd.typeResolution>false</pmd.typeResolution>
 			</properties>
 		</profile>
 		<profile>
