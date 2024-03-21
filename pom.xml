@@ -20,9 +20,7 @@
 		<relativePath>./jaguar2-build/pom.xml</relativePath>
 	</parent>
 
-	<groupId>br.usp.each.saeg</groupId>
 	<artifactId>jaguar2-parent</artifactId>
-	<version>0.0.3-SNAPSHOT</version>
 	<packaging>pom</packaging>
 
 	<scm>
