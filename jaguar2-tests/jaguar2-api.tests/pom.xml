@@ -41,6 +41,11 @@
 			<artifactId>jaguar2-csv-exporter</artifactId>
 			<scope>test</scope>
 		</dependency>
+		<dependency>
+			<groupId>${project.groupId}</groupId>
+			<artifactId>jaguar2-xml-exporter</artifactId>
+			<scope>test</scope>
+		</dependency>
 	</dependencies>
 
 </project>

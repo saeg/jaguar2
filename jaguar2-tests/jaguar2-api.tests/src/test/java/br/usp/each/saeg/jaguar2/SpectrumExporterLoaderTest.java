@@ -11,6 +11,7 @@
 package br.usp.each.saeg.jaguar2;
 
 import java.util.Collection;
+import java.util.Iterator;
 
 import org.junit.Assert;
 import org.junit.Before;
@@ -18,6 +19,7 @@ import org.junit.Test;
 
 import br.usp.each.saeg.jaguar2.csv.CsvExporter;
 import br.usp.each.saeg.jaguar2.spi.SpectrumExporter;
+import br.usp.each.saeg.jaguar2.xml.XmlExporter;
 
 public class SpectrumExporterLoaderTest {
 
@@ -38,8 +40,10 @@ public class SpectrumExporterLoaderTest {
         final Collection<SpectrumExporter> exporters =
                 ((MultipleSpectrumExporter) exporter).getExporters();
 
-        Assert.assertEquals(1, exporters.size());
-        Assert.assertTrue(exporters.iterator().next() instanceof CsvExporter);
+        Assert.assertEquals(2, exporters.size());
+        final Iterator<SpectrumExporter> iterator = exporters.iterator();
+        Assert.assertTrue(iterator.next() instanceof CsvExporter);
+        Assert.assertTrue(iterator.next() instanceof XmlExporter);
     }
 
 }
