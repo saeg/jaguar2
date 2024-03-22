@@ -43,6 +43,7 @@
 		<module>jaguar2-junit4</module>
 		<module>jaguar2-providers</module>
 		<module>jaguar2-exporters</module>
+		<module>jaguar2-tests</module>
 		<module>jaguar2-examples</module>
 		<module>jaguar2-validations</module>
 	</modules>
