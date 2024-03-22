@@ -16,6 +16,7 @@ import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
+import br.usp.each.saeg.jaguar2.csv.CsvExporter;
 import br.usp.each.saeg.jaguar2.spi.SpectrumExporter;
 
 public class SpectrumExporterLoaderTest {
@@ -34,11 +35,11 @@ public class SpectrumExporterLoaderTest {
 
     @Test
     public void loadsInternalSpectrumExportersCorrectly() {
-        final Collection<SpectrumExporter> exporters = 
+        final Collection<SpectrumExporter> exporters =
                 ((MultipleSpectrumExporter) exporter).getExporters();
 
         Assert.assertEquals(1, exporters.size());
-        Assert.assertTrue(exporters.iterator().next() instanceof DummySpectrumExporter);
+        Assert.assertTrue(exporters.iterator().next() instanceof CsvExporter);
     }
 
 }
