@@ -24,6 +24,7 @@
 
 	<properties>
 		<license.header.fileLocation>../LICENSE-TEMPLATE.txt</license.header.fileLocation>
+		<gpg.skip>true</gpg.skip>
 	</properties>
 
 	<modules>
