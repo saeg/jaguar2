@@ -31,6 +31,11 @@
 			<artifactId>jaguar2-api</artifactId>
 			<scope>test</scope>
 		</dependency>
+		<dependency>
+			<groupId>${project.groupId}</groupId>
+			<artifactId>jaguar2-jacoco-provider</artifactId>
+			<scope>test</scope>
+		</dependency>
 	</dependencies>
 
 </project>

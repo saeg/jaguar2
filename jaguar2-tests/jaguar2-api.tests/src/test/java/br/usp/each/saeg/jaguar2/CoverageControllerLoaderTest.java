@@ -13,12 +13,14 @@ package br.usp.each.saeg.jaguar2;
 import org.junit.Assert;
 import org.junit.Test;
 
+import br.usp.each.saeg.jaguar2.jacoco.JaCoCoController;
+
 public class CoverageControllerLoaderTest {
 
     @Test
     public void loadsCoverageControllerCorrectly() {
         final CoverageControllerLoader loader = new CoverageControllerLoader();
-        Assert.assertTrue(loader.load() instanceof DummyCoverageController);
+        Assert.assertTrue(loader.load() instanceof JaCoCoController);
     }
 
 }
