@@ -15,19 +15,22 @@
 
 	<parent>
 		<groupId>br.usp.each.saeg</groupId>
-		<artifactId>jaguar2-parent</artifactId>
+		<artifactId>jaguar2-tests</artifactId>
 		<version>0.0.3-SNAPSHOT</version>
 	</parent>
 
-	<artifactId>jaguar2-tests</artifactId>
-	<packaging>pom</packaging>
+	<artifactId>jaguar2-core.tests</artifactId>
 
 	<properties>
-		<license.header.fileLocation>../LICENSE-TEMPLATE.txt</license.header.fileLocation>
+		<license.header.fileLocation>../../LICENSE-TEMPLATE.txt</license.header.fileLocation>
 	</properties>
 
-	<modules>
-		<module>jaguar2-core.tests</module>
-	</modules>
+	<dependencies>
+		<dependency>
+			<groupId>${project.groupId}</groupId>
+			<artifactId>jaguar2-core</artifactId>
+			<scope>test</scope>
+		</dependency>
+	</dependencies>
 
 </project>
