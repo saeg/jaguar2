@@ -1,0 +1,93 @@
+<!--
+
+    Copyright (c) 2021, 2021 University of Sao Paulo and Contributors.
+    All rights reserved. This program and the accompanying materials
+    are made available under the terms of the Eclipse Public License v1.0
+    which accompanies this distribution, and is available at
+    http://www.eclipse.org/legal/epl-v10.html
+
+    Contributors:
+        Roberto Araujo - initial API and implementation and/or initial documentation
+
+-->
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+
+	<parent>
+		<groupId>br.usp.each.saeg</groupId>
+		<artifactId>jaguar2-parent</artifactId>
+		<version>0.0.3-SNAPSHOT</version>
+	</parent>
+
+	<artifactId>jaguar2-tests</artifactId>
+	<packaging>pom</packaging>
+
+	<properties>
+		<license.header.fileLocation>../LICENSE-TEMPLATE.txt</license.header.fileLocation>
+		<gpg.skip>true</gpg.skip>
+		<maven.install.skip>true</maven.install.skip>
+		<maven.deploy.skip>true</maven.deploy.skip>
+	</properties>
+
+	<modules>
+		<module>jaguar2-api.tests</module>
+		<module>jaguar2-core.tests</module>
+		<module>jaguar2-commons.tests</module>
+		<module>jaguar2-junit4.tests</module>
+	</modules>
+
+	<build>
+		<pluginManagement>
+			<plugins>
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-jar-plugin</artifactId>
+					<configuration>
+						<skipIfEmpty>true</skipIfEmpty>
+					</configuration>
+				</plugin>
+			</plugins>
+		</pluginManagement>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-surefire-plugin</artifactId>
+				<configuration>
+					<properties>
+						<property>
+							<name>listener</name>
+							<value>br.usp.each.saeg.jaguar2.junit.JaguarJUnitRunListener</value>
+						</property>
+					</properties>
+					<systemPropertyVariables>
+						<jaguar2.classesDirs>${jaguar2.classesDirs}</jaguar2.classesDirs>
+					</systemPropertyVariables>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
+
+	<dependencies>
+		<dependency>
+			<groupId>${project.groupId}</groupId>
+			<artifactId>jaguar2-junit4</artifactId>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>${project.groupId}</groupId>
+			<artifactId>jaguar2-jacoco-provider</artifactId>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>${project.groupId}</groupId>
+			<artifactId>jaguar2-csv-exporter</artifactId>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>${project.groupId}</groupId>
+			<artifactId>jaguar2-xml-exporter</artifactId>
+			<scope>test</scope>
+		</dependency>
+	</dependencies>
+
+</project>

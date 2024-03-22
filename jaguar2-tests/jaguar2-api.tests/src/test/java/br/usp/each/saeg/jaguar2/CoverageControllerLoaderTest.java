@@ -10,22 +10,17 @@
  */
 package br.usp.each.saeg.jaguar2;
 
-import br.usp.each.saeg.jaguar2.api.IBundleSpectrum;
-import br.usp.each.saeg.jaguar2.api.SpectrumEval;
-import br.usp.each.saeg.jaguar2.spi.SpectrumExporter;
+import org.junit.Assert;
+import org.junit.Test;
 
-public class DummySpectrumExporter implements SpectrumExporter {
+import br.usp.each.saeg.jaguar2.jacoco.JaCoCoController;
 
-    @Override
-    public void init() {
-    }
+public class CoverageControllerLoaderTest {
 
-    @Override
-    public void write(final IBundleSpectrum spectrum, final SpectrumEval eval) {
-    }
-
-    @Override
-    public void shutdown() {
+    @Test
+    public void loadsCoverageControllerCorrectly() {
+        final CoverageControllerLoader loader = new CoverageControllerLoader();
+        Assert.assertTrue(loader.load() instanceof JaCoCoController);
     }
 
 }
