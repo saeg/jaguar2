@@ -23,49 +23,7 @@
 
 	<properties>
 		<license.header.fileLocation>../../LICENSE-TEMPLATE.txt</license.header.fileLocation>
+		<jaguar2.classesDirs>../../jaguar2-junit4/target/classes</jaguar2.classesDirs>
 	</properties>
-
-	<build>
-		<plugins>
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-surefire-plugin</artifactId>
-				<configuration>
-					<properties>
-						<property>
-							<name>listener</name>
-							<value>br.usp.each.saeg.jaguar2.junit.JaguarJUnitRunListener</value>
-						</property>
-					</properties>
-					<systemPropertyVariables>
-						<jaguar2.classesDirs>../../jaguar2-junit4/target/classes</jaguar2.classesDirs>
-					</systemPropertyVariables>
-				</configuration>
-			</plugin>
-		</plugins>
-	</build>
-
-	<dependencies>
-		<dependency>
-			<groupId>${project.groupId}</groupId>
-			<artifactId>jaguar2-junit4</artifactId>
-			<scope>test</scope>
-		</dependency>
-		<dependency>
-			<groupId>${project.groupId}</groupId>
-			<artifactId>jaguar2-jacoco-provider</artifactId>
-			<scope>test</scope>
-		</dependency>
-		<dependency>
-			<groupId>${project.groupId}</groupId>
-			<artifactId>jaguar2-csv-exporter</artifactId>
-			<scope>test</scope>
-		</dependency>
-		<dependency>
-			<groupId>${project.groupId}</groupId>
-			<artifactId>jaguar2-xml-exporter</artifactId>
-			<scope>test</scope>
-		</dependency>
-	</dependencies>
 
 </project>
