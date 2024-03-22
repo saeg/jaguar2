@@ -76,11 +76,6 @@
 		</dependency>
 		<dependency>
 			<groupId>${project.groupId}</groupId>
-			<artifactId>jaguar2-ba-dua-provider</artifactId>
-			<scope>test</scope>
-		</dependency>
-		<dependency>
-			<groupId>${project.groupId}</groupId>
 			<artifactId>jaguar2-csv-exporter</artifactId>
 			<scope>test</scope>
 		</dependency>
@@ -90,5 +85,31 @@
 			<scope>test</scope>
 		</dependency>
 	</dependencies>
+
+	<!-- Temporary profiles to allow project execution with Java 22 -->
+	<profiles>
+		<profile>
+			<id>disable-ba-dua</id>
+			<activation>
+				<jdk>22</jdk>
+			</activation>
+			<properties>
+				<argLine></argLine>
+			</properties>
+		</profile>
+		<profile>
+			<id>add-ba-dua-provider</id>
+			<activation>
+				<jdk>[,22)</jdk>
+			</activation>
+			<dependencies>
+				<dependency>
+					<groupId>${project.groupId}</groupId>
+					<artifactId>jaguar2-ba-dua-provider</artifactId>
+					<scope>test</scope>
+				</dependency>
+			</dependencies>
+		</profile>
+	</profiles>
 
 </project>

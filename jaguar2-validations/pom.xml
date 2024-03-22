@@ -121,4 +121,45 @@
 		</plugins>
 	</build>
 
+	<!-- Temporary profiles to allow project execution with Java 22 -->
+	<profiles>
+		<profile>
+			<id>disable-ba-dua-verifications</id>
+			<activation>
+				<jdk>22</jdk>
+			</activation>
+			<build>
+				<plugins>
+					<plugin>
+						<groupId>org.apache.maven.plugins</groupId>
+						<artifactId>maven-enforcer-plugin</artifactId>
+						<executions>
+							<execution>
+								<goals>
+									<goal>enforce</goal>
+								</goals>
+								<phase>verify</phase>
+								<configuration>
+									<rules>
+										<requireFileChecksum>
+											<file>../jaguar2-examples/jaguar2-example-junit4-jacoco/target/jaguar2.csv</file>
+											<checksum>d46dc1896d312426b0f45b55b2055837</checksum>
+											<type>md5</type>
+										</requireFileChecksum>
+										<requireFileChecksum>
+											<file>../jaguar2-examples/jaguar2-example-junit4-jacoco/target/jaguar2.xml</file>
+											<checksum>195983d8b7396375439d2aec507045b3</checksum>
+											<type>md5</type>
+										</requireFileChecksum>
+									</rules>
+									<fail>true</fail>
+								</configuration>
+							</execution>
+						</executions>
+					</plugin>
+				</plugins>
+			</build>
+		</profile>
+	</profiles>
+
 </project>

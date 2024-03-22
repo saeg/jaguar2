@@ -8,21 +8,25 @@
 
 #### Non-functional Changes
 
+Note: Build using Java 22 is skiping BA-DUA examples ([9f1cc63](https://github.com/saeg/jaguar2/pull/98/commits/9f1cc635156ba0b4f4f5980ec7f9bfba6170443d)).
+
 * Update Mockito to 2.28.2 (
   [#92](https://github.com/saeg/jaguar2/pull/92)
 ).
 * CI targeting current JDK (
-  [#86](https://github.com/saeg/jaguar2/pull/86)
+  [#86](https://github.com/saeg/jaguar2/pull/86),
+  [#98](https://github.com/saeg/jaguar2/pull/98)
 ).
-  * GitHub Actions targets all supported bytecode versions (6 to 21);
-  * JaCoCo updated from 0.8.7 to 0.8.9;
+  * GitHub Actions targets all supported bytecode versions (6 to ~~21~~ 22);
+  * JaCoCo updated from 0.8.7 to ~~0.8.9~~ 0.8.11;
   * ~~Build with JDK >= 16 opens `java.base/java.lang` to unnamed module;~~ (Reverted by [#92](https://github.com/saeg/jaguar2/pull/92))
-  * Build targeting Java 21 bytecode version skips Animal Sniffer Maven Plugin.
+  * Build targeting Java 21 and 22 class files skips Animal Sniffer Maven Plugin.
 * Update Apache Maven PMD Plugin to 3.21.2 (
   [#93](https://github.com/saeg/jaguar2/pull/93)
 ).
-* Disable PMD type resolution when targeting Java 21 bytecode (
-  [#94](https://github.com/saeg/jaguar2/pull/94)
+* Disable PMD type resolution when targeting Java 21 and 22 class files (
+  [#94](https://github.com/saeg/jaguar2/pull/94),
+  [#98](https://github.com/saeg/jaguar2/pull/98),
 ).
 * Fix invalid `-html5` Javadoc option when building with Java 9 or 10 and using JDK Toolchain 6 or 7 (
   [#96](https://github.com/saeg/jaguar2/pull/96)
