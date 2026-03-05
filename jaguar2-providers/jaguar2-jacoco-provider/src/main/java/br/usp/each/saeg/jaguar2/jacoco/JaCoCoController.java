@@ -10,9 +10,7 @@
  */
 package br.usp.each.saeg.jaguar2.jacoco;
 
-import java.io.ByteArrayInputStream;
-import java.io.File;
-import java.io.IOException;
+import java.io.*;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
@@ -21,8 +19,7 @@ import java.util.List;
 
 import org.jacoco.agent.rt.IAgent;
 import org.jacoco.agent.rt.RT;
-import org.jacoco.core.analysis.Analyzer;
-import org.jacoco.core.analysis.ICoverageVisitor;
+import org.jacoco.core.analysis.*;
 import org.jacoco.core.data.ExecutionData;
 import org.jacoco.core.data.ExecutionDataReader;
 import org.jacoco.core.data.ExecutionDataStore;
@@ -141,6 +138,10 @@ public class JaCoCoController extends ClassFilesController implements CoverageCo
         } else {
             successExecutionDataStores.add(executionDataStore);
         }
+
+
+        generateCoverageMatrix(testFailed, executionDataStore);
+
     }
 
     @Override
@@ -191,6 +192,80 @@ public class JaCoCoController extends ClassFilesController implements CoverageCo
             }
         }
         return result;
+    }
+
+    private void generateCoverageMatrix(boolean testFailed, ExecutionDataStore executionDataStore){
+        /*
+        Já parte do tratamento para a matriz
+        PASS / FAIL vem da parâmetro do método
+        Presumo por enquanto que ele faz o dump de sessão a cada caso de teste
+         */
+
+        /*
+        Gets the compiled classes directory via a system property
+         */
+        String classesDirPath = System.getProperty("jaguar2.classesDirs", "target/classes");
+
+        CoverageBuilder coverageBuilder = new CoverageBuilder();
+        //Analyzer é quem faz a combinação das probes com as linhas do código
+        Analyzer analyzer = new Analyzer(executionDataStore, coverageBuilder);
+
+        PrintStream pStream = null;
+        File coverageMatrix = null;
+
+        File classesDir = new File(classesDirPath).getAbsoluteFile();
+
+        if(!classesDir.exists() || !classesDir.isDirectory()){
+            return;
+        }
+
+        try {
+
+            coverageMatrix = new File("target/coverageMatrix.txt");
+            pStream = new PrintStream(new FileOutputStream(coverageMatrix, true));
+
+            analyzer.analyzeAll(classesDir);
+
+
+            for(IClassCoverage cc : coverageBuilder.getClasses()){
+                for(int i = cc.getFirstLine(); i <=cc.getLastLine(); i++){
+
+                    if(cc.getLine(i).getStatus() == ICounter.EMPTY){
+                        continue;
+                    }
+                    switch(cc.getLine(i).getStatus()){
+
+                        case ICounter.NOT_COVERED:
+                            pStream.print("0 ");
+                            break;
+                        case ICounter.FULLY_COVERED:
+                            pStream.print("1 ");
+                            break;
+                        case ICounter.PARTLY_COVERED:
+                            pStream.print("1 ");
+                            break;
+                    }
+                }
+            }
+
+
+            //Aqui acaba o meu tratamento da matriz
+
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        } finally {
+            if(pStream != null){
+                if(testFailed){
+                    pStream.print('-');
+                }else{
+                    pStream.print('+');
+                }
+                pStream.println();
+                pStream.flush();
+
+                pStream.close();
+            }
+        }
     }
 
 }

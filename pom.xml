@@ -109,27 +109,9 @@
 				</executions>
 			</plugin>
 			<plugin>
-				<groupId>org.codehaus.mojo</groupId>
-				<artifactId>animal-sniffer-maven-plugin</artifactId>
-				<version>1.23</version>
-				<configuration>
-					<signature>
-						<groupId>org.codehaus.mojo.signature</groupId>
-						<artifactId>java16</artifactId>
-						<version>1.0</version>
-					</signature>
-				</configuration>
-				<executions>
-					<execution>
-						<goals>
-							<goal>check</goal>
-						</goals>
-					</execution>
-				</executions>
-			</plugin>
-			<plugin>
 				<groupId>org.jacoco</groupId>
 				<artifactId>jacoco-maven-plugin</artifactId>
+				<version>0.8.7</version>
 				<executions>
 					<execution>
 						<id>prepare-agent</id>

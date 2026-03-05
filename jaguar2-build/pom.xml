@@ -73,8 +73,8 @@
 
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-		<source>1.6</source>
-		<bytecode>1.6</bytecode>
+		<source>11</source>
+		<bytecode>11</bytecode>
 		<maven.compiler.source>${source}</maven.compiler.source>
 		<maven.compiler.target>${bytecode}</maven.compiler.target>
 		<ba-dua.version>0.8.0</ba-dua.version>
