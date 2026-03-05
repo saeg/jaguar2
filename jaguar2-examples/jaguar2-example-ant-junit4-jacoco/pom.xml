@@ -24,6 +24,7 @@
 	<properties>
 		<maven.main.skip>true</maven.main.skip>
 		<maven.test.skip>true</maven.test.skip>
+		<jaguar2.classesDir>../target/classes</jaguar2.classesDir>
 	</properties>
 
 	<build>
